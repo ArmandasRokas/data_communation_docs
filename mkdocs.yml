@@ -1,3 +1,38 @@
 site_name: Data Communication
 theme:
         name: material
+        palette:
+                primary: red
+                accent: red
+        features:
+                - tabs
+markdown_extensions:
+  - attr_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - admonition
+  - pymdownx.details
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+nav:
+        - Week 1:
+                - Book ex.: week1_book.md
+                - Questions: week1_questions.md
+                - Practise: week1_practise.md
+                - Concepts: week1_concepts.md
