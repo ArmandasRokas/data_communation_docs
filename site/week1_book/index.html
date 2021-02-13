@@ -1,0 +1,746 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Book ex. - Data Communication</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#r1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Data Communication" class="md-header-nav__button md-logo" aria-label="Data Communication">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Data Communication
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Book ex.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Communication" class="md-nav__button md-logo" aria-label="Data Communication">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Data Communication
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+      
+      <label class="md-nav__link" for="nav-1">
+        Week 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Week 1" data-md-level="1">
+        <label class="md-nav__title" for="nav-1">
+          <span class="md-nav__icon md-icon"></span>
+          Week 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Book ex.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Book ex.
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#r1" class="md-nav__link">
+    R1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r16" class="md-nav__link">
+    R16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r19" class="md-nav__link">
+    R19
+  </a>
+  
+    <nav class="md-nav" aria-label="R19">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p1" class="md-nav__link">
+    P1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p5" class="md-nav__link">
+    P5
+  </a>
+  
+    <nav class="md-nav" aria-label="P5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p6" class="md-nav__link">
+    P6
+  </a>
+  
+    <nav class="md-nav" aria-label="P6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_2" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_1" class="md-nav__link">
+    b)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    c)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    e)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    f)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week1_questions/" class="md-nav__link">
+        Questions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week1_practise/" class="md-nav__link">
+        Practise
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week1_concepts/" class="md-nav__link">
+        Concepts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#r1" class="md-nav__link">
+    R1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r16" class="md-nav__link">
+    R16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r19" class="md-nav__link">
+    R19
+  </a>
+  
+    <nav class="md-nav" aria-label="R19">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p1" class="md-nav__link">
+    P1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p5" class="md-nav__link">
+    P5
+  </a>
+  
+    <nav class="md-nav" aria-label="P5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    b)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p6" class="md-nav__link">
+    P6
+  </a>
+  
+    <nav class="md-nav" aria-label="P6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a_2" class="md-nav__link">
+    a)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b_1" class="md-nav__link">
+    b)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" class="md-nav__link">
+    c)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    d)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    e)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    f)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Book ex.</h1>
+                
+                <h2 id="r1">R1</h2>
+<p><strong>What is the difference between a host and an end system? List several different types of end systems. Is a Web server an end system?</strong></p>
+<p>There is no difference. Throughout this text, the words "host" and "end system" are used interchangeably. End systems include PCs, workstations, Web servers, mail servers, PDAs, Internet-connnected game consoles, etc. </p>
+<h2 id="r16">R16</h2>
+<p><strong>Consider sending a packet from a source host over a fixed route. List the delay components in the end-to-end delay. Which of these delays are constant and which are variable?</strong></p>
+<p>The delay components are processing delays, transmission delays, propagation delays, and queuing delays. All of these delays are fixed, except for the queuing delays, which are variable.</p>
+<h2 id="r19">R19</h2>
+<p><strong>Suppose Host A wants to send a large file to host B. The path from Host A to Host B has three links, of rates R1=500kbs, R2=2Mbps, and R3=1Mbps</strong></p>
+<h3 id="a">a)</h3>
+<p><strong>Assuming no ther traffic in the network, what is the throughput for the file transfer?</strong> </p>
+<p>500kbs</p>
+<h3 id="_1"></h3>
+<p><strong>b) Suppose the file is 4 million bytes. Diving the file size by the throughout, roughly how long will it take to transfer the file to Host</strong></p>
+<p>4.000.000/(500000/8) = 64sec</p>
+<h3 id="c">c)</h3>
+<p><strong>Repeat a) and b), but now with R_2 reduced to 100kbps</strong></p>
+<p>a) 100kbp, b) 4.000.000/(100000/8)= 320sec</p>
+<h2 id="p1">P1</h2>
+<p><strong>Design and describe an application-level protocol to be used between an automatic teller machine and a bank's centralized computer.</strong></p>
+<div class="highlight"><pre><span></span><code>Messages from ATM machine to Server
+Msg name                purpose
+--------                -------
+HELO &lt;userid&gt;           Let server know that there is a card in the ATM machine
+                        ATM card transmits user ID to Server
+PASSWD &lt;passwd&gt;         User enters PIN, which is sent to server
+BALANCE                 User requests balance
+WITHDRAWL &lt;amount&gt;      User asks to withdraw money
+BYE                     user all done
+
+Messages from Server to ATM machine (display)
+Msg name                purpose
+--------                -------
+PASSWD                  Ask user for PIN (password)
+OK                      last requested operation (PASSWD, WITHDRAWL) OK
+ERR                     last requested operation (PASSWD, WITHDRAWL) in ERROR
+AMOUNT &lt;amt&gt;            sent in response to BALANCE request
+BYE                     user done, display welcome screen at ATM
+
+Correct operation:
+
+client                          server
+
+HELO (userid)   --------------&gt; (check if valid userid)
+                &lt;-------------  PASSWD
+PASSWD &lt;passwd&gt; --------------&gt; (check password)
+                &lt;-------------  OK (password is OK)
+BALANCE         --------------&gt;
+                &lt;-------------  AMOUNT &lt;amt&gt;
+WITHDRAWL &lt;amt&gt; --------------&gt; check if enough $ to cover              withdrawl
+                &lt;-------------  OK
+ATM dispenses $
+BYE             --------------&gt;
+                &lt;-------------  BYE
+</code></pre></div>
+<h2 id="p5">P5</h2>
+<p><strong>Review the car-caravn analogy in Section 1.4. Assume a propagtion speed of 100 km/hour.</strong></p>
+<h3 id="a_1">a)</h3>
+<p><strong>Suppose the carancan travels 150km, beginning in front of one tollbooth, passing through a second tollbooth, and finishing just after a third tollbooth. What is the end to-end delays?</strong></p>
+<p>Transmission delay for all three tollbooth: <span><span class="MathJax_Preview">12*10*3 = 360sec  = 6min</span><script type="math/tex">12*10*3 = 360sec  = 6min</script></span></p>
+<p>Propagation delay: <span><span class="MathJax_Preview">150÷100*60 = 90min</span><script type="math/tex">150÷100*60 = 90min</script></span></p>
+<p>Total: <span><span class="MathJax_Preview">96min</span><script type="math/tex">96min</script></span></p>
+<h3 id="b">b)</h3>
+<p><strong>Repeat a), now assuming that there are eith cars in the caravan instead of ten.</strong></p>
+<p>Transmission delay for all three tollbooth: <span><span class="MathJax_Preview">12*8*3 = 288sec  =  5min</span><script type="math/tex">12*8*3 = 288sec  =  5min</script></span></p>
+<p>Propagation delay: <span><span class="MathJax_Preview">150÷100*60 = 90min</span><script type="math/tex">150÷100*60 = 90min</script></span></p>
+<p>Total: <span><span class="MathJax_Preview">95min</span><script type="math/tex">95min</script></span></p>
+<h2 id="p6">P6</h2>
+<p><strong>This elementary problem begins to explore propagation delay and transmission delay, two central concepts in data networking. Consider two hosts, A and B, connected by a single link of rate R bps. Suppose that the two hosts are separated by m meters and suppose the propagation speed along the link is s meters/sec. Host A is to send a packet of size L bits to Host B.</strong></p>
+<h3 id="a_2">a)</h3>
+<p><strong>Express the propagation delay, <span><span class="MathJax_Preview">d_{prop}</span><script type="math/tex">d_{prop}</script></span></strong>, <strong>in terms of m and s</strong></p>
+<p><span><span class="MathJax_Preview">d_{prop}=m/s</span><script type="math/tex">d_{prop}=m/s</script></span></p>
+<h3 id="b_1">b)</h3>
+<p><strong>Determine the transmission time of the packet <span><span class="MathJax_Preview">d_{trans}</span><script type="math/tex">d_{trans}</script></span> in terms of L and R</strong></p>
+<p><span><span class="MathJax_Preview">d_{trans}=L/R</span><script type="math/tex">d_{trans}=L/R</script></span></p>
+<h3 id="c_1">c)</h3>
+<p><strong>Ignoring processing and queuing delays, obtain an expression for the end-to-end delay</strong></p>
+<p><span><span class="MathJax_Preview">d_{end-to-end}=(m/s+L/R)</span><script type="math/tex">d_{end-to-end}=(m/s+L/R)</script></span></p>
+<h3 id="d">d)</h3>
+<p><strong>Suppose Host A begins to transmit the packet at time t=0. At time t=<span><span class="MathJax_Preview">d_{trans}</span><script type="math/tex">d_{trans}</script></span>, where is the last bit of the packet?</strong></p>
+<p>The bit is just leaving Host A</p>
+<h3 id="e">e)</h3>
+<p><strong>Suppose <span><span class="MathJax_Preview">d_{prop}</span><script type="math/tex">d_{prop}</script></span> is greater than <span><span class="MathJax_Preview">d_{trans}</span><script type="math/tex">d_{trans}</script></span>. At time <span><span class="MathJax_Preview">t=d_{trans}</span><script type="math/tex">t=d_{trans}</script></span>, where is the first bit of the packet?</strong></p>
+<p>The first bit is in the link and has not reached Host B</p>
+<h3 id="f">f)</h3>
+<p><strong>Suppose <span><span class="MathJax_Preview">d_{prop}</span><script type="math/tex">d_{prop}</script></span> is less than <span><span class="MathJax_Preview">d_{trans}</span><script type="math/tex">d_{trans}</script></span> **. **At time <span><span class="MathJax_Preview">t=d_{trans}</span><script type="math/tex">t=d_{trans}</script></span> **,**where is the first bit of the packet?</strong></p>
+<p>The first bit has reached Host B</p>
+<p><strong>g) Suppose s=2.5x108, L=120bits, and R=56kbps. Find the ditance m so that <span><span class="MathJax_Preview">d_{prop}</span><script type="math/tex">d_{prop}</script></span> equals <span><span class="MathJax_Preview">d_{trans}</span><script type="math/tex">d_{trans}</script></span>.</strong></p>
+<p><span><span class="MathJax_Preview">d_{prop}=d_{trans}</span><script type="math/tex">d_{prop}=d_{trans}</script></span></p>
+<p><span><span class="MathJax_Preview">m=\frac{L}{R}s=536km</span><script type="math/tex">m=\frac{L}{R}s=536km</script></span></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+        
+          <a href="../week1_questions/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Questions
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
