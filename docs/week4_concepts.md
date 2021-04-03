@@ -1,10 +1,17 @@
+# Week 4 concepts
+
 ## Bit error
 
 Send 1 and received 0, but all packet are still delivered
 
-## What are sockets
+## Sockets
 
-Doors through which data passes from the network to the process and through which data passes from the process to the network. 
+- Doors through which data passes from the network to the process and through which data passes from the process to the network. 
+- sockets are the only one API that sits between application layer and transport layer
+- **TCP sockets**
+	- when contacted by client, server TCP **creates new socket** for server process to communicate with that particular client for the duration of that TCP connection
+	- allows server to talk with multiple client
+	- source port numbers used to distinguish clients 
 
 ## TCP
 
@@ -42,10 +49,21 @@ In UDP, the receiver does not generate an acknowledgement of packet received and
 
 [TCP vs UDP](https://www.geeksforgeeks.org/differences-between-tcp-and-udp/#:~:text=UDP%20is%20faster%2C%20simpler%20and,User%20Datagram%20Protocol%20(UDP).&text=UDP%20is%20used%20by%20DNS,SNMP%2C%20RIP%2C%20and%20VoIP.)
 
+## Multiplexing vs Demultiplexing
 
-## Multiplexing and Demultiplexing
-Extending host-to-host delivery to process-to-process delivery is called transport-layer multiplexing and demultiplexing. 
+**Extending host-to-host delivery to process-to-process** delivery is called transport-layer multiplexing and demultiplexing. 
 At the receiving end, the transport layer examines these fields to identidy the receiving socket and then directs the segments to the that socket. This job of delivering the data in a transport-layer segment to the correct socket is called **demultiplexing**. The job of gathering data chunks at he source host from different sockets, encapsulating each data chunk with header information(that will later be used in demultiplexing) to create segments, and passing the segments to the network layer is called **multipplexing**.  
+
+|              | Multiplexing                                            | Demultiplexing                                               |
+| ------------ | ------------------------------------------------------- | ------------------------------------------------------------ |
+| **Where**    | At sender                                               | At receiver                                                  |
+| **Function** | Handle data from multiple sockets, add transport header | Use header info to deliver received segments to correct sockets |
+| **UDP**      |                                                         | Using destination port number(only)                          |
+| **TCP**      |                                                         | Using 4-tuple: source and destination IP addresses, and port numbers |
+
+
+
+
 
 
 ## CheckSum
@@ -78,6 +96,12 @@ Receiver Site:
 
 
 ```
+
+
+
+| UDP                                                          | TCP  |
+| ------------------------------------------------------------ | ---- |
+| Entire UDP segment, except the checksum field itself, adn the IP sender and receive address fields(violates layering) |      |
 
 
 

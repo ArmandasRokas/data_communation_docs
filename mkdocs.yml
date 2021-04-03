@@ -40,3 +40,30 @@ nav:
                 - Book ex.: week2_book.md
                 - Questions: week2_questions.md
                 - Concepts: week2_concepts.md
+        - Week 3:
+                - Book ex.: week3_book.md
+                - Questions: week3_questions.md
+                - Concepts: week3_concepts.md
+        - Week 4:
+                - Book ex.: week4_book.md
+                - Questions: week4_questions.md
+                - Concepts: week4_concepts.md
+        - Week 5:
+                - Book ex.: week5_book.md
+                - Questions: week5_questions.md
+                - Concepts: week5_concepts.md
+        - Week 6:
+                - Book ex.: week6_book.md
+                - Questions: week6_questions.md
+                - Concepts: week6_concepts.md
+        - Week 7:
+                - Book ex.: week7_book.md
+                - Questions: week7_questions.md
+                - Concepts: week7_concepts.md
+        - Week 8:
+                - Book ex.: week8_book.md
+                - Questions: week8_questions.md
+                - Concepts: week8_concepts.md
+        - IP suite: ip_suite.md
+        - Glossary: glossary.md 
+                  

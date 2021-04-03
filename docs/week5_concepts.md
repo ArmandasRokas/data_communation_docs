@@ -11,25 +11,47 @@
 
 
 
-### Router Forwarding table
+### Router Forwarding table(aka flow table)
 - To identify the outgoing link interface for a arrived packet. 
 - Examine packet header and send to appropriate outgoing link
 - Created be routing algorithm. Local decision to support global goals
 
-## DHCP
+## DHCP 
 
+- **Dynamic Host Configuration Protocol** allows a host to obtain an IP address automatically
 - How does a host get an IP address?
   - Manually - hard coded
   - Automagically-  DHCP
-- Dynamic Host Configuration Protocol
 - Goal
-  -  Dynamically Obtain IP Address
-  - Default Gateway
+  - 
+  - **Dynamically Obtain IP Address**
+  - Default Gateway (first hop router)
   - DNS Server 
   - Subnet Mask
-- Could be possible multiple DHCP servers, so all four steps are needed to confirm DHCP server that the client will use that ip. 
+
+### Dora
+
+- Discover message
+  - Client say I need a IP address.  Send a message to everyone 
+  - UDP port 67
+  - Broadcast at a link level
+
+- Offer message
+  - DHCP server will answer with offer, which contains the transaction ID of the received discover message, the proposed IP address for the client, the network mask and an IP address lease time
+  - `yiaddr` - as in "your Internet address"
+
+- Request message
+  - Choose one DHCP server and respond with echoing back the configuration parameters
+
+- ACK message
+  - Confirm the requested parameters
 
 ![](pics/DHCP.png)*
+
+
+
+- 
+- All four steps are needed to confirm DHCP server that the client will use that ip, because   multiple DHCP servers are possible. 
 
 ## What does router consist of ?
 - **Input ports**
@@ -46,9 +68,13 @@
 	- Perform control plane functions
 	- In SDN routers, the routing processor is responsible for communicating with the remote controller in order to receive forwarding table entries computed by the remote controller
 
-## Memory based switching fabric vs Shared bus vs crossbar 
+## Switching fabric
 
 - The main function of a switch fabric is to relay data efficiently and rapidly from its inputs to its outputs
+
+### Memory based switching fabric vs Shared bus vs crossbar 
+
+
 
 | Memory based                     | Shared bus               | Crossbar                                                     |
 | -------------------------------- | ------------------------ | ------------------------------------------------------------ |
@@ -58,10 +84,6 @@
 
 
 
-
-
-
-## Explain DORA process.
 
 
 
@@ -112,7 +134,6 @@
 
 - Initial Motivation
   - Address Space
-  - 
 
 
 | IPv4 | IPv6 |
@@ -139,3 +160,4 @@
 
 ![https://en.wikipedia.org/wiki/IP_fragmentation#/media/File:IPv4_Fragmentation_example_-en.svg](pics/ip_fragmantation.png)
 
+*

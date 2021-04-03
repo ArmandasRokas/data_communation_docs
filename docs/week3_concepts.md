@@ -1,3 +1,5 @@
+# Week 3 concepts
+
 ## Centralized architecture vs distributed architecture
 
 - **Security**:

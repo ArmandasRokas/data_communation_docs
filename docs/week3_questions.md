@@ -1,9 +1,28 @@
-
+# Week 3 questions
 
 ## DNS 
 The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
 
+- **DNS services:**
+	- hostname-to.IP-address translation
+	- host aliasing (canonical, alias names)
+	- mail server aliasing
+	- load distribution (replicated Web servers: many IP address correspond to one name)  
+
 [DNS](https://www.cloudflare.com/learning/dns/what-is-dns/)
+
+
+### DNS records
+- Distributed database storing resource records(RR) in format: `(name, value, type, ttl)`
+
+| Type      | Name                                            | Value                                         |
+| --------- | ----------------------------------------------- | --------------------------------------------- |
+| **A**     | Hostname                                        | Ip address                                    |
+| **NS**    | domain (foo.com)                                | hostname of authoritative NS for this domain  |
+| **CNAME** | alias name for some "canonical" (the real) name | canonical name                                |
+| **MX**    |                                                 | name of SMTP mail server associated with name |
+
+
 
 
 ### Difference between iterative and recursive calling
@@ -25,7 +44,14 @@ Recursive DNS queries generally tend to resolve faster than iterative queries. T
 
 In order to deal with the issue of scale. Page 164
 
-## What is a DNS caching?
+![](pics/Strucutre-of-dns.jpg)
+
+1. **Local DNS server** - replies to DNS query by local host, by contacting other DNS servers to answer the query
+2. **Root servers** - highest level of DNS hierarchy, know how to reach servers responsible for a given domain(e.g. .com, .edu)
+3. **TLD servers** (Top-level domain) -responsible for a domain (e.g., .com, .edu); knows how to contact authoritative name servers
+4. **Authoritative DNS servers** - provide authoritative hostname to IP mappings for organization's named hosts  
+
+### What is a DNS caching?
 
 DNS cache refers to the temporary storage of information about previous DNS lookups
 
