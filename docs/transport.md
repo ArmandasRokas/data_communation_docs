@@ -1,4 +1,6 @@
-# Week 4 concepts
+# Transport layer 
+
+
 
 ## Bit error
 
@@ -57,6 +59,8 @@ In UDP, the receiver does not generate an acknowledgement of packet received and
 | TCP is used by HTTP, HTTPs, FTP, SMTP and Telnet.            | UDP is used by DNS, DHCP, TFTP, SNMP, RIP, and VoIP.         |
 
 [TCP vs UDP](https://www.geeksforgeeks.org/differences-between-tcp-and-udp/#:~:text=UDP%20is%20faster%2C%20simpler%20and,User%20Datagram%20Protocol%20(UDP).&text=UDP%20is%20used%20by%20DNS,SNMP%2C%20RIP%2C%20and%20VoIP.)
+
+
 
 ## Multiplexing vs Demultiplexing
 
@@ -216,4 +220,3 @@ Send will not overwhlem receiver
 
 ## Connection-oriented
 Handshaking  
-

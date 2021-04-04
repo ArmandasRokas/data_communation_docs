@@ -1,4 +1,4 @@
-# Week 1 concepts
+# Introduction
 
 ## Internet 
 
@@ -130,3 +130,32 @@ Latency measures **delay**. Delay is simply the time taken for a data packet to 
 If your network is experiencing high levels of latency, this signals poor or slow network performance. In short, the higher your network delay and latency, the longer it will take for a data packet to reach the appropriate destination. The result of latency is often choppy and lagging services. This might manifest as poor-quality VoIP calls, where elements of speech are missing or there is a noticeable lag.
 
 [Latency](https://www.dnsstuff.com/latency-throughput-bandwidth)
+
+
+## Delay in a network node
+**Which parts are included in the calculation of the delay in a network node?**
+- Processing delay
+- Queuing delay
+- Transmission delay
+- Propagation delay
+
+## TCP/IP procotoal stack
+
+**Which layers exist in the TCP/IP protocol stack?**
+
+![](pics/tcp_ip_layers.gif)
+
+[TCP IP stack](https://www.technologyuk.net/computing/computer-networks/internet/tcp-ip-stack.shtml)
+
+## Security
+
+**What can threaten security in a system?**
+
+- Viruses
+- Worms
+- Denial-of-service(DoS) attacks
+	- Vulnerability attacks
+    - Bandwidth flooding
+    - Connection flooding
+- Sniff Packets
+

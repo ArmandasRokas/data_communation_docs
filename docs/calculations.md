@@ -38,7 +38,7 @@ $$
 $$
 D_{trans}=8mircosecs \\
 RTT = 30 ms \\
-U_{sender} = \frac{8}{30+0.008} = 0.00027
+U_{sender} = \frac{0.008}{30+0.008} = 0.00027
 $$
 
 
