@@ -15,13 +15,13 @@ res_dec = dec1+dec2
 
 
 
-if res_dec>65535:
-    res_dec -= 65536
-    res_dec +=1
+if res_dec>65535:       # If 17th bit is 1
+    res_dec -= 65536    # make it 0
+    res_dec +=1         # add that bit to front
 
 
 res_dec = ~res_dec # Bitwise NOT
-res_dec = res_dec + 2**16
+res_dec = res_dec + 2**16 # Make it unsinged int
      
 res_bin = bin(res_dec)[2:] 
 

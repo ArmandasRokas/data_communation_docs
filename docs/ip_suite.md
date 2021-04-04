@@ -3,7 +3,7 @@
 | Layer           | Data unit | Delivery | Protocols                        | Diverse           |
 | --------------- | --------- | -------------------------------- | -------------------------------- | -------------------------------- |
 | **Application** | Message   | -  | HTTP ; SMTP ; IMAP ; POP3 ;  BiTtorrent ; DNS ; DASH ; DHCP | TLD ; NS ; RR ; DORA ; CDN ; OTT |
-| **Transport**   | Segment   | Process-to-process | TCP ; UDP ; RDP; RDT | RTT |
+| **Transport**   | Segment   | Process-to-process | TCP ; UDP ; RDP; RDT | RTT, GNB |
 | **Internet**    | Datagram  | Host-to-host | IPv4 ; IPv6 ;  Openflow ; RIP ; OSPF ; BGP ; iBGP ; eBGP ; ICMP; SNMP | NAT; SDN ; LS ; DV ; AS; ISP; IXP |
 | **Link**        | Frame     |      |                                  |                                  |
 
@@ -44,6 +44,7 @@
 ### Diverse
 
 - **RTT** - round trip time
+- **GBN** - Go-Back-N
 
 
 

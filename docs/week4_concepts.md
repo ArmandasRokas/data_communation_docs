@@ -24,6 +24,15 @@ Send 1 and received 0, but all packet are still delivered
 ### TCP Handshake
 The TCP three-way handshake, also called the TCP-handshake, three message handshake, and/or SYN-SYN-ACK, is the method used by TCP to set up a TCP/IP connection over an IP-based network. The three messages transmitted by TCP to negotiate and start a TCP session are nicknamed SYN, SYN-ACK, ACK for SYNchronize, SYNchronize-ACKnowledgement, and ACKnowledge. The three message mechanism is designed for the two computers that want to pass information back and forth and can negotiate the parameters of the connection before transmitting data such as HTTP browser requests.  [TCP Handshake](https://developer.mozilla.org/en-US/docs/Glossary/Transmission_Control_Protocol_(TCP))
 
+
+### TCP fast retransmit
+- If sender receives 3 ACKs for same data ("triple dublicate ACKs"), resend unACKed segment with smallest seq #
+- likely that unACKed segment lost, so don't wait for timeout.
+
+![](/home/arm/Projects/datacom_docs/docs/pics/tcp_fast_retransmit.png)
+
+
+
 ## UDP
 
 The User Datagram Protocol (UDP) is simplest Transport Layer communication protocol available of the TCP/IP protocol suite. It involves minimum amount of communication mechanism. UDP is said to be an unreliable transport protocol but it uses IP services which provides best effort delivery mechanism.
@@ -109,8 +118,17 @@ Receiver Site:
 
 If the corresponding bits are damaged of opposite sides. E.g. 1st bit of subunit 1 is damaged and 1st bit of subunit 2 is damaged
 
-
 ## Reliable Data transfer
+
+
+
+| Number | Feature/ Recover from         |
+| ------ | ----------------------------- |
+| 1.0    | Send+receive                  |
+| 2.0    | + Bit errors                  |
+| 2.1    | + Sequence number(duplicates) |
+| 2.2    | + Without NAK                 |
+| 3.0    | + Packet lost                 |
 
 
 Reliable data transfer protocols (RDT, RDP) are algorithmic measures to provide assurances of the reliable transfer of data across a network that may be subject to data loss and/or corruption. RDT involves sender-side and receiver-side sequences and variables to validate, acknowledge, and retransmit data when necessary.
@@ -160,3 +178,42 @@ To improve transmission rates, a realistic RDT protocol must use pipelining. Thi
 - Pipelined Protocol. Send out multiple packet in batch on the pipe before any ACK received yet. 
 - Go-back-N , says I have all the packets until N.  Transmits all the packets after N (the last received)
 - Selective Repeat, I didn't received that packet that and that packet. That's transmits only unACKed packets.
+
+
+
+## Pipelining
+
+- A pipeline sender can have transmitted multiple packets for which the sender has yet to recive an ACK from the receiver
+- With a pipelined sender, there may be transmitted packets "in flight" - propagating through the channel - that the receiver has not yet received. 
+
+
+
+![](/home/arm/Projects/datacom_docs/docs/pics/pipelined.png)
+
+
+
+
+## Go-back-N vs Selective repeat
+
+| Go-Back-N Protocol                                           | Selective Repeat Protocol                                    |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| In Go-Back-N Protocol, if the sent frame are find suspected then all the frames are re-transmitted from the lost packet to the last packet transmitted. | In selective Repeat protocol, only those frames are re-transmitted which are found suspected. |
+| Sender window size of Go-Back-N Protocol is N.               | Sender window size of selective Repeat protocol is also N.   |
+| Receiver window size of Go-Back-N Protocol is 1.             | Receiver window size of selective Repeat protocol is N.      |
+| Go-Back-N Protocol is less complex.                          | Selective Repeat protocol is more complex.                   |
+| In Go-Back-N Protocol, neither sender nor at receiver need sorting. | In selective Repeat protocol, receiver side needs sorting to sort the frames. |
+| In Go-Back-N Protocol, type of Acknowledgement is cumulative. | In selective Repeat protocol, type of Acknowledgement is individual. |
+| In Go-Back-N Protocol, Out-of-Order packets are NOT Accepted (discarded) and the entire window is re-transmitted. | In selective Repeat protocol, Out-of-Order packets are Accepted. |
+| In Go-Back-N Protocol, if Receives receives a corrupt packet, then also, the entire window is re-transmitted. | In selective Repeat protocol, if Receives receives a corrupt packet, it immediately sends a negative acknowledgement and hence only the selective packet is retransmitted. |
+
+
+
+## Cumulative ACK
+A cumulative ACK(n) acks all packets with sequence number up to and including n as being received
+
+## Flow controlled
+Send will not overwhlem receiver
+
+## Connection-oriented
+Handshaking  
+
