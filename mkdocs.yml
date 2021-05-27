@@ -31,11 +31,12 @@ markdown_extensions:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 nav:
-        - About: index.md
+        - Overview of layers: index.md
         - Introduction: introduction.md
         - Application layer: application.md
         - Transport layer: transport.md
         - Network layer: network.md
-        - Calculations: calculations.md 
-        - Practice:
-                - Traceroute: practice_traceroute.md          
+        - Link layer: link.md
+        - Wireless: wireless.md
+        - Security: security.md
+        - Practice: practice.md 

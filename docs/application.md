@@ -154,8 +154,57 @@ In computing, a stateless protocol is a communications protocol in which no sess
 
 ## CDN
 
-- Content distributed networks
-- Store/serve multiple copies of videos at multiple geographically distributed sites in order to stream content to hundreds of thousands of simultaneous users
+- A content delivery network (CDN) refers to a geographically distributed group of **proxy servers** which work together to provide fast delivery of Internet content. Thus, CDN caches content (such as images, videos, or webpages) in proxy servers. So a **company deploy CDN infrastructure** with **many groups of servers**.  In one world, **distributed caches**
+- **CDN does:**
+  - **Manages** servers in multiple geographically distributed locations
+  - **Stores** copies of the content in its servers
+  - **Directs** each user request to location that will provide the best user experience.  
+- **Why not only one enormous data center?** 
+  - If the client is far away from data center, server-to-client packets will cross many communication links, resulting huge delays for the user
+  - Same content will be likely sent many times over the same communication links
+  - A single data center represents a single point of failure(although a center center is crashed, the content could be received from one cache servers)
+
+- **Benefits**
+  - Minimized **latency**
+  - CDNs can offer instant user redirections, they can assure 100 percent server **availability** even in the event of power failures or when there are any network and hardware issue associated with the system 
+  - AWS offers advanced CDN with computations at edge, dynamic content maintain **secure** connections close to the requestor, firewal, protection from DDoS [CDN AWS](https://aws.amazon.com/caching/cdn/)
+- **Drawbacks**
+  - CDN network contains most updated static data. Hence, you may find difficulties in application development. In other words, to preview latest changes you made, you will need Internet connection as you won’t have a local copy. This could be a headache for non technical writer or Blogger.
+  - Since your static content will be served from other sources, CDN demands additional DNS lookup.
+  - Using CDN, you are creating additional “point of failure”. If the CDN network goes down you may lose website visibility.
+  - [Drawback CDN ](https://www.accuwebhosting.com/blog/cdn-pros-cons-explained/#:~:text=CDN%20Drawbacks&text=It%20don't%20seem%20much,copied%20to%20all%20distributed%20servers.)
+- **Use cases:**
+  - Video streaming workloads benefit significantly from a content-distribution network(CDN) across multiple data centers and edges points 
+
+| Private CDN                                  | Third-party CDN                                             |
+| -------------------------------------------- | ----------------------------------------------------------- |
+| Owned by the content provider itiself        | Distributed content on behalf of multiple content providers |
+| E.g. Google's CDN distributes YouTube videos | Akamai, Limelight operate third-party CDN                   |
+
+- **CDNs typically adopt one of two different server placement philosophies: enter deep or bring home**
+
+|            | Enter deep                                                   | Bring home                                                   |
+| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Philosophy | Enter deep into the access networks of ISPs. Get close to end users | Instead of getting inside the access ISP, these CDNs typically place their clusters in IXPs |
+| Advantages | Improves user-perceived delay and throughput by decreasing the number of links and routers between the end user and the CDN server from which it receives content | Lower maintenance and management overhead                    |
+| Disadv.    | maintain and manage the clusters can become challenging because of this highly distributed design | higher delay and lower throughput to end users               |
+
+- **How it operates**
+  - Most CDNs take advantage of DNS to intercept and redirect requests; 
+  - CDN learns the IP address of the client’s local DNS (LDNS) server via the client’s DNS lookup. After learning this IP address, the CDN needs to select an appropriate cluster based on this IP address. CDNs generally employ proprietary cluster selection strategies: geographically closest or by performing real-time measurements of delay and loss performance. 
+  - *My thoughts*:  if client updates anything so it updates at origin server, CDN used only for fetching content. So the user fetches first the content from CDN server and if he/she needs update anything it updates direct to orgin server(the address could still be CDN server, but it will redirect to origin server)
+
+- **Google' CDN - three tiers of server clusters**
+
+![](pics/Google_CDN_infrastructure.png)
+
+- **Netflix**
+
+![](/home/arm/Projects/datacom_docs/docs/pics/netflix_cdn.png)
+
+
+
+- 
 
 ## Enter deep
 

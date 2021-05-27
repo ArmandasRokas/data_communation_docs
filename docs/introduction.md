@@ -1,8 +1,37 @@
 # Introduction
 
+
+
+## Access ISP
+
+
+
+Ends systems (PCs, smartphones, Web servers, mail servers, and so on) connect into the Internet via an **access ISP.** 
+
+
+
+![](pics/access_isp.png)
+
+
+
+
+## Access network vs Network Core
+
+| Access network                                               | Network Core                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| The network that physically connects an end system to the first router (also known as the “edge router”) | The mesh of packet switches and links that interconnects the Internet's end systems |
+| ![](pics/access_network.png)                                 | ![](pics/network_core.png)                                   |
+
+![](pics/summary_internet.png)
+
+
+
+
 ## Internet 
 
-Network of networks. A worldwide interconnection of individual networks.   [Internet](https://glossary.atis.org/search-results/?search=+Internet+%5Bthe%5D)
+- Network of networks. A worldwide interconnection of individual networks.   [Internet](https://glossary.atis.org/search-results/?search=+Internet+%5Bthe%5D)
+
+- Networking infrastructure that provides services to distributed applications
 
 ## Host
 End systems e.g. desktop computers, servers, mobile devices etc. Host sometimes divided into two categories: clients and servers.  Page 38
@@ -16,17 +45,23 @@ A router is a networking device that forwards data packets between computer netw
 
 A network switch is network hardware that connect devices on computer network by using packet switching to receive and forward data to the destination device.  [Swtich](https://en.wikipedia.org/wiki/Network_switch)
 
+- Will forbid multiple people talking at the same time. Collision
+
 ## Modem
 
 A modem is a hardware device that converts data from a digital format into suitable for a transmission medium such as telephone lines or radio.  [Modem](https://en.wikipedia.org/wiki/Modem)
 
+
+
+## PoP
+
+- Point of presence(PoP) exists in all levels of the heararchy, expect for the bottom (acess ISP) level. A PoP is a group of one or more routeers (at the same physical location) in the provider's network where custoer ISPs can connect into the provider ISP. 
+
+
+
 ## Protocol
 
 A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or the event. Page 35
-
-## Network Core (network backbone)
-
-The mesh of packet switches and links that interconnects the Internet's end systems.
 
 ## FDM 
 

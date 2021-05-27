@@ -55,7 +55,23 @@
 - 
 - All four steps are needed to confirm DHCP server that the client will use that ip, because   multiple DHCP servers are possible. 
 
+
+
+## DNS vs DHCP
+
+|                       | DNS                                                          | **DHCP**                                                     |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Purpose**           | DNS is usually used for resolving domains                    | DHCP is used for assigning IP’s to the host                  |
+| **Features**          | It translates the written names of domains to the IP addresses | DHCP provides the IP addresses of the router, host, name server, and the subnet mask of the computer |
+| **Purpose**           | You can use DNS for locating or finding the Active Directory domain servers | DHCP can provide IP to host for some limited time            |
+| **Port that it uses** | DNS uses port 53                                             | DHCP uses port 67 and 68                                     |
+| **Method of working** | DNS works in a decentralized manner                          | DHCP works in a centralized manner                           |
+| **Benefit**           | DNS eliminates the need to keep in mind or remember all the IP addresses | DHCP is a very reliable method of assigning IP addresses     |
+
+
+
 ## What does router consist of ?
+
 - **Input ports**
 	- "ports" refering to the physical input and output router interface.
 	- Here the forwarding table is consulted to determine the router output port to which an arriving packet will be forwarded via the switching fabric
@@ -94,12 +110,29 @@
 
 
 
+### Private address space
+
+
+
+| RFC1918 name |       IP address range        | Number of addresses | Largest [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) block (subnet mask) | Host ID size | Mask bits | *[Classful](https://en.wikipedia.org/wiki/Classful_network)* description[[Note 1\]](https://en.wikipedia.org/wiki/Private_network#cite_note-4) |
+| :----------: | :---------------------------: | :-----------------: | :----------------------------------------------------------: | :----------: | :-------: | :----------------------------------------------------------: |
+| 24-bit block |   10.0.0.0 – 10.255.255.255   |      16777216       |                    10.0.0.0/8 (255.0.0.0)                    |   24 bits    |  8 bits   |                    single class A network                    |
+| 20-bit block |  172.16.0.0 – 172.31.255.255  |       1048576       |                 172.16.0.0/12 (255.240.0.0)                  |   20 bits    |  12 bits  |                16 contiguous class B networks                |
+| 16-bit block | 192.168.0.0 – 192.168.255.255 |        65536        |                 192.168.0.0/16 (255.255.0.0)                 |   16 bits    |  16 bits  |                            256 co                            |
+
+[Private network Wiki](https://en.wikipedia.org/wiki/Private_network)
+
+
+
+
+
 ## What is CIDR? What does x mean in the ip address  a.b.c.d/x 
 
 - Classless InterDomain Routering
+-  is a method for allocating IP addresses and for IP routing.  [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#:~:text=Carl%2DHerbert%20Rokitansky.-,CIDR%20notation,bits%20in%20the%20network%20mask.)
   - *CIDR* notation is a compact representation of an IP address and its associated *network mask*.
   - subnet (logical subdivision of an IP network) portion of address of arbitrary length. Not only limited by 8bit boundaries
-- network park of address is defined in x-bits. That's **x** = # bits in subnet portion
+- network part of address is defined in x-bits. That's **x** = # bits in subnet portion
 - solves a problem if you have more than 255 computers in a network by adding `/23
 
 ### Subnet mask
@@ -118,6 +151,8 @@
 | Host identifier | `00000000.00000000.00000000.10000010` | 0.0.0.130     |
 
 
+
+[Calculate IP ranges subnet mask](https://www.calculator.net/ip-subnet-calculator.html?cclass=any&csubnet=30&cip=212.237.182.244&ctype=ipv4&printit=0&x=100&y=27)
 
 
 
@@ -217,39 +252,8 @@
 | Predecessor Node on Path to v | p(v)     |
 | Nodes with known path         | N'       |
 
-### How does Djisktra Algorithm work?
 
-- The main idea to keep the best path found until now and the reference to previous vertex.
-
-
-
-![](pics/djisktra.png)
-
-
-
-```
-Let distance of start vertex from start vertex = 0
-Let distances of all other vertices from start = infinity
-
-WHILE vertices remain unvisited
-	Visit univisted vertex with smallest known distance from start vertex
-	FOR EACH univisited neighbour of the current vertex
-		Calculate the distance from start vertex
-		IF the calculated distance of this vertex is less than the known distance
-			Update shortest distance this vertex
-			Update the previous vertex with the current vertex
-        END IF
-    Add the current vertex on the list of visited vertices
-END WHILE
-```
-
-
-
-[Youtube Dijkstra algorithm](https://www.youtube.com/watch?v=pVfj6mxhdMw)
-
-
-
-## Bellman - ford(Distant Vector)
+## Bellman - ford(Distance Vector)
 
 - **Iterative** - in that this process continues on until no more information is exchanged between neighbors
 
@@ -259,63 +263,7 @@ END WHILE
 
 
 
-The current node only know the distances to neighbors and the shortest paths to all other nodes from these neighbors.  By using this information and the equation below we can decide which path we should take:
-$$
-d_x(y) = min_v[c(x,v)+d_v(y)]
-$$
-
-| Annotation | Description                            |
-| ---------- | -------------------------------------- |
-| $c(x,v)$   | cost from x to v                       |
-| $d_x(y)$   | cost of least-cost path from x to y    |
-| $min_v$    | min is taken over all neighbors v of x |
-
-That's, how much it will cost if I take through this node, because I know my distance to it and his distances to all other nodes.  Each neighbor see what his neighbors see. 
-
-
-
-
-
-
-
-**B-F Equation example**
-
-![](pics/figure_5_3.png)
-
-- $d_v(z)=5$
-- $d_x(z)=3$
-- $d_w(z)=3$
-
-$$
-d_x(y) = min_v[c(u,v)+d_v(z), c(u,x)+d_x(z), c(u,w)+d_w(z)] = \\
-min_v[2+5, 1+3, 5+3] = 4
-$$
-
-
-
-**Maintains**
-
-- $D_x=[D_x(y):y\in N]$ - Node x maintains its own distance vector
-- $D_v=[D_v(y):y\in N]$ - Node x also maintains distance vectors for each neighbor v
-
-*DV is big as nodes in the network*
-
-**Overview**
-
-- Send DV to Neighbors. 
-- Update DV using B-F Equation
-- Repeat
-
-
-
-![](pics/bellman.png)
-
-
-
-
-
-
-### What is count to infinity Problem?
+### Challenge: Count to infinity Problem
 
 - One of the important issue in Distance Vector Routing is County of Infinity Problem.
 - Counting to infinity is just another name for a routing loop.

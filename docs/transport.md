@@ -1,3 +1,5 @@
+
+
 # Transport layer 
 
 
@@ -27,13 +29,65 @@ Send 1 and received 0, but all packet are still delivered
 The TCP three-way handshake, also called the TCP-handshake, three message handshake, and/or SYN-SYN-ACK, is the method used by TCP to set up a TCP/IP connection over an IP-based network. The three messages transmitted by TCP to negotiate and start a TCP session are nicknamed SYN, SYN-ACK, ACK for SYNchronize, SYNchronize-ACKnowledgement, and ACKnowledge. The three message mechanism is designed for the two computers that want to pass information back and forth and can negotiate the parameters of the connection before transmitting data such as HTTP browser requests.  [TCP Handshake](https://developer.mozilla.org/en-US/docs/Glossary/Transmission_Control_Protocol_(TCP))
 
 
-### TCP fast retransmit
+### TCP Fast Retransmit
 - If sender receives 3 ACKs for same data ("triple dublicate ACKs"), resend unACKed segment with smallest seq #
 - likely that unACKed segment lost, so don't wait for timeout.
 
-![](/home/arm/Projects/datacom_docs/docs/pics/tcp_fast_retransmit.png)
+![](pics/tcp_fast_retransmit.png)
+
+### TCP Flow control
+
+- Send will not overwhlem receiver
+- TCP provides flow control by having the sender maintain a variable called the receive window , denoted `rwnd`
+
+![](pics/rwnd.png)
+
+### TCP congestion control
 
 
+
+| Phase                    | When                                                         | How `cwnd` increases     |
+| ------------------------ | ------------------------------------------------------------ | ------------------------ |
+| **Slow start**           | From start/Timeout occurred                                  | Increasing exponentially |
+| **Congestion avoidance** | `cwnd>=sstresh`/Triple duplicate occurred and recovered from Fast recovery with ACK | Increasing linearly      |
+| **Fast recovery**        | Triple duplicate occurred                                    | Increasing linearly      |
+
+[Fast recovery in Stackoverflow](https://stackoverflow.com/questions/30818925/tcp-congestion-control-fast-recovery-in-graph)
+
+![](pics/tcp_congestion_control.png)
+
+![](/home/arm/Projects/datacom_docs/docs/pics/tcp_congestion_control_ex.png)
+
+
+
+![](pics/TCP_congestion_control_FSM.png)
+
+
+
+- Slow start
+
+![](pics/slow_start.png)
+
+-  Additive-increase, multiplicative-decrease (AIMD)
+
+![](pics/aimd.png)
+
+- TCP CUBIC
+- Delay-based congestion control.
+	- Note that currently measured throughput is never greater than `cwnd/RTTmin`
+	- If  currently measured throughput is equal or a bit less than `cwnd/RTTmin` increase the sending rate
+	- If currently measured thourghput is much less that  `cwnd/RTTmin` decrease the sending rate   
+	![](pics/delay_based_cc.png)
+
+
+
+- Explicit congestion notification
+
+  
+
+`cwnd` - congestion window
+
+`ssthresh` - when congestion control hits the value, it start to increase linearly
 
 ## UDP
 
@@ -85,36 +139,9 @@ At the receiving end, the transport layer examines these fields to identidy the 
 
 
 
-- Example: If the data unit to be transmitted is 10101001 00111001, the following procedure is used at Sender site and Receiver site.
-
-```
-Sender Site:
-10101001        subunit 1  
-00111001        subunit 2        
-11100010        sum (using 1s complement)       
-00011101        checksum (complement of sum- that's swapping 0s and 1s)
-
-_______________________________
-Data   				| Checksum
---------------------|----------
-10101001 00111001	| 00011101
-
-
-Receiver Site:
-10101001        subunit 1  
-00111001        subunit 2     
-00011101        checksum 
-11111111        sum
-00000000        sum's complement
-
-
-```
-
-
-
 | UDP                                                          | TCP  |
 | ------------------------------------------------------------ | ---- |
-| Entire UDP segment, except the checksum field itself, adn the IP sender and receive address fields(violates layering) |      |
+| Entire UDP segment, except the checksum field itself, and the IP sender and receive address fields(violates layering) |     |
 
 
 
@@ -215,8 +242,28 @@ To improve transmission rates, a realistic RDT protocol must use pipelining. Thi
 ## Cumulative ACK
 A cumulative ACK(n) acks all packets with sequence number up to and including n as being received
 
-## Flow controlled
-Send will not overwhlem receiver
+
 
 ## Connection-oriented
 Handshaking  
+
+
+
+## Flow control vs Congestion control
+
+| Flow control                                                 | Congestion control   |
+| ------------------------------------------------------------ | -------------------- |
+| Speed matching between **single** sender and **single** receiver | **Multiple** senders |
+
+
+
+## Network-assisted vs end-end congestion control
+
+
+
+| Network-assisted                                             | End-end                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| A router marks a field in the datagram header at a congested router | the network layer provides no explicit support to the transport layer for congestion-control purposes. |
+| A router sends an ICMP message to a host telling it to slow down its sending rate | based only on observed network behavior (for example, packet loss and delay) |
+|                                                              | increasing round-trip segment delay as an indicator of increased network congestion |
+

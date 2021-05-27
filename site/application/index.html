@@ -1,0 +1,1276 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Application layer - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#application-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Application layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Application layer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Application layer
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server-client" class="md-nav__link">
+    Server Client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    P2P
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-in-different-layer" class="md-nav__link">
+    Protocols in different Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    Port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    Socket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-http-get" class="md-nav__link">
+    Conditional HTTP GET
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-modified" class="md-nav__link">
+    Last modified
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistent-vs-non-persistent" class="md-nav__link">
+    Persistent vs Non-persistent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cacheproxy-server" class="md-nav__link">
+    Cache/Proxy Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-4-aspects-of-data-reliability" class="md-nav__link">
+    What are the 4 aspects of data reliability?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-server" class="md-nav__link">
+    What is a server?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-caching-work" class="md-nav__link">
+    How does caching work?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smtp" class="md-nav__link">
+    SMTP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smtp-vs-http" class="md-nav__link">
+    SMTP vs HTTP
+  </a>
+  
+    <nav class="md-nav" aria-label="SMTP vs HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imap-and-pop3" class="md-nav__link">
+    IMAP and POP3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateless-protocol" class="md-nav__link">
+    Stateless protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cdn" class="md-nav__link">
+    CDN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enter-deep" class="md-nav__link">
+    Enter deep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centralized-architecture-vs-distributed-architecture" class="md-nav__link">
+    Centralized architecture vs distributed architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bit-torrent" class="md-nav__link">
+    Bit torrent
+  </a>
+  
+    <nav class="md-nav" aria-label="Bit torrent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#churn" class="md-nav__link">
+    Churn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rarest-first" class="md-nav__link">
+    Rarest first
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimistically-unchoked" class="md-nav__link">
+    Optimistically unchoked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leech" class="md-nav__link">
+    Leech
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-seeding" class="md-nav__link">
+    Seed / Seeding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    DNS
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
+    DNS records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-between-iterative-and-recursive-calling" class="md-nav__link">
+    Difference between iterative and recursive calling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenarios-where-recursive-calling-is-relevant" class="md-nav__link">
+    Scenarios where recursive calling is  relevant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-hierarchical-database" class="md-nav__link">
+    Why hierarchical database?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-dns-caching" class="md-nav__link">
+    What is a DNS caching?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare-p2p-with-server-client-architecture" class="md-nav__link">
+    Compare P2P with server Client architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-dash-work" class="md-nav__link">
+    How does DASH work?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calculations/" class="md-nav__link">
+        Calculations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Practice
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Practice" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Practice
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice_traceroute/" class="md-nav__link">
+        Traceroute
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server-client" class="md-nav__link">
+    Server Client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    P2P
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocols-in-different-layer" class="md-nav__link">
+    Protocols in different Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    Port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    Socket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-http-get" class="md-nav__link">
+    Conditional HTTP GET
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-modified" class="md-nav__link">
+    Last modified
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistent-vs-non-persistent" class="md-nav__link">
+    Persistent vs Non-persistent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookies" class="md-nav__link">
+    Cookies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cacheproxy-server" class="md-nav__link">
+    Cache/Proxy Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-4-aspects-of-data-reliability" class="md-nav__link">
+    What are the 4 aspects of data reliability?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-server" class="md-nav__link">
+    What is a server?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-caching-work" class="md-nav__link">
+    How does caching work?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smtp" class="md-nav__link">
+    SMTP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smtp-vs-http" class="md-nav__link">
+    SMTP vs HTTP
+  </a>
+  
+    <nav class="md-nav" aria-label="SMTP vs HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imap-and-pop3" class="md-nav__link">
+    IMAP and POP3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateless-protocol" class="md-nav__link">
+    Stateless protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cdn" class="md-nav__link">
+    CDN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enter-deep" class="md-nav__link">
+    Enter deep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centralized-architecture-vs-distributed-architecture" class="md-nav__link">
+    Centralized architecture vs distributed architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bit-torrent" class="md-nav__link">
+    Bit torrent
+  </a>
+  
+    <nav class="md-nav" aria-label="Bit torrent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#churn" class="md-nav__link">
+    Churn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rarest-first" class="md-nav__link">
+    Rarest first
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimistically-unchoked" class="md-nav__link">
+    Optimistically unchoked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leech" class="md-nav__link">
+    Leech
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed-seeding" class="md-nav__link">
+    Seed / Seeding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    DNS
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dns-records" class="md-nav__link">
+    DNS records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-between-iterative-and-recursive-calling" class="md-nav__link">
+    Difference between iterative and recursive calling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenarios-where-recursive-calling-is-relevant" class="md-nav__link">
+    Scenarios where recursive calling is  relevant
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-hierarchical-database" class="md-nav__link">
+    Why hierarchical database?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-dns-caching" class="md-nav__link">
+    What is a DNS caching?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compare-p2p-with-server-client-architecture" class="md-nav__link">
+    Compare P2P with server Client architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-dash-work" class="md-nav__link">
+    How does DASH work?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="application-layer">Application layer</h1>
+<h2 id="server-client">Server Client</h2>
+<p>In a <strong>client-server architecture</strong> , there is an always-on host, called the server, which services requests
+from many other hosts, called clients.  Page 118</p>
+<p><img alt="" src="../pics/server_client.png" /></p>
+<h2 id="p2p">P2P</h2>
+<p><strong>Peer-to-peer</strong> (<strong>P2P</strong>) computing or networking is a <a href="https://en.wikipedia.org/wiki/Distributed_application">distributed application</a> architecture that partitions tasks or workloads between peers. <a href="https://en.wikipedia.org/wiki/Peer-to-peer">P2P</a>. Peers make a portion of their resources, such as processing power, disk storage or network bandwidth, directly available to other network participants, without the need for central coordination by servers or stable hosts.[<a href="https://en.wikipedia.org/wiki/Peer-to-peer#cite_note-1">1]</a> Peers are both suppliers and consumers of resources, in contrast to the traditional <a href="https://en.wikipedia.org/wiki/Client-server">client-server</a> model in which the consumption and supply of resources is divided.  </p>
+<p><img alt="" src="/home/arm/Projects/datacom/datacom_docs/docs/pics/p2p.png" /></p>
+<h2 id="protocols-in-different-layer">Protocols in different Layer</h2>
+<p><img alt="" src="../pics/layer_protocols.gif" /></p>
+<h2 id="port">Port</h2>
+<p>A <strong>port</strong> is a communication endpoint. At the software level a port is a logical construct that <strong>identifies a specific process</strong>. <a href="https://en.wikipedia.org/wiki/Port_(computer_networking)">Port</a> This information is needed because in general a host could be running many network applications.  Page 119</p>
+<h2 id="socket">Socket</h2>
+<p>A process sends messages into, and receives messages from, the network through a software interface called a socket. A process is analogous to a house and its socket is analogous to its door. Page 119.</p>
+<h2 id="http">HTTP</h2>
+<p>The Web's applications protocol, HTTP, defines the format and sequence of messages exchanged between browsers and Web Server. HTTP is only one piece of the Web application. Page 126</p>
+<ul>
+<li>Stateless</li>
+<li>Uses <code>TCP/IP</code></li>
+<li>Message types:<ul>
+<li><strong>HTTP request message</strong></li>
+<li><strong>HTTP response message</strong></li>
+</ul>
+</li>
+<li>HTTP/2<ul>
+<li>Allows objects in a persistent connection to be sent in a client-specified priority order</li>
+<li>Allows a large object to be broken down into smaller pieces, and the transmission of thsose pieces to be interleaved with transmission other smaller objects, thus preventing a large object from forcing many smaller objects to wait their turn for transmission. </li>
+</ul>
+</li>
+</ul>
+<h2 id="conditional-http-get">Conditional HTTP GET</h2>
+<ul>
+<li>Used to allow a server to only send the requested object to the client if that object has changed since the server last sent this object to the client.</li>
+<li>An HTTP request message is a so-called conditional GET message if (1) the request message uses the
+  GET method and (2) the request message includes an <code>If-Modified-Since</code>: header line.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>GET /fruit/kiwi.gif HTTP/1.1
+Host: www.exotiquecuisine.com
+If-modified-since: Wed, 9 Sep 2015 09:23:24
+</code></pre></div>
+<h2 id="last-modified">Last modified</h2>
+<ul>
+<li>
+<p><code>Last-Modified</code> header is critical for object caching, both in the local client and in network cache servers(also known as proxy servers)</p>
+</li>
+<li>
+<p>Alternative <code>Etag</code> -  ETag values are unique identifiers generated by the server and changed every time the object is modified. </p>
+</li>
+</ul>
+<h2 id="persistent-vs-non-persistent">Persistent vs Non-persistent</h2>
+<p>When this client-server interaction is taking place over TCP, the application developer needs to make an important decision—should each request/response pair be sent over a separate TCP connection, or should all of the requests and their corresponding responses be sent over the same TCP connection?</p>
+<table>
+<thead>
+<tr>
+<th>Persistent</th>
+<th>Non persistent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All of the request and their corresponding responses is sent over the same TCP connection</td>
+<td>Each request/response pair is sent over separate TCP connection</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cookies">Cookies</h2>
+<p>Cookies allows sites to keep track of users.  Cookie technology has four components:</p>
+<ol>
+<li>A cookie header line in the HTTP response message.</li>
+<li>A cookie header line in the HTTP request message.</li>
+<li>A cookie file kelp on the user's end system and managed by the user's browser.</li>
+<li>A back-end database at the Website</li>
+</ol>
+<p><img alt="" src="../pics/cookies.png" /></p>
+<p>Page 139</p>
+<h2 id="cacheproxy-server">Cache/Proxy Server</h2>
+<p>A Web cache - also called a proxy server - is a network entity that satisfies HTTP requests on the behalf of an origin Web server. The web cache has its own disk storage and keeps copies of recently requested objects in this storage. Web cache can substantially reduce the response time for a client request Web caches can substantially reduce traffic on an institution access link to the Internet.  Page 143</p>
+<h2 id="what-are-the-4-aspects-of-data-reliability">What are the 4 aspects of data reliability?</h2>
+<ul>
+<li>A reliable service is one that notifies the user if delivery fails, while an unreliable one does not notify the user if delivery fails</li>
+<li>All data is sent (no missing or duplicates bytes)</li>
+<li>The proper order
+Page 123</li>
+</ul>
+<h2 id="what-is-a-server">What is a server?</h2>
+<p>A host, which services requests from many other hosts, called clients. Page 115</p>
+<h2 id="how-does-caching-work">How does caching work?</h2>
+<ol>
+<li>The browser establishes a TCP connection to the Web cache and sends an HTTP request for the object to the Web cache.</li>
+<li>The web cache checks to see if it has a copy o the object stored locally. If it does, the Web cache returns the object within an HTTP reposnse message to the client browser</li>
+<li>If the cache does not have the object, the Web cache opens TCP connection to the origin server. The Web cache then sends an HTTP request for the object into the cache-to-server TCP connection. After receiving this request, the origin server sends the object within an HTTP response to the Web cache. </li>
+<li>When the Web cache receives the object, it stores a copy in its local storage and sends a copy, within an HTTP response message, to the client browser(over the existing TCP connection between the client browser and the Web cache). </li>
+</ol>
+<h2 id="smtp">SMTP</h2>
+<p>SMTP <strong>Simple Mail Transfer Protocol</strong> (<strong>SMTP</strong>)  is the principal application-layer protocol for Internet electronic mail. It uses the reliable data transfer service of <strong>TCP to transfer mail</strong> from sender's mail server to the recipient's mail server. Page 149</p>
+<ul>
+<li>SMTP is a push protocol</li>
+</ul>
+<h2 id="smtp-vs-http">SMTP vs HTTP</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>HTTP</th>
+<th>SMTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port number</td>
+<td>80</td>
+<td>25</td>
+</tr>
+<tr>
+<td>State</td>
+<td>Stateless</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Type of TCP connection</td>
+<td>Persistent or Non-persistent</td>
+<td>Persistent</td>
+</tr>
+<tr>
+<td>Type of protocol</td>
+<td>Pull Protocol(mainly)</td>
+<td>Push Protocol</td>
+</tr>
+<tr>
+<td>Transfer</td>
+<td>Files from Web server to Web client</td>
+<td>Files from one mail server to another mail server</td>
+</tr>
+</tbody>
+</table>
+<h3 id="imap-and-pop3">IMAP and POP3</h3>
+<p>A user agent can’t use SMTP to obtain the messages because obtaining the messages is a pull operation, whereas SMTP is a push protocol. The puzzle is completed by introducing a special mail access protocol that transfers messages from a mail server to his local PC. There are currently a number of popular mail access protocols, including Post Office Protocol—Version 3 (POP3), Internet Mail Access Protocol (IMAP), and HTTP.</p>
+<p>With POP3 access, once a user has downloaded his messages to the local machine, he can create mail folders and move the downloaded messages into the folders. A user can then delete messages, move messages across folders, and search for messages (by sender name or subject). But this paradigm— namely, folders and messages in the local machine—poses a problem for the nomadic user, who would prefer to maintain a folder hierarchy on a remote server that can be accessed from any computer. This is not possible with POP3—the POP3 protocol does not provide any means for a user to create remote folders and assign messages to folders. So nothing is synchronized. </p>
+<p>IMAP was designed with the goal of permitting complete management of an email box by multiple email clients, therefore clients generally leave messages on the server until the user explicitly deletes them.  All emails and folders are synchronized between multiple devices.  </p>
+<h2 id="stateless-protocol">Stateless protocol</h2>
+<p>In computing, a stateless protocol is a communications protocol in which no session information is retained by the receiver, usually a server. <a href="https://en.wikipedia.org/wiki/Stateless_protocol#:~:text=In%20computing%2C%20a%20stateless%20protocol,the%20receiver%2C%20usually%20a%20server.">Stateless protocol</a></p>
+<h2 id="cdn">CDN</h2>
+<ul>
+<li>Content distributed networks</li>
+<li>Store/serve multiple copies of videos at multiple geographically distributed sites in order to stream content to hundreds of thousands of simultaneous users</li>
+</ul>
+<h2 id="enter-deep">Enter deep</h2>
+<p>a CDN approach that stores content in access networks, close to clients</p>
+<h2 id="centralized-architecture-vs-distributed-architecture">Centralized architecture vs distributed architecture</h2>
+<ul>
+<li><strong>Security</strong>:</li>
+<li>CENTRALIZED: If someone has access to the server with the information, any data can be added, modified and deleted.</li>
+<li>DISTRIBUTED: All data is distributed between the nodes of the network. If something is added, edited or deleted in any computer, it will be reflected in all the computers in the network. If some legal amendments are accepted, new information will be disseminated among other users throughout the network. Otherwise, the data will be copied to match the other nodes. Therefore, the system is self-sufficient and self-regulating. The databases are protected against deliberate attacks or accidental changes of information.</li>
+<li><strong>Availability</strong>:</li>
+<li>CENTRALIZED: If there are several requests, the server can break down and no longer respond.</li>
+<li>DISTRIBUTED: Can withstand significant pressure on the network. All the nodes in the network have the data. Then, the requests are distributed among the nodes. Therefore, the pressure does not fall on a computer, but on the entire network. In this case, the total availability of the network is much greater than in the centralized one.</li>
+<li><strong>Accessibility</strong>:</li>
+<li>CENTRALIZED: If the central storage has problems, you will not be able to obtain your information unless the problems are solved. In addition, different users have different needs, but the processes are standardized and can be inconvenient for customers.</li>
+<li>DISTRIBUTED: Given that the number of computers in the distributed network is large, DDoS attacks are possible only in case their capacity is much greater than that of the network. But that would be a very expensive attack. In a centralized model, the response time is very similar in this case. Therefore, it can be considered that distributed networks are secure.</li>
+<li><strong>Data transfer rates:</strong></li>
+<li>CENTRALIZED: If the nodes are located in different countries or continents, the connection with the server can become a problem.</li>
+<li>DISTRIBUTED: In distributed networks, the client can choose the node and work with all the required information.</li>
+<li><strong>Scalability:</strong></li>
+<li>CENTRALIZED: Centralized networks are difficult to scale because the capacity of the server is limited and the traffic can not be infinite. In a centralized model, all clients are connected to the server. Only the server stores all the data. Therefore, all requests to receive, change, add or delete data go through the main computer. But server resources are finite. As a result, he is able to carry out his work effectively only for the specific number of participants. If the number of clients is greater, the server load may exceed the limit during the peak time.</li>
+<li>DISTRIBUTED: Distributed models do not have this problem since the load is shared among several computers.</li>
+</ul>
+<p><a href="https://icommunity.io/en/redes-centralizadas-vs-distribuidas/#:~:text=CENTRALIZED%3A%20If%20someone%20has%20access,the%20computers%20in%20the%20network.">Centralized vs distributed</a></p>
+<h2 id="bit-torrent">Bit torrent</h2>
+<p><strong>BitTorrent</strong> (abbreviated to <strong>BT</strong>) is a communication <a href="https://en.wikipedia.org/wiki/Protocol_(computing)">protocol</a> for <a href="https://en.wikipedia.org/wiki/Peer-to-peer_file_sharing">peer-to-peer file sharing</a> (P2P), which enables users to distribute <a href="https://en.wikipedia.org/wiki/Data_(computing)">data</a> and <a href="https://en.wikipedia.org/wiki/Electronic_file">electronic files</a> over the <a href="https://en.wikipedia.org/wiki/Internet">Internet</a> in a <a href="https://en.wikipedia.org/wiki/Decentralised_system">decentralized</a> manner.</p>
+<p>BitTorrent is a <strong>tit-for-tat protocol,</strong> meaning that you have to give in order to receive. </p>
+<p><a href="https://users-cs.au.dk/bouvin/dBIoTP2PC/2017/slides/BitTorrent.pdf">Bit torrent</a></p>
+<p>Typically, BitTorrent uses <a href="https://wiki.wireshark.org/TCP">TCP</a> as its transport protocol. The well known TCP port for BitTorrent traffic is 6881-6889 (and 6969 for the tracker port). The DHT extension (peer2peer tracker) uses various UDP ports negotiated by the peers.</p>
+<p><a href="https://wiki.wireshark.org/BitTorrent">TCP Bittorrent</a></p>
+<h3 id="churn">Churn</h3>
+<p>Churn refers to a large number of arriving and departing participants within a short time in peer-to-peer (P2P) networks.</p>
+<p><a href="https://ieeexplore.ieee.org/document/6687347">Churn</a></p>
+<h3 id="rarest-first">Rarest first</h3>
+<p>The rarest first algorithm refers to the normal operation of the piece selection policy used in BitTorrent. It is also called the local rarest first algorithm. Each peer has a rarest pieces set. The rarest pieces are the pieces that have the least number of copies in the peer set. In general, right after being unchoked, the local peer randomly requests the next piece to download in its rarest pieces set. <a href="https://arxiv.org/pdf/1402.2187.pdf#:~:text=The%20rarest%20first%20algorithm%20refers,copies%20in%20the%20peer%20set.">Rarest first</a></p>
+<h3 id="optimistically-unchoked">Optimistically unchoked</h3>
+<ul>
+<li>Each peer in a peer’s neighbour list has two state bits: </li>
+<li>interested/uninterested: this bit tells us whether the neighbour is interested in the pieces we have got. </li>
+<li>choked/unchoked: this bit states whether we are currently choking the neighbour. </li>
+<li>Choking a peer means disallowing it to download pieces at this point in time.</li>
+<li>
+<p>Peers send choke, unchoke, interested, and not interested messages to each other in the peer protocol.</p>
+</li>
+<li>
+<p>Choking works on a tit-for-tat basis: </p>
+</li>
+<li>
+<p>If we are currently downloading from a peer, we will unchoke that peer so that it may also download from us. </p>
+<ul>
+<li>This means, that when selecting a peer to download from, we should prefer peers that are interested in us. </li>
+</ul>
+</li>
+<li>
+<p>If a peer does not contribute (i.e., we are not able to download from it) we can choke it again. </p>
+</li>
+<li>
+<p><strong>Optimistic unchoke</strong>: </p>
+</li>
+<li>
+<p>It is a strategy to choose peers to cooperate with.  </p>
+</li>
+<li>
+<p>One or more peers will be optimistically unchoked at all time. This role rotates every 30 seconds. If an optimistically unchoked peer start contributing, it may stay unchoked.</p>
+</li>
+<li>
+<p>Replacing contributing peers, if an optimistic unchoke results in a peer that is performing better (yielding faster download rates), one of the currently unchoked peers will be replaced.</p>
+</li>
+<li>
+<p>Choked/unchoked state of neighbours is reconsidered every 10 seconds.</p>
+</li>
+<li>
+<p>At any point in time a peer should have a number of unchoked neighbours.</p>
+</li>
+<li>
+<p>Some implementations have a static value of 4, whereas others use the square root of the upload capacity in KB/s </p>
+</li>
+</ul>
+<p><a href="https://users-cs.au.dk/bouvin/dBIoTP2PC/2017/slides/BitTorrent.pdf">Optimistically unchoked</a></p>
+<h3 id="leech">Leech</h3>
+<p>Leech has two meanings. Often, leecher is synonymous with downloader (see above): simply describing a peer or any client that does not have 100% of the data.
+The term leech also refers to a peer (or peers) that has a negative effect on the swarm by having a very poor share ratio, downloading much more than they upload. Leeches may be on asymmetric Internet connections or do not leave their BitTorrent client open to seed the file after their download has completed. However, some leeches intentionally avoid uploading by using modified clients or excessively limiting their upload speed.  <a href="https://en.wikipedia.org/wiki/Glossary_of_BitTorrent_terms">Leech Bittorrent glossary</a></p>
+<h3 id="seed-seeding">Seed / Seeding</h3>
+<p>A seed refers to a machine possessing all of the data (100 % completion). A peer or downloader becomes a seed when it completely downloads all the data and continues/starts uploading data for other peers to download from. This includes any peer possessing 100% of the data or a web seed. When a downloader starts uploading content, the peer becomes a seed</p>
+<h2 id="dns">DNS</h2>
+<p>The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.</p>
+<ul>
+<li><strong>DNS services:</strong><ul>
+<li>hostname-to.IP-address translation</li>
+<li>host aliasing (canonical, alias names)</li>
+<li>mail server aliasing</li>
+<li>load distribution (replicated Web servers: many IP address correspond to one name)  </li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns/">DNS</a></p>
+<h3 id="dns-records">DNS records</h3>
+<ul>
+<li>Distributed database storing resource records(RR) in format: <code>(name, value, type, ttl)</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Hostname</td>
+<td>Ip address</td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>domain (foo.com)</td>
+<td>hostname of authoritative NS for this domain</td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>alias name for some "canonical" (the real) name</td>
+<td>canonical name</td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td></td>
+<td>name of SMTP mail server associated with name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="difference-between-iterative-and-recursive-calling">Difference between iterative and recursive calling</h3>
+<p><strong>Iterative</strong></p>
+<p>Iterative DNS queries are ones in which a DNS server is queried and returns an answer without querying other DNS servers, even if it cannot provide a definitive answer. Iterative queries are also called non-recursive queries.</p>
+<p><strong>Recursive</strong></p>
+<p>Recursive DNS queries occur when a DNS client requests information from a DNS server that is set to query subsequent DNS servers until a definitive answer is returned to the client. The queries made to subsequent DNS servers from the first DNS server are iterative queries.</p>
+<h3 id="scenarios-where-recursive-calling-is-relevant">Scenarios where recursive calling is  relevant</h3>
+<p>Recursive DNS queries generally tend to resolve faster than iterative queries. This is due to caching. A recursive DNS server caches the final answer to every query it performs and saves that final answer for a certain amount of time (known as the Time-To-Live).</p>
+<h3 id="why-hierarchical-database">Why hierarchical database?</h3>
+<p>In order to deal with the issue of scale. Page 164</p>
+<p><img alt="" src="../pics/Strucutre-of-dns.jpg" /></p>
+<ol>
+<li><strong>Local DNS server</strong> - replies to DNS query by local host, by contacting other DNS servers to answer the query</li>
+<li><strong>Root servers</strong> - highest level of DNS hierarchy, know how to reach servers responsible for a given domain(e.g. .com, .edu)</li>
+<li><strong>TLD servers</strong> (Top-level domain) -responsible for a domain (e.g., .com, .edu); knows how to contact authoritative name servers</li>
+<li><strong>Authoritative DNS servers</strong> - provide authoritative hostname to IP mappings for organization's named hosts  </li>
+</ol>
+<h3 id="what-is-a-dns-caching">What is a DNS caching?</h3>
+<p>DNS cache refers to the temporary storage of information about previous DNS lookups</p>
+<h2 id="compare-p2p-with-server-client-architecture">Compare P2P with server Client architecture</h2>
+<p>Peer-to-peer networks connect computers so that each computer shares all or part of its resources. Client-server networks have one or more central computers, or servers, that hold the data and manage resources.</p>
+<h2 id="how-does-dash-work">How does DASH work?</h2>
+<p>HTTP-based streaming, often referred to as Dynamic Adaptive Streaming over HTTP (DASH). In DASH, the video is encoded into several different versions, with each version having a different bit rate and, correspondingly, a different quality level. The client dynamically requests chunks of video segments of a few seconds in length. When the amount of available bandwidth is high, the client naturally selects chunks from a high-rate version; and when the available bandwidth is low, it naturally selects from a low-rate version. The client selects different chunks one at a time with HTTP GET request messages.</p>
+<p>With DASH, each video version is stored in the HTTP server, each with a different URL. The HTTP server also has a manifest file, which provides a URL for each version along with its bit rate. The client first requests the manifest file and learns about the various versions. The client then selects one chunk at a time by specifying a URL and a byte range in an HTTP GET request message for each chunk. While downloading chunks, the client also measures the received bandwidth and runs a rate determination algorithm to select the chunk to request next. Naturally, if the client has a lot of video buffered and if the measured receive bandwidth is high, it will choose a chunk from a high-bitrate version. And naturally if the client has little video buffered and the measured received bandwidth is low, it will choose a chunk from a low-bitrate version. DASH therefore allows the client to freely switch among different quality levels.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../introduction/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../transport/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Transport layer
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

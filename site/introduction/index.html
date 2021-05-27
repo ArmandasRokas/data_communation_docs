@@ -1,0 +1,953 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Introduction - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Introduction
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#internet" class="md-nav__link">
+    Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    Host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modem" class="md-nav__link">
+    Modem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    Protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-core-network-backbone" class="md-nav__link">
+    Network Core (network backbone)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fdm" class="md-nav__link">
+    FDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tdm" class="md-nav__link">
+    TDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isp" class="md-nav__link">
+    ISP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-delay" class="md-nav__link">
+    node delay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip-protocol-stack" class="md-nav__link">
+    TCP/IP protocol stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#denial-of-service-dos" class="md-nav__link">
+    Denial-of-service (DoS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ddos" class="md-nav__link">
+    DDoS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-sniffing" class="md-nav__link">
+    Packet sniffing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#man-in-the-middle-attack" class="md-nav__link">
+    Man-in-the-middle attack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuit-switching" class="md-nav__link">
+    Circuit switching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-routing" class="md-nav__link">
+    End-to-end routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexing" class="md-nav__link">
+    Multiplexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#throughput-vs-bandwidth-vs-latency" class="md-nav__link">
+    Throughput vs Bandwidth vs Latency
+  </a>
+  
+    <nav class="md-nav" aria-label="Throughput vs Bandwidth vs Latency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#throughput" class="md-nav__link">
+    Throughput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth" class="md-nav__link">
+    Bandwidth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latency" class="md-nav__link">
+    Latency
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delay-in-a-network-node" class="md-nav__link">
+    Delay in a network node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip-procotoal-stack" class="md-nav__link">
+    TCP/IP procotoal stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calculations/" class="md-nav__link">
+        Calculations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Practice
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Practice" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Practice
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice_traceroute/" class="md-nav__link">
+        Traceroute
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#internet" class="md-nav__link">
+    Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    Host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modem" class="md-nav__link">
+    Modem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    Protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-core-network-backbone" class="md-nav__link">
+    Network Core (network backbone)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fdm" class="md-nav__link">
+    FDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tdm" class="md-nav__link">
+    TDM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isp" class="md-nav__link">
+    ISP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-delay" class="md-nav__link">
+    node delay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip-protocol-stack" class="md-nav__link">
+    TCP/IP protocol stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#denial-of-service-dos" class="md-nav__link">
+    Denial-of-service (DoS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ddos" class="md-nav__link">
+    DDoS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-sniffing" class="md-nav__link">
+    Packet sniffing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#man-in-the-middle-attack" class="md-nav__link">
+    Man-in-the-middle attack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circuit-switching" class="md-nav__link">
+    Circuit switching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-routing" class="md-nav__link">
+    End-to-end routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexing" class="md-nav__link">
+    Multiplexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#throughput-vs-bandwidth-vs-latency" class="md-nav__link">
+    Throughput vs Bandwidth vs Latency
+  </a>
+  
+    <nav class="md-nav" aria-label="Throughput vs Bandwidth vs Latency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#throughput" class="md-nav__link">
+    Throughput
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth" class="md-nav__link">
+    Bandwidth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latency" class="md-nav__link">
+    Latency
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delay-in-a-network-node" class="md-nav__link">
+    Delay in a network node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcpip-procotoal-stack" class="md-nav__link">
+    TCP/IP procotoal stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="introduction">Introduction</h1>
+<h2 id="internet">Internet</h2>
+<p>Network of networks. A worldwide interconnection of individual networks.   <a href="https://glossary.atis.org/search-results/?search=+Internet+%5Bthe%5D">Internet</a></p>
+<h2 id="host">Host</h2>
+<p>End systems e.g. desktop computers, servers, mobile devices etc. Host sometimes divided into two categories: clients and servers.  Page 38</p>
+<h2 id="server">Server</h2>
+<p>Servers tend to be more powerful machines that store and distribute Web pages, stream video, relay e-mail, and so on.   Page 38</p>
+<h2 id="router">Router</h2>
+<p>A router is a networking device that forwards data packets between computer networks. <a href="https://en.wikipedia.org/wiki/Router_(computing)">Router</a></p>
+<h2 id="switch">Switch</h2>
+<p>A network switch is network hardware that connect devices on computer network by using packet switching to receive and forward data to the destination device.  <a href="https://en.wikipedia.org/wiki/Network_switch">Swtich</a></p>
+<h2 id="modem">Modem</h2>
+<p>A modem is a hardware device that converts data from a digital format into suitable for a transmission medium such as telephone lines or radio.  <a href="https://en.wikipedia.org/wiki/Modem">Modem</a></p>
+<h2 id="protocol">Protocol</h2>
+<p>A protocol defines the format and the order of messages exchanged between two or more communicating entities, as well as the actions taken on the transmission and/or receipt of a message or the event. Page 35</p>
+<h2 id="network-core-network-backbone">Network Core (network backbone)</h2>
+<p>The mesh of packet switches and links that interconnects the Internet's end systems.</p>
+<h2 id="fdm">FDM</h2>
+<p>Frequency-division multiplexing. The frequency spectrum of a link is divided up among the connections established across the link. Page 55</p>
+<h2 id="tdm">TDM</h2>
+<p>Time-division multiplexing. Time is divided into frames of fixed duration, each frame is divided into fixed number of time slots. When the network establishes a connection across a link, the network dedicates one time slot in every frame to connection</p>
+<h2 id="isp">ISP</h2>
+<p>End systems access the Internet through Internet Service Providers. Page 30</p>
+<h2 id="node-delay">node delay</h2>
+<p>As packet travels from one node(host or router) to the subsequent node(host or router) along this path, the packet suffers from several types of delays at each node along the path. The most important of these delays are the nodal <strong>processing delay, queuing delay, transmission delay and propagation delay</strong>. </p>
+<h2 id="tcpip-protocol-stack">TCP/IP protocol stack</h2>
+<p>It is conceptual model and set of communications protocols used in the Internet.  <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite">TCP/IP</a></p>
+<p><a href="week1_questions.md">TCP/IP protocol stack</a></p>
+<h2 id="denial-of-service-dos">Denial-of-service (DoS)</h2>
+<p>Denial-of-service attack (DoS attack) is a cyber-attack in which the perpetrator seeks to make a machine or network resource unavailable to its intended users by temporarily or indefinitely disrupting services of a host connected to the Internet. Denial of service is typically accomplished by flooding the targeted machine or resource with superfluous requests in an attempt to overload systems and prevent some or all legitimate requests from being fulfilled. <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">DoS</a></p>
+<h2 id="ddos">DDoS</h2>
+<p>Distributed denial-of-service attack, the incoming traffic flooding the victim originates from many different sources.  <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">DDoS</a></p>
+<h2 id="packet-sniffing">Packet sniffing</h2>
+<p>Packet sniffing is the practice of gathering, collecting, and logging some or all packets that pass through a computer network, regardless of how the packet is addressed. In this way, every packet, or a defined subset of packets, may be gathered for further analysis.  <a href="https://www.paessler.com/it-explained/packet-sniffing#:~:text=Packet%20sniffing%20is%20the%20practice,be%20gathered%20for%20further%20analysis.">Packet sniffing</a></p>
+<h2 id="man-in-the-middle-attack">Man-in-the-middle attack</h2>
+<p>Cyberattack where the attacker secretly relays and possibly alters the communications between two parties who believe that they are directly communicating with each other. </p>
+<p><a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a></p>
+<h2 id="circuit-switching">Circuit switching</h2>
+<p>The switches on the path between the sender and receiver maintain connection state for that connection. In the jargon of telephony, this connection is called a circuit.</p>
+<h2 id="end-to-end-routing">End-to-end routing</h2>
+<p>The end-to-end routing process is analogous to a car driver who does not use maps but instead prefers to ask for directions. Page 53</p>
+<h2 id="link">Link</h2>
+<p>The term <em>link</em> is widely used in computer networking to refer to the communications facilities that connect nodes of a network. <a href="https://en.wikipedia.org/wiki/Telecommunications_link#cite_note-2">Link</a></p>
+<h2 id="multiplexing">Multiplexing</h2>
+<p>Multiplexing is a technique used to combine and send the multiple data streams over a single medium. <a href="https://www.javatpoint.com/multiplexing-in-computer-network">Mutiplexing</a> </p>
+<h2 id="throughput-vs-bandwidth-vs-latency">Throughput vs Bandwidth vs Latency</h2>
+<p><img alt="" src="../pics/throughput.png" /></p>
+<h3 id="throughput">Throughput</h3>
+<ul>
+<li>rate <strong>(bit/time unit)</strong> at which bits are being send from sender to receiver<ul>
+<li><strong>instantaneous:</strong> rate at given point in time(Many applications, including many P2P file sharing ­ systems, display the instantaneous throughput during downloads in the user interface)</li>
+<li><strong>average:</strong> rate over longer period of time</li>
+</ul>
+</li>
+<li>Throughput is always less than or equal to bandwidth but can never exceed bandwidth. In a computer network, the throughput can be affected by many factors as listed below:<ul>
+<li>Network congestion due to heavy network usage.</li>
+<li>Too many users are accessing the same server.</li>
+<li>Low bandwidth allocation between network devices.</li>
+<li>Medium loss of a computer network.</li>
+<li>Resources (CPU, RAM) of network devices.</li>
+</ul>
+</li>
+<li>So even if you have a high bandwidth to your ISP, it may not guarantee that you will have a high throughput due to the above factors.</li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/throughput_scenario.png" /></p>
+<h3 id="bandwidth">Bandwidth</h3>
+<p>In computer network, <strong>bandwidth</strong> is defined as the maximum number of bits that can flow through a network connection in a given period of time. The fundamental unit of network bandwidth is bits per second (bps).</p>
+<p>An ISP network connection that specified a bandwidth of 1Mbps means that in one second, maximum 100000 bits can be transferred across this connection. The term bandwidth is normally used in internet broadband subscription plan. Normally a higher bandwidth subscription plan will cost more than that of a lower bandwidth subscription plan.</p>
+<p><a href="https://systemzone.net/network-bandwidth-and-throughput/">Bandwidth</a></p>
+<h3 id="latency">Latency</h3>
+<p>Latency measures <strong>delay</strong>. Delay is simply the time taken for a data packet to reach its destination after being sent. We measure network latency as round trips, although it may sometimes be measured in one-way trips. However, round-trip measurements are more common, because devices usually wait for an acknowledgment from the destination machine to be returned before transmitting the complete set of data. This acknowledgment verifies the connection to the destination device.</p>
+<p>If your network is experiencing high levels of latency, this signals poor or slow network performance. In short, the higher your network delay and latency, the longer it will take for a data packet to reach the appropriate destination. The result of latency is often choppy and lagging services. This might manifest as poor-quality VoIP calls, where elements of speech are missing or there is a noticeable lag.</p>
+<p><a href="https://www.dnsstuff.com/latency-throughput-bandwidth">Latency</a></p>
+<h2 id="delay-in-a-network-node">Delay in a network node</h2>
+<p><strong>Which parts are included in the calculation of the delay in a network node?</strong>
+- Processing delay
+- Queuing delay
+- Transmission delay
+- Propagation delay</p>
+<h2 id="tcpip-procotoal-stack">TCP/IP procotoal stack</h2>
+<p><strong>Which layers exist in the TCP/IP protocol stack?</strong></p>
+<p><img alt="" src="../pics/tcp_ip_layers.gif" /></p>
+<p><a href="https://www.technologyuk.net/computing/computer-networks/internet/tcp-ip-stack.shtml">TCP IP stack</a></p>
+<h2 id="security">Security</h2>
+<p><strong>What can threaten security in a system?</strong></p>
+<ul>
+<li>Viruses</li>
+<li>Worms</li>
+<li>Denial-of-service(DoS) attacks<ul>
+<li>Vulnerability attacks</li>
+<li>Bandwidth flooding</li>
+<li>Connection flooding</li>
+</ul>
+</li>
+<li>Sniff Packets</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                About
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../application/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Application layer
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

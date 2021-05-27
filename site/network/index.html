@@ -1,0 +1,1990 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Network layer - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Network layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Network layer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Network layer
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-main-functions-of-network-layer" class="md-nav__link">
+    2 main functions of network layer
+  </a>
+  
+    <nav class="md-nav" aria-label="2 main functions of network layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#router-forwarding-tableaka-flow-table" class="md-nav__link">
+    Router Forwarding table(aka flow table)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    DHCP
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dora" class="md-nav__link">
+    Dora
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-router-consist-of" class="md-nav__link">
+    What does router consist of ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching-fabric" class="md-nav__link">
+    Switching fabric
+  </a>
+  
+    <nav class="md-nav" aria-label="Switching fabric">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-based-switching-fabric-vs-shared-bus-vs-crossbar" class="md-nav__link">
+    Memory based switching fabric vs Shared bus vs crossbar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    IP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-cidr-what-does-x-mean-in-the-ip-address-abcdx" class="md-nav__link">
+    What is CIDR? What does x mean in the ip address  a.b.c.d/x
+  </a>
+  
+    <nav class="md-nav" aria-label="What is CIDR? What does x mean in the ip address  a.b.c.d/x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subnet-mask" class="md-nav__link">
+    Subnet mask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-2-ways-used-to-extend-the-usage-of-ipv4" class="md-nav__link">
+    List 2 ways used to extend the usage of IPv4
+  </a>
+  
+    <nav class="md-nav" aria-label="List 2 ways used to extend the usage of IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    NAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    IPv6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-fragmentation" class="md-nav__link">
+    What is fragmentation?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-algorithms" class="md-nav__link">
+    Routing algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="Routing algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centralized-vs-decentralized" class="md-nav__link">
+    Centralized vs Decentralized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-vs-dynamic" class="md-nav__link">
+    Static vs Dynamic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costs" class="md-nav__link">
+    Costs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstralink-state" class="md-nav__link">
+    Dijkstra(Link State)
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra(Link State)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    Intro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notations" class="md-nav__link">
+    Notations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-djisktra-algorithm-work" class="md-nav__link">
+    How does Djisktra Algorithm work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-forddistant-vector" class="md-nav__link">
+    Bellman - ford(Distant Vector)
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman - ford(Distant Vector)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-count-to-infinity-problem" class="md-nav__link">
+    What is count to infinity Problem?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datagram" class="md-nav__link">
+    Datagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autonomous-systems-ass" class="md-nav__link">
+    Autonomous systems (ASs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-different-intra-and-inter-as-routing" class="md-nav__link">
+    Why different Intra and Inter AS routing?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intra-as-routing" class="md-nav__link">
+    Intra AS routing
+  </a>
+  
+    <nav class="md-nav" aria-label="Intra AS routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-intra-as-routing-protocols-interior-gateway-protocol" class="md-nav__link">
+    Common Intra-AS Routing protocols/ Interior gateway protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Intra-AS Routing protocols/ Interior gateway protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rip-routing-information-protocol" class="md-nav__link">
+    RIP: Routing Information Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ospf-open-shortest-path-first" class="md-nav__link">
+    OSPF: Open Shortest Path First
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigrp-enhanced-interior-gateway-routing-protocol" class="md-nav__link">
+    EIGRP: Enhanced Interior Gateway Routing Protocol
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inter-as-routing" class="md-nav__link">
+    Inter AS routing
+  </a>
+  
+    <nav class="md-nav" aria-label="Inter AS routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bgp" class="md-nav__link">
+    BGP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibgp-vs-ebgp" class="md-nav__link">
+    iBGP vs eBGP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp-routing-policy" class="md-nav__link">
+    BGP Routing Policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gateway-routers" class="md-nav__link">
+    Gateway routers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hot-potato-routing" class="md-nav__link">
+    Hot Potato Routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    ICMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp" class="md-nav__link">
+    SNMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    SDN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding" class="md-nav__link">
+    Forwarding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-action" class="md-nav__link">
+    Match + action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    Generalized forwarding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openflow" class="md-nav__link">
+    OpenFlow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hop" class="md-nav__link">
+    Hop
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calculations/" class="md-nav__link">
+        Calculations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+      
+      <label class="md-nav__link" for="nav-7">
+        Practice
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Practice" data-md-level="1">
+        <label class="md-nav__title" for="nav-7">
+          <span class="md-nav__icon md-icon"></span>
+          Practice
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice_traceroute/" class="md-nav__link">
+        Traceroute
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-main-functions-of-network-layer" class="md-nav__link">
+    2 main functions of network layer
+  </a>
+  
+    <nav class="md-nav" aria-label="2 main functions of network layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#router-forwarding-tableaka-flow-table" class="md-nav__link">
+    Router Forwarding table(aka flow table)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    DHCP
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dora" class="md-nav__link">
+    Dora
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-router-consist-of" class="md-nav__link">
+    What does router consist of ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switching-fabric" class="md-nav__link">
+    Switching fabric
+  </a>
+  
+    <nav class="md-nav" aria-label="Switching fabric">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-based-switching-fabric-vs-shared-bus-vs-crossbar" class="md-nav__link">
+    Memory based switching fabric vs Shared bus vs crossbar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    IP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-cidr-what-does-x-mean-in-the-ip-address-abcdx" class="md-nav__link">
+    What is CIDR? What does x mean in the ip address  a.b.c.d/x
+  </a>
+  
+    <nav class="md-nav" aria-label="What is CIDR? What does x mean in the ip address  a.b.c.d/x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subnet-mask" class="md-nav__link">
+    Subnet mask
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-2-ways-used-to-extend-the-usage-of-ipv4" class="md-nav__link">
+    List 2 ways used to extend the usage of IPv4
+  </a>
+  
+    <nav class="md-nav" aria-label="List 2 ways used to extend the usage of IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    NAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    IPv6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-fragmentation" class="md-nav__link">
+    What is fragmentation?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-algorithms" class="md-nav__link">
+    Routing algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="Routing algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centralized-vs-decentralized" class="md-nav__link">
+    Centralized vs Decentralized
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-vs-dynamic" class="md-nav__link">
+    Static vs Dynamic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costs" class="md-nav__link">
+    Costs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dijkstralink-state" class="md-nav__link">
+    Dijkstra(Link State)
+  </a>
+  
+    <nav class="md-nav" aria-label="Dijkstra(Link State)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    Intro
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notations" class="md-nav__link">
+    Notations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-djisktra-algorithm-work" class="md-nav__link">
+    How does Djisktra Algorithm work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-forddistant-vector" class="md-nav__link">
+    Bellman - ford(Distant Vector)
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman - ford(Distant Vector)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-count-to-infinity-problem" class="md-nav__link">
+    What is count to infinity Problem?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datagram" class="md-nav__link">
+    Datagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autonomous-systems-ass" class="md-nav__link">
+    Autonomous systems (ASs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-different-intra-and-inter-as-routing" class="md-nav__link">
+    Why different Intra and Inter AS routing?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intra-as-routing" class="md-nav__link">
+    Intra AS routing
+  </a>
+  
+    <nav class="md-nav" aria-label="Intra AS routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-intra-as-routing-protocols-interior-gateway-protocol" class="md-nav__link">
+    Common Intra-AS Routing protocols/ Interior gateway protocol
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Intra-AS Routing protocols/ Interior gateway protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rip-routing-information-protocol" class="md-nav__link">
+    RIP: Routing Information Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ospf-open-shortest-path-first" class="md-nav__link">
+    OSPF: Open Shortest Path First
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eigrp-enhanced-interior-gateway-routing-protocol" class="md-nav__link">
+    EIGRP: Enhanced Interior Gateway Routing Protocol
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inter-as-routing" class="md-nav__link">
+    Inter AS routing
+  </a>
+  
+    <nav class="md-nav" aria-label="Inter AS routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bgp" class="md-nav__link">
+    BGP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibgp-vs-ebgp" class="md-nav__link">
+    iBGP vs eBGP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgp-routing-policy" class="md-nav__link">
+    BGP Routing Policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gateway-routers" class="md-nav__link">
+    Gateway routers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hot-potato-routing" class="md-nav__link">
+    Hot Potato Routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    ICMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp" class="md-nav__link">
+    SNMP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdn" class="md-nav__link">
+    SDN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forwarding" class="md-nav__link">
+    Forwarding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-action" class="md-nav__link">
+    Match + action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generalized-forwarding" class="md-nav__link">
+    Generalized forwarding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openflow" class="md-nav__link">
+    OpenFlow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hop" class="md-nav__link">
+    Hop
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="network-layer">Network layer</h1>
+<h2 id="2-main-functions-of-network-layer">2 main functions of network layer</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Forwarding</th>
+<th>Routing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td>Local. Moving packet from input to an appropriate output port</td>
+<td>Global. Moving a packet over multiple different routers and hubs</td>
+</tr>
+<tr>
+<td>Analogy</td>
+<td>Getting trough the single interchange</td>
+<td>Planning a trip from CPH to Paris</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Hardware</td>
+<td>Software</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>Nanoseconds</td>
+<td>Seconds</td>
+</tr>
+</tbody>
+</table>
+<h3 id="router-forwarding-tableaka-flow-table">Router Forwarding table(aka flow table)</h3>
+<ul>
+<li>To identify the outgoing link interface for a arrived packet. </li>
+<li>Examine packet header and send to appropriate outgoing link</li>
+<li>Created be routing algorithm. Local decision to support global goals</li>
+</ul>
+<h2 id="dhcp">DHCP</h2>
+<ul>
+<li><strong>Dynamic Host Configuration Protocol</strong> allows a host to obtain an IP address automatically</li>
+<li>How does a host get an IP address?</li>
+<li>Manually - hard coded</li>
+<li>Automagically-  DHCP</li>
+<li>Goal</li>
+<li></li>
+<li><strong>Dynamically Obtain IP Address</strong></li>
+<li>Default Gateway (first hop router)</li>
+<li>DNS Server </li>
+<li>Subnet Mask</li>
+</ul>
+<h3 id="dora">Dora</h3>
+<ul>
+<li>Discover message</li>
+<li>Client say I need a IP address.  Send a message to everyone </li>
+<li>UDP port 67</li>
+<li>
+<p>Broadcast at a link level</p>
+</li>
+<li>
+<p>Offer message</p>
+</li>
+<li>DHCP server will answer with offer, which contains the transaction ID of the received discover message, the proposed IP address for the client, the network mask and an IP address lease time</li>
+<li>
+<p><code>yiaddr</code> - as in "your Internet address"</p>
+</li>
+<li>
+<p>Request message</p>
+</li>
+<li>
+<p>Choose one DHCP server and respond with echoing back the configuration parameters</p>
+</li>
+<li>
+<p>ACK message</p>
+</li>
+<li>Confirm the requested parameters</li>
+</ul>
+<p><img alt="" src="../pics/DHCP.png" />*</p>
+<ul>
+<li></li>
+<li>All four steps are needed to confirm DHCP server that the client will use that ip, because   multiple DHCP servers are possible. </li>
+</ul>
+<h2 id="what-does-router-consist-of">What does router consist of ?</h2>
+<ul>
+<li><strong>Input ports</strong><ul>
+<li>"ports" refering to the physical input and output router interface.</li>
+<li>Here the forwarding table is consulted to determine the router output port to which an arriving packet will be forwarded via the switching fabric</li>
+</ul>
+</li>
+<li><strong>Switching fabric</strong><ul>
+<li>connects the router's input ports to its output ports</li>
+<li>Where forwarding happens</li>
+</ul>
+</li>
+<li><strong>Outout ports</strong><ul>
+<li>stores packets received from the swirching fabric and transmits these packets on the outgoing link</li>
+<li>Buffering. scheduling</li>
+</ul>
+</li>
+<li><strong>Router processing</strong><ul>
+<li>Brains, operations </li>
+<li>Perform control plane functions</li>
+<li>In SDN routers, the routing processor is responsible for communicating with the remote controller in order to receive forwarding table entries computed by the remote controller</li>
+</ul>
+</li>
+</ul>
+<h2 id="switching-fabric">Switching fabric</h2>
+<ul>
+<li>The main function of a switch fabric is to relay data efficiently and rapidly from its inputs to its outputs</li>
+</ul>
+<h3 id="memory-based-switching-fabric-vs-shared-bus-vs-crossbar">Memory based switching fabric vs Shared bus vs crossbar</h3>
+<table>
+<thead>
+<tr>
+<th>Memory based</th>
+<th>Shared bus</th>
+<th>Crossbar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copy in memory and out of memory</td>
+<td>Directly over a bus,</td>
+<td>Consist of 2N buses, capable of forwarding multiple packets in parallel</td>
+</tr>
+<tr>
+<td>Old-school, slow</td>
+<td>limited by bus bandwidth</td>
+<td>Complicated, Costly, Fast</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ip">IP</h2>
+<ul>
+<li>Ip address one for interface, that's 32-bit identifier for interface . So IP isn't numbering computers/hosts, but network interfaces. Or more specific the ip address is divided between the network address and a interface address</li>
+</ul>
+<h2 id="what-is-cidr-what-does-x-mean-in-the-ip-address-abcdx">What is CIDR? What does x mean in the ip address  a.b.c.d/x</h2>
+<ul>
+<li>Classless InterDomain Routering</li>
+<li><em>CIDR</em> notation is a compact representation of an IP address and its associated <em>network mask</em>.</li>
+<li>subnet (logical subdivision of an IP network) portion of address of arbitrary length. Not only limited by 8bit boundaries</li>
+<li>network park of address is defined in x-bits. That's <strong>x</strong> = # bits in subnet portion</li>
+<li>solves a problem if you have more than 255 computers in a network by adding `/23</li>
+</ul>
+<h3 id="subnet-mask">Subnet mask</h3>
+<ul>
+<li>Subnet mask is another way defining <code>/24</code></li>
+<li>the subnet mask separates the IP address into the network and host addresses</li>
+<li>All 1's defines the network part</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Binary form</th>
+<th align="center">Dot-decimal notation</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">IP address</td>
+<td align="center"><code>11000000.00000000.00000010.10000010</code></td>
+<td>192.0.2.130</td>
+</tr>
+<tr>
+<td align="center">Subnet mask</td>
+<td align="center"><code>11111111.11111111.11111111.00000000</code></td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td align="center">Network prefix</td>
+<td align="center"><code>11000000.00000000.00000010.00000000</code></td>
+<td>192.0.2.0</td>
+</tr>
+<tr>
+<td align="center">Host identifier</td>
+<td align="center"><code>00000000.00000000.00000000.10000010</code></td>
+<td>0.0.0.130</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list-2-ways-used-to-extend-the-usage-of-ipv4">List 2 ways used to extend the usage of IPv4</h2>
+<h3 id="nat">NAT</h3>
+<ul>
+<li>Network Address Translation</li>
+<li><strong>Use 1 global IP per LAN</strong> instead of having every public IP address for every computer</li>
+<li>Port identifies from which host is coming.</li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/NAT.png" /></p>
+<h3 id="ipv6">IPv6</h3>
+<ul>
+<li>Initial Motivation</li>
+<li>Address Space</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32-bit</td>
+<td>128-bit</td>
+</tr>
+<tr>
+<td>Optional section in a header</td>
+<td>Fixed header. Option could be added in payload</td>
+</tr>
+<tr>
+<td>Fragmentation is allowed</td>
+<td>No Fragmentation</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>No checksum</td>
+</tr>
+<tr>
+<td></td>
+<td>Flows and Priority for better service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-is-fragmentation">What is fragmentation?</h2>
+<ul>
+<li>
+<p>Take one big dataframe and make it to a number of smaller datagrams</p>
+</li>
+<li>
+<p>Flag an fragment offset in iP header are used to identify fragment and reassemble them</p>
+</li>
+<li>
+<div>
+<div class="MathJax_Preview">
+  \text{Offset}=\frac{\text{Number of bytes}}{8}
+  </div>
+<script type="math/tex; mode=display">
+  \text{Offset}=\frac{\text{Number of bytes}}{8}
+  </script>
+</div>
+</li>
+</ul>
+<p><img alt="https://en.wikipedia.org/wiki/IP_fragmentation#/media/File:IPv4_Fragmentation_example_-en.svg" src="../pics/ip_fragmantation.png" /></p>
+<p>*</p>
+<h2 id="routing-algorithms">Routing algorithms</h2>
+<h3 id="centralized-vs-decentralized">Centralized vs Decentralized</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Centralized/Global</th>
+<th>Decentralized</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol</td>
+<td>Link-state</td>
+<td>Distance-vector</td>
+</tr>
+<tr>
+<td>Algorithm</td>
+<td>Dijkstra</td>
+<td>Bellman-Ford</td>
+</tr>
+<tr>
+<td>Principle</td>
+<td>Use global information about the network.</td>
+<td>Iterative and distributed manner</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>All nodes and all link cost.</td>
+<td>Only costs and DVs from neighbors</td>
+</tr>
+<tr>
+<td>Info. sharing type</td>
+<td>Broadcast</td>
+<td>Exchange</td>
+</tr>
+<tr>
+<td>Control plane</td>
+<td>Per router / Logically centralized</td>
+<td>Per router</td>
+</tr>
+<tr>
+<td>Convergence speed</td>
+<td>Faster</td>
+<td>Slower</td>
+</tr>
+<tr>
+<td>Msg. complexity</td>
+<td>Smaller</td>
+<td>Larger</td>
+</tr>
+<tr>
+<td>Robustness</td>
+<td>Higher</td>
+<td>Lower</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-vs-dynamic">Static vs Dynamic</h3>
+<table>
+<thead>
+<tr>
+<th>Static</th>
+<th>Dynamic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Changes as a result of human intervention</td>
+<td>Change the routing paths as the network traffic loads or topology changes or periodically</td>
+</tr>
+<tr>
+<td></td>
+<td>More vulnerable to problem such as routing loops and route oscillation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="costs">Costs</h3>
+<ul>
+<li>Constant (e.g. 1)</li>
+<li>Bandwidth-Related</li>
+<li>Congestion-Related</li>
+</ul>
+<h2 id="dijkstralink-state">Dijkstra(Link State)</h2>
+<h3 id="intro">Intro</h3>
+<ul>
+<li>Global Knowledge. </li>
+<li>In practice this is accomplished by having each node broadcast link-state packets to all other nodes in the network, with each link-state packet containing the identities and costs of its attached links </li>
+<li>Goal</li>
+<li>Find Least-Cost Paths</li>
+<li>Iterative</li>
+<li>Locally with the same input data</li>
+</ul>
+<h3 id="notations">Notations</h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Link cost</td>
+<td>c(x,y)</td>
+</tr>
+<tr>
+<td>Current cost to destination v</td>
+<td>D(v)</td>
+</tr>
+<tr>
+<td>Predecessor Node on Path to v</td>
+<td>p(v)</td>
+</tr>
+<tr>
+<td>Nodes with known path</td>
+<td>N'</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-does-djisktra-algorithm-work">How does Djisktra Algorithm work?</h3>
+<ul>
+<li>The main idea to keep the best path found until now and the reference to previous vertex.</li>
+</ul>
+<p><img alt="" src="../pics/djisktra.png" /></p>
+<div class="highlight"><pre><span></span><code>Let distance of start vertex from start vertex = 0
+Let distances of all other vertices from start = infinity
+
+WHILE vertices remain unvisited
+    Visit univisted vertex with smallest known distance from start vertex
+    FOR EACH univisited neighbour of the current vertex
+        Calculate the distance from start vertex
+        IF the calculated distance of this vertex is less than the known distance
+            Update shortest distance this vertex
+            Update the previous vertex with the current vertex
+        END IF
+    Add the current vertex on the list of visited vertices
+END WHILE
+</code></pre></div>
+<p><a href="https://www.youtube.com/watch?v=pVfj6mxhdMw">Youtube Dijkstra algorithm</a></p>
+<h2 id="bellman-forddistant-vector">Bellman - ford(Distant Vector)</h2>
+<ul>
+<li>
+<p><strong>Iterative</strong> - in that this process continues on until no more information is exchanged between neighbors</p>
+</li>
+<li>
+<p><strong>Asynchronous</strong> - it does not require all of the nodes to operate in lockstep with each other</p>
+</li>
+<li>
+<p><strong>Distributed</strong> - each node receives some information from on or more of its directly attached neighbors </p>
+</li>
+</ul>
+<p>The current node only know the distances to neighbors and the shortest paths to all other nodes from these neighbors.  By using this information and the equation below we can decide which path we should take:
+$$
+d_x(y) = min_v[c(x,v)+d_v(y)]
+$$</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">c(x,v)</span><script type="math/tex">c(x,v)</script></span></td>
+<td>cost from x to v</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">d_x(y)</span><script type="math/tex">d_x(y)</script></span></td>
+<td>cost of least-cost path from x to y</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">min_v</span><script type="math/tex">min_v</script></span></td>
+<td>min is taken over all neighbors v of x</td>
+</tr>
+</tbody>
+</table>
+<p>That's, how much it will cost if I take through this node, because I know my distance to it and his distances to all other nodes.  Each neighbor see what his neighbors see. </p>
+<p><strong>B-F Equation example</strong></p>
+<p><img alt="" src="../pics/figure_5_3.png" /></p>
+<ul>
+<li><span><span class="MathJax_Preview">d_v(z)=5</span><script type="math/tex">d_v(z)=5</script></span></li>
+<li><span><span class="MathJax_Preview">d_x(z)=3</span><script type="math/tex">d_x(z)=3</script></span></li>
+<li><span><span class="MathJax_Preview">d_w(z)=3</span><script type="math/tex">d_w(z)=3</script></span></li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+d_x(y) = min_v[c(u,v)+d_v(z), c(u,x)+d_x(z), c(u,w)+d_w(z)] = \\
+min_v[2+5, 1+3, 5+3] = 4
+</div>
+<script type="math/tex; mode=display">
+d_x(y) = min_v[c(u,v)+d_v(z), c(u,x)+d_x(z), c(u,w)+d_w(z)] = \\
+min_v[2+5, 1+3, 5+3] = 4
+</script>
+</div>
+<p><strong>Maintains</strong></p>
+<ul>
+<li><span><span class="MathJax_Preview">D_x=[D_x(y):y\in N]</span><script type="math/tex">D_x=[D_x(y):y\in N]</script></span> - Node x maintains its own distance vector</li>
+<li><span><span class="MathJax_Preview">D_v=[D_v(y):y\in N]</span><script type="math/tex">D_v=[D_v(y):y\in N]</script></span> - Node x also maintains distance vectors for each neighbor v</li>
+</ul>
+<p><em>DV is big as nodes in the network</em></p>
+<p><strong>Overview</strong></p>
+<ul>
+<li>Send DV to Neighbors. </li>
+<li>Update DV using B-F Equation</li>
+<li>Repeat</li>
+</ul>
+<p><img alt="" src="../pics/bellman.png" /></p>
+<h3 id="what-is-count-to-infinity-problem">What is count to infinity Problem?</h3>
+<ul>
+<li>One of the important issue in Distance Vector Routing is County of Infinity Problem.</li>
+<li>Counting to infinity is just another name for a routing loop.</li>
+<li>In distance vector routing, routing loops usually occur when an interface goes down.</li>
+<li>It can also occur when two routers send updates to each other at the same time.</li>
+</ul>
+<p><img alt="" src="../pics/count_to_inifinity.png" /></p>
+<ol>
+<li>As you see in this graph, there is only one link between A and the other parts of the network.</li>
+<li>Now imagine that the link between A and B is cut.</li>
+<li>At this time, B corrects its table.</li>
+<li>After a specific amount of time, routers exchange their tables, and so B receives C's routing table.</li>
+<li>Since C doesn't know what has happened to the link between A and B, it says that it has a link to A with the weight of 2 (1 for C to B, and 1 for B to A -- it doesn't know B has no link to A).</li>
+<li>B receives this table and thinks there is a separate link between C and A, so it corrects its table and changes infinity to 3 (1 for B to C, and 2 for C to A, as C said).</li>
+<li>Once again, routers exchange their tables.</li>
+<li>When C receives B's routing table, it sees that B has changed the weight of its link to A from 1 to 3, so C updates its table and changes the weight of the link to A to 4 (1 for C to B, and 3 for B to A, as B said).</li>
+<li>This process loops until all nodes find out that the weight of link to A is infinity.</li>
+</ol>
+<h2 id="datagram">Datagram</h2>
+<p>The Internet’s <strong>network layer</strong> is responsible for moving network-layer <strong>packets</strong> known as <strong>datagrams</strong> from
+one host to another.</p>
+<h2 id="autonomous-systems-ass">Autonomous systems (ASs)</h2>
+<ul>
+<li>Group of routers in a region</li>
+</ul>
+<p>In order to solve scalability problems routers are organized into Autonomous Systems(<strong>ASs</strong>) with each AS consisting of a group of routers that are under the same administrative control. Routers within the same AS all run the same routing algorithm and have information about each other. </p>
+<h2 id="why-different-intra-and-inter-as-routing">Why different Intra and Inter AS routing?</h2>
+<ul>
+<li>Policy</li>
+<li>We ant to enforce different policies on different levels of our netwroks</li>
+<li>Scale</li>
+<li>Hierarchical routing in order to reduce the amount of updates we need to send everybody</li>
+<li>Save table size</li>
+<li>Performance</li>
+<li>In Intra performance is really important</li>
+<li>In Inter maybe policy would be more important than performance</li>
+</ul>
+<h2 id="intra-as-routing">Intra AS routing</h2>
+<ul>
+<li>
+<p><strong>Intra</strong>- is a prefix which means within or inside one group.</p>
+</li>
+<li>
+<p>Intra autonomous system is the routing algorithm running within an AS</p>
+</li>
+<li>Routers in the same AS have to run the same routing protocols </li>
+</ul>
+<h3 id="common-intra-as-routing-protocols-interior-gateway-protocol"><strong>Common Intra-AS Routing protocols/ Interior gateway protocol</strong></h3>
+<h4 id="rip-routing-information-protocol">RIP: Routing Information Protocol</h4>
+<ul>
+<li>Distance Vector Algorithm</li>
+<li>Distance Metric</li>
+<li>number of hops (number of subnets)</li>
+<li>max = 15hops</li>
+<li>Response Message (or Advertisements) - sends DV </li>
+<li>Link Failure and Recovery: No Advertisement in 180sec = You're Dead</li>
+<li>RIP table processing</li>
+<li>route**d**<ul>
+<li>UDP advertisiments</li>
+</ul>
+</li>
+</ul>
+<h4 id="ospf-open-shortest-path-first">OSPF: Open Shortest Path First</h4>
+<ul>
+<li>Link state</li>
+<li>Dijkstra algorithm</li>
+<li>Advertisements</li>
+<li>Straight IP datagrams, not UDP</li>
+<li>Security</li>
+<li>All messages authenticated</li>
+<li>Multiple same cost paths</li>
+<li>Multiple cost metrics</li>
+<li>Integrated multicast</li>
+<li>multiple messages to multiple recipients</li>
+<li>Hierarchical OSPF</li>
+<li>2 level Hierarchy</li>
+<li>Local Area</li>
+<li>Backbone</li>
+</ul>
+<h4 id="eigrp-enhanced-interior-gateway-routing-protocol">EIGRP: Enhanced Interior Gateway Routing Protocol</h4>
+<h2 id="inter-as-routing">Inter AS routing</h2>
+<ul>
+<li><strong>Inter</strong>- is a prefix that means between two groups</li>
+</ul>
+<p>Routers in different ASs could run on different routing protocols </p>
+<h3 id="bgp">BGP</h3>
+<ul>
+<li>
+<p>Routing among the ISPs</p>
+</li>
+<li>
+<p>Border Gateway Protocol</p>
+</li>
+<li>The de facto standard</li>
+<li>Allows AS to</li>
+<li>Obtain Subnet Reachability Information</li>
+<li>Propagate Reachability Information to Internal Routers</li>
+<li>Determine Good Routes to External Subnets<ul>
+<li>Reachability information</li>
+<li>Policy</li>
+</ul>
+</li>
+<li>Destinations are prefixes NOT Hosts   </li>
+<li>
+<p>Prefix + Attributes = Route</p>
+</li>
+<li>
+<p>Advertised prefix includes BGP attributes</p>
+</li>
+<li>2 Important Attributes<ul>
+<li>AS-PATH - path of AS that you have to pass in order to get to this prefix</li>
+<li>NEXT-HOP - IP address of the router interface that begins the AS-PATH</li>
+</ul>
+</li>
+<li>Route Selection</li>
+<li>Local Preferences Value Attribute: Policy Decision</li>
+<li>Shortest AS-PATH</li>
+<li>Closest NEXT-HOP router: Hot potato routing</li>
+<li>Additional criteria</li>
+<li>BGP Messages</li>
+<li>Messages exchanged using TCP</li>
+<li>Types<ul>
+<li>OPEN: opens TCP connection to peer and authenticate sender</li>
+<li>UPDATE: advertises new path(or withdraws old)</li>
+<li>KEEPALIVE: keeps connection alive in absence of UPDATES; also ACKs OPEN request</li>
+<li>NOTIFICATION: reports error in previous msg, also used to close connection</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="ibgp-vs-ebgp">iBGP vs eBGP</h3>
+<ul>
+<li>BGP Peer</li>
+<li>BGP neighbors, called peers, are established by manual configuration among routers  to create a TCP session on port 179. </li>
+<li>Two differenr BGP Sessions:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>iBGP</th>
+<th>eBGP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Internal BGP</em></td>
+<td>External BGP</td>
+</tr>
+<tr>
+<td>When BGP runs between two peers in the same <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">autonomous system</a> (AS)</td>
+<td>When it runs between different autonomous systems</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../pics/iBGP_eBGP.png" /></p>
+<h3 id="bgp-routing-policy">BGP Routing Policy</h3>
+<p><img alt="" src="../pics/bgp_policy.png" /></p>
+<ul>
+<li>B shouldn't advertise path BAW to C, because B does not want to provide service for C when C can be get through A , so any routes that can be gotten to through other means we'd prefer that, because then B wasting its bandwidth</li>
+</ul>
+<h2 id="gateway-routers">Gateway routers</h2>
+<ul>
+<li>Router that connects ASs </li>
+<li>have to use them if we have external destination </li>
+</ul>
+<h2 id="hot-potato-routing">Hot Potato Routing</h2>
+<p>One of the simplest BGP routing algorithms</p>
+<h2 id="icmp">ICMP</h2>
+<ul>
+<li><strong>Internet control message protocol</strong> is used by hosts and routers to communicate network layer information to each other. The most typical use of ICMP is for error reporting</li>
+</ul>
+<p><img alt="" src="../pics/icmp_types.png" /></p>
+<h2 id="snmp">SNMP</h2>
+<p>SNMP is an application-layer protocol used to convey netwrokd-management control and information messages between a managing server and an agent executing on behalf of the managing server</p>
+<h2 id="sdn">SDN</h2>
+<p><strong>Software-defined networking</strong> (<strong>SDN</strong>) technology is an approach to network management that enables dynamic, programmatically efficient network configuration in order to improve network performance and monitoring, making it more like cloud computing than traditional network management</p>
+<p>Key characteristics of an SDN architecture:</p>
+<ul>
+<li><strong>Packet forwarding can be based on any number of header fields.</strong> </li>
+<li>Rules are specified in a switch's flow table; it is the job of the SDN control plane to compute, manage and install flow table entries in all of the network switches</li>
+<li><strong>Separation of data plane and control plane</strong></li>
+<li>The data plane consists of the network switches- relatively simple(but fast) devices that execute the "match+action" rules in their flow tables.</li>
+<li>The control plane consists of servers and software that determine and manage the switches flow table</li>
+<li><strong>Network control functions: external to data-plane switches</strong></li>
+<li>
+<p>The control plane itself consists of two components</p>
+<ul>
+<li><strong>SDN controller</strong> - maintains accurate network state information</li>
+<li><strong>Set of network control applications</strong> - Access control, Routing, Load balancer</li>
+</ul>
+</li>
+<li>
+<p><strong>Programmable network</strong></p>
+</li>
+<li>The network is programmable through the network control applications running in the control plane. E.g. routing with Dijkstra algorithm </li>
+</ul>
+<p>That's data plane switches, SDN controllers and network control applications are separate entities.</p>
+<p><img alt="" src="../pics/sdn_architecture.png" /></p>
+<ul>
+<li>A controllers functionality can be organized into three layers:</li>
+</ul>
+<p><img alt="" src="../pics/SDN_controller_components.png" /></p>
+<h2 id="forwarding">Forwarding</h2>
+<p>Forwarding has two main operations: match and action.</p>
+<h2 id="match-action">Match + action</h2>
+<ul>
+<li>Match bits in arriving packet, take action</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Destination based forwarding</th>
+<th>Generalized forwarding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forward based on dest. IP address</td>
+<td>Many headers can determine action</td>
+</tr>
+<tr>
+<td></td>
+<td>Many actions possible: drop/copy/modify/log packet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="generalized-forwarding">Generalized forwarding</h2>
+<ul>
+<li>Replaces Decision based forwarding</li>
+<li>Many more fields than destination address can be consulted and much wider range of actions</li>
+<li>Match+action</li>
+<li>OpenFlow - emerging standard for generalized forwarding</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Simple packet handling rules</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Match</strong></td>
+<td>Pattern values in packet header fields</td>
+</tr>
+<tr>
+<td><strong>Actions</strong></td>
+<td>For matched packet: drop, forward, modify(e.g. NAT), matched packet or send matched packet to controller</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Disambiguate overlapping patterns</td>
+</tr>
+<tr>
+<td><strong>Counters</strong></td>
+<td>#bytes and #packets</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/forwarding_table_abstraction.png" /></p>
+<h2 id="openflow">OpenFlow</h2>
+<ul>
+<li>Specific generalized  forwarding, that has been standardized</li>
+<li>Unifies different kinds of devices</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Match</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Router</strong></td>
+<td>Longest destination IP prefix</td>
+<td>Forward out a link</td>
+</tr>
+<tr>
+<td><strong>Switch</strong></td>
+<td>Destination MAC address</td>
+<td>Forward or flood</td>
+</tr>
+<tr>
+<td><strong>Firewall</strong></td>
+<td>IP addresses and TCP/UDP port numbers</td>
+<td>Permit or dent</td>
+</tr>
+<tr>
+<td><strong>NAT</strong></td>
+<td>IP address and port</td>
+<td>Rewrite address and port</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>No need for routing protocols, because forwarding tables are computes in the SDN controller</li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/openflow.png" /></p>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/openflow_examples.png" /></p>
+<p><img alt="" src="../pics/openflow_routing.png" /></p>
+<h2 id="hop">Hop</h2>
+<p>A hop is a computer networking term that refers to the number of routers that a packet (a portion of data) passes through from its source to its destination.</p>
+<p><a href="https://www.lifewire.com/what-are-hops-hop-counts-2625905#:~:text=A%20hop%20is%20a%20computer,%2C%20access%20points%2C%20and%20repeaters.">Hop</a></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../transport/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Transport layer
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../calculations/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Calculations
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
