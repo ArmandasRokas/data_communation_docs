@@ -1,0 +1,1546 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Practice - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practice" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practice
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practice
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Practice
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delays" class="md-nav__link">
+    Delays
+  </a>
+  
+    <nav class="md-nav" aria-label="Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-delay" class="md-nav__link">
+    End-to-End Delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-delay" class="md-nav__link">
+    Transmission delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagation-delay" class="md-nav__link">
+    Propagation delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-delay" class="md-nav__link">
+    Queue delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodal-delay-the-delay-at-a-single-route" class="md-nav__link">
+    Nodal delay  (the delay at a single route)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-detection-techniques" class="md-nav__link">
+    Error detection techniques
+  </a>
+  
+    <nav class="md-nav" aria-label="Error detection techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parity-checking" class="md-nav__link">
+    Parity checking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyclic-redundancy-checkscrc" class="md-nav__link">
+    Cyclic redundancy checks(CRC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checksum-calculation" class="md-nav__link">
+    Checksum calculation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-access-protocols" class="md-nav__link">
+    Random Access Protocols
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Access Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effciency" class="md-nav__link">
+    Effciency
+  </a>
+  
+    <nav class="md-nav" aria-label="Effciency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aloha-pure" class="md-nav__link">
+    Aloha Pure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aloha-slotted" class="md-nav__link">
+    Aloha Slotted
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collisions" class="md-nav__link">
+    Collisions
+  </a>
+  
+    <nav class="md-nav" aria-label="Collisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slotted-aloha" class="md-nav__link">
+    Slotted Aloha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aloha" class="md-nav__link">
+    Aloha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csma" class="md-nav__link">
+    CSMA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmacd" class="md-nav__link">
+    CSMA/CD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-algorithms" class="md-nav__link">
+    Routing algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="Routing algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-dijkstra-algorithm-work" class="md-nav__link">
+    How does Dijkstra Algorithm work?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-bellman-forddistance-vector-work" class="md-nav__link">
+    How does Bellman - ford(Distance Vector) work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-scheduling" class="md-nav__link">
+    Packet scheduling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtt" class="md-nav__link">
+    RTT
+  </a>
+  
+    <nav class="md-nav" aria-label="RTT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estimate-rtt" class="md-nav__link">
+    Estimate RTT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variability-of-the-rtt" class="md-nav__link">
+    Variability of the RTT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    Timeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroute" class="md-nav__link">
+    Traceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="Traceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebdk" class="md-nav__link">
+    eb.dk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#princetonedu" class="md-nav__link">
+    princeton.edu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilization-fraction-of-time-sender-busy-sending" class="md-nav__link">
+    Utilization - fraction of time sender busy sending
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4g-wireless-tunneling" class="md-nav__link">
+    4G wireless tunneling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delays" class="md-nav__link">
+    Delays
+  </a>
+  
+    <nav class="md-nav" aria-label="Delays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-delay" class="md-nav__link">
+    End-to-End Delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-delay" class="md-nav__link">
+    Transmission delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagation-delay" class="md-nav__link">
+    Propagation delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-delay" class="md-nav__link">
+    Queue delay
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodal-delay-the-delay-at-a-single-route" class="md-nav__link">
+    Nodal delay  (the delay at a single route)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-detection-techniques" class="md-nav__link">
+    Error detection techniques
+  </a>
+  
+    <nav class="md-nav" aria-label="Error detection techniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parity-checking" class="md-nav__link">
+    Parity checking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyclic-redundancy-checkscrc" class="md-nav__link">
+    Cyclic redundancy checks(CRC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checksum-calculation" class="md-nav__link">
+    Checksum calculation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-access-protocols" class="md-nav__link">
+    Random Access Protocols
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Access Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effciency" class="md-nav__link">
+    Effciency
+  </a>
+  
+    <nav class="md-nav" aria-label="Effciency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aloha-pure" class="md-nav__link">
+    Aloha Pure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aloha-slotted" class="md-nav__link">
+    Aloha Slotted
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collisions" class="md-nav__link">
+    Collisions
+  </a>
+  
+    <nav class="md-nav" aria-label="Collisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slotted-aloha" class="md-nav__link">
+    Slotted Aloha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aloha" class="md-nav__link">
+    Aloha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csma" class="md-nav__link">
+    CSMA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csmacd" class="md-nav__link">
+    CSMA/CD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-algorithms" class="md-nav__link">
+    Routing algorithms
+  </a>
+  
+    <nav class="md-nav" aria-label="Routing algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-does-dijkstra-algorithm-work" class="md-nav__link">
+    How does Dijkstra Algorithm work?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-bellman-forddistance-vector-work" class="md-nav__link">
+    How does Bellman - ford(Distance Vector) work?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-scheduling" class="md-nav__link">
+    Packet scheduling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtt" class="md-nav__link">
+    RTT
+  </a>
+  
+    <nav class="md-nav" aria-label="RTT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estimate-rtt" class="md-nav__link">
+    Estimate RTT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variability-of-the-rtt" class="md-nav__link">
+    Variability of the RTT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout" class="md-nav__link">
+    Timeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traceroute" class="md-nav__link">
+    Traceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="Traceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebdk" class="md-nav__link">
+    eb.dk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#princetonedu" class="md-nav__link">
+    princeton.edu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utilization-fraction-of-time-sender-busy-sending" class="md-nav__link">
+    Utilization - fraction of time sender busy sending
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4g-wireless-tunneling" class="md-nav__link">
+    4G wireless tunneling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practice">Practice</h1>
+<h2 id="delays">Delays</h2>
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Transfer from second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Milliseconds (ms)</td>
+<td>*10^3</td>
+</tr>
+<tr>
+<td>Microseconds (us)</td>
+<td>*10^6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="end-to-end-delay">End-to-End Delay</h3>
+<p>The homogeneous delays</p>
+<div>
+<div class="MathJax_Preview">
+d_{end-to-end} = N(d_{proc}+d_{trans}+d_{prop})
+</div>
+<script type="math/tex; mode=display">
+d_{end-to-end} = N(d_{proc}+d_{trans}+d_{prop})
+</script>
+</div>
+<p>Suppose there are N−1 routers between the source host and the destination host.</p>
+<h3 id="transmission-delay">Transmission delay</h3>
+<ul>
+<li>Time to transmit packet into channel</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+D_{trans} = \frac{L}{R}
+</div>
+<script type="math/tex; mode=display">
+D_{trans} = \frac{L}{R}
+</script>
+</div>
+<ul>
+<li><span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is length of the packet in bits</li>
+<li>
+<p><span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> is transmission rate of the link in bits/sec</p>
+</li>
+<li>
+<p>Example: 1 Gbps link, 8000 bit packet</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+D_{trans} = \frac{8000bit}{10^9bit/sec}= 8microsecs
+</div>
+<script type="math/tex; mode=display">
+D_{trans} = \frac{8000bit}{10^9bit/sec}= 8microsecs
+</script>
+</div>
+<h3 id="propagation-delay">Propagation delay</h3>
+<div>
+<div class="MathJax_Preview">
+D_{prop} = \frac{distance}{speed}
+</div>
+<script type="math/tex; mode=display">
+D_{prop} = \frac{distance}{speed}
+</script>
+</div>
+<p>Note, easiest to convert <span><span class="MathJax_Preview">KM</span><script type="math/tex">KM</script></span> to <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span></p>
+<h3 id="queue-delay">Queue delay</h3>
+<p>$$
+D_{queue} = I(L/R)*(1-I) \quad\text{  for  } \quad I&lt;1 
+$$
+Where </p>
+<ul>
+<li><span><span class="MathJax_Preview">I=\frac{L*a}{R}</span><script type="math/tex">I=\frac{L*a}{R}</script></span> is traffic intesity</li>
+<li><span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is constant packet-length in bits</li>
+<li><span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> is the average rate of packets/seconds</li>
+<li><span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> constant transmission rate </li>
+</ul>
+<p><strong>Packets left in buffer</strong>
+$$
+\text{packets left in buffer} = \text{packets arrived} - floor(\text{time}/\text{delay}) 
+$$</p>
+<ul>
+<li>Time is total time in the buffer. </li>
+<li>Time and delay must be in one unit, .e.g. ms</li>
+</ul>
+<h3 id="nodal-delay-the-delay-at-a-single-route">Nodal delay  (the delay at a single route)</h3>
+<blockquote>
+<p>As a packet travels from one node (host or router) to the subsequent node (host or router) along this path, the packet suffers from several types of delays at <em>each</em> node along the path. The most important of these delays are the <strong>nodal processing delay</strong>, <strong>queuing delay</strong>, <strong>transmission delay</strong>, and <strong>propagation delay</strong>; together, these delays accumulate to give a <strong>total nodal delay</strong>.</p>
+<p>— (Kurose and Ross 2013, 35–36)</p>
+</blockquote>
+<div>
+<div class="MathJax_Preview">
+d_{nodal}=d_{proc}+d_{queue}+d_{trans}+d_{prop}
+</div>
+<script type="math/tex; mode=display">
+d_{nodal}=d_{proc}+d_{queue}+d_{trans}+d_{prop}
+</script>
+</div>
+<hr />
+<h2 id="error-detection-techniques">Error detection techniques</h2>
+<p><img alt="" src="../pics/Error-Detection-Techniques.png" /></p>
+<h3 id="parity-checking">Parity checking</h3>
+<ul>
+<li>Make it even. So if 1's is not even, so add 1, otherwise just 0</li>
+<li>With 2D parity, you <strong>can detect</strong> the presence of <strong>two flipped bits,</strong> but you <strong>can't know their exact locations in order to correct them.</strong></li>
+</ul>
+<p><img alt="" src="../pics/parity.png" /></p>
+<h3 id="cyclic-redundancy-checkscrc">Cyclic redundancy checks(CRC)</h3>
+<p><a href="http://www.ee.unb.ca/cgi-bin/tervo/calc.pl?num=10011110111&amp;den=1001&amp;f=d&amp;e=1&amp;m=1">CRC calculator</a></p>
+<p><strong>Calculate CRC bits</strong></p>
+<ol>
+<li>Take <strong>D</strong> the data payload and add to it at the end r*0's. </li>
+<li>Insert  the result  to A in the calculator</li>
+<li>Insert <strong>G</strong> the generator to the B in the calculator</li>
+<li>The remainder is the CRC bits</li>
+</ol>
+<p><strong>Check at the receiver that no error occur</strong></p>
+<ol>
+<li>Take <strong>D</strong> and add remainder to the end. That's what the receiver gets.</li>
+<li>Insert the result to A in the calculator</li>
+<li>Insert <strong>G</strong> the generator to the B in the calculator</li>
+<li>If the result is 0's  so there is no errors. </li>
+</ol>
+<h3 id="checksum-calculation">Checksum calculation</h3>
+<p>To compute the Internet checksum of a set of 16-bit words:
+1. Add the two numbers together, making sure that any carry into the 17<sup>th</sup> bit of this initial sum is added back into the 1's place of the resulting sum)
+2. Take the one's complement of the result.</p>
+<p><strong>Example 1. 16-bit words</strong></p>
+<blockquote>
+<p>1001001110010011</p>
+<p>1001100001001101</p>
+</blockquote>
+<ol>
+<li>Sum:  0010101111100001</li>
+<li>Complement:  1101010000011110</li>
+</ol>
+<p><strong>Example 2. 4-bit words</strong></p>
+<p><img alt="" src="../pics/checksum_4_bit_example.jpg" /></p>
+<p><strong>Example 3. 8-bit words</strong> </p>
+<blockquote>
+<p>If the data unit to be transmitted is 10101001 00111001, the following procedure is used at Sender site and Receiver site.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>Sender Site:
+10101001        subunit 1  
+00111001        subunit 2        
+11100010        sum (using 1s complement)       
+00011101        checksum (complement of sum- that&#39;s swapping 0s and 1s)
+
+_______________________________
+Data                | Checksum
+--------------------|----------
+10101001 00111001   | 00011101
+
+
+Receiver Site:
+10101001        subunit 1  
+00111001        subunit 2     
+00011101        checksum 
+11111111        sum
+00000000        sum&#39;s complement
+</code></pre></div>
+<hr />
+<h2 id="random-access-protocols">Random Access Protocols</h2>
+<h3 id="effciency">Effciency</h3>
+<h4 id="aloha-pure">Aloha Pure</h4>
+<div>
+<div class="MathJax_Preview">
+efficiency_{pure} = N*p*(1-p)²*(N-1)
+</div>
+<script type="math/tex; mode=display">
+efficiency_{pure} = N*p*(1-p)²*(N-1)
+</script>
+</div>
+<p><strong>Example of Pure</strong></p>
+<p>Given <span><span class="MathJax_Preview">N=2</span><script type="math/tex">N=2</script></span> active nodes and a probability of transmission <span><span class="MathJax_Preview">p=0.4</span><script type="math/tex">p=0.4</script></span>. What is the maximum efficiency?
+$$
+efficiency_{pure}= 2*0.4*(1-0.4)²*(2-1)=0.29= 29\%
+$$</p>
+<h4 id="aloha-slotted">Aloha Slotted</h4>
+<div>
+<div class="MathJax_Preview">
+efficiency_{slotted} = N*p*(1-p)^{N-1}
+</div>
+<script type="math/tex; mode=display">
+efficiency_{slotted} = N*p*(1-p)^{N-1}
+</script>
+</div>
+<p><strong>Example Slotted</strong></p>
+<p>Given <span><span class="MathJax_Preview">N=3</span><script type="math/tex">N=3</script></span> active nodes and a probability of transmission <span><span class="MathJax_Preview">p=0.</span><script type="math/tex">p=0.</script></span>3. What is the maximum efficiency
+$$
+efficiency_{slotted} =3*0.3*(1-0.3)^2 = 0.44= 44\%
+$$</p>
+<h3 id="collisions">Collisions</h3>
+<h4 id="slotted-aloha">Slotted Aloha</h4>
+<p>Operation:</p>
+<ul>
+<li>When node obtains fresh frame, <strong>transmits in next slot</strong></li>
+<li>if no collision: node can send new frame in next slot</li>
+<li>if collision: node retransmits frame in each subsequent slot with probability p untril success</li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/slotted_aloha.png" /></p>
+<h4 id="aloha">Aloha</h4>
+<ul>
+<li>No synchronization</li>
+<li>When frame first arrives: <strong>transmit immediately</strong></li>
+</ul>
+<h4 id="csma">CSMA</h4>
+<ul>
+<li>Listen before transmit</li>
+<li>if channel sensed <strong>idle</strong>: <strong>trasnmit entire frame</strong> </li>
+<li>The transmission can be still interrupted and message isn't sent succesfully  , if another node tries to send before it can see that a channel is busy (there is some propagation delay, so two nodes may not hear each other just-started transmission)</li>
+<li>if channel sense <strong>busy</strong>: <strong>defer transmission</strong></li>
+</ul>
+<h4 id="csmacd">CSMA/CD</h4>
+<ul>
+<li>
+<p>Transmission aborted on collision detection</p>
+</li>
+<li>
+<p>Mind, the propagration delay again. Transmission trans1 is aborted at time trans2 is sent+propragation delay. E.g. trans1 sent at 0.3, trans2 sent at 0.6, propagation 0.4, so trans1 is aborted 0.6+0.4=1.0 and trans2 is aborted at 0.7. And there is also delay to inform others about abortion.</p>
+</li>
+</ul>
+<hr />
+<h2 id="routing-algorithms">Routing algorithms</h2>
+<h3 id="how-does-dijkstra-algorithm-work">How does Dijkstra Algorithm work?</h3>
+<ul>
+<li>The main idea to keep the best path found until now and the reference to previous vertex.</li>
+</ul>
+<iframe width="820" height="600"
+  src="http://courses.compute.dtu.dk/02105+02326/2020/part3/4shortestpaths/dijkstra.mp4">
+</iframe>
+
+<div class="highlight"><pre><span></span><code>Let distance of start vertex from start vertex = 0
+Let distances of all other vertices from start = infinity
+
+WHILE vertices remain unvisited
+    Visit univisted vertex with smallest known distance from start vertex
+    FOR EACH univisited neighbour of the current vertex
+        Calculate the distance from start vertex
+        IF the calculated distance of this vertex is less than the known distance
+            Update shortest distance this vertex
+            Update the previous vertex with the current vertex
+        END IF
+    Add the current vertex on the list of visited vertices
+END WHILE
+</code></pre></div>
+<p><img alt="" src="../pics/djisktra.png" /></p>
+<p><a href="https://www.youtube.com/watch?v=pVfj6mxhdMw">Youtube Dijkstra algorithm</a></p>
+<h3 id="how-does-bellman-forddistance-vector-work">How does Bellman - ford(Distance Vector) work?</h3>
+<p><img alt="" src="../pics/distance_vector.png" /></p>
+<p>The current node only know the distances to neighbors and the shortest paths to all other nodes from these neighbors.  By using this information and the equation below we can decide which path we should take:
+$$
+d_x(y) = min_v[c(x,v)+d_v(y)]
+$$</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span><span class="MathJax_Preview">c(x,v)</span><script type="math/tex">c(x,v)</script></span></td>
+<td>cost from x to v</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">d_x(y)</span><script type="math/tex">d_x(y)</script></span></td>
+<td>cost of least-cost path from x to y</td>
+</tr>
+<tr>
+<td><span><span class="MathJax_Preview">min_v</span><script type="math/tex">min_v</script></span></td>
+<td>min is taken over all neighbors v of x</td>
+</tr>
+</tbody>
+</table>
+<p>That's, how much it will cost if I take through this node, because I know my distance to it and his distances to all other nodes.  Each neighbor see what his neighbors see. </p>
+<p><strong>B-F Equation example</strong></p>
+<p><img alt="" src="../pics/figure_5_3.png" /></p>
+<ul>
+<li><span><span class="MathJax_Preview">d_v(z)=5</span><script type="math/tex">d_v(z)=5</script></span></li>
+<li><span><span class="MathJax_Preview">d_x(z)=3</span><script type="math/tex">d_x(z)=3</script></span></li>
+<li><span><span class="MathJax_Preview">d_w(z)=3</span><script type="math/tex">d_w(z)=3</script></span>
+$$
+d_x(y) = min_v[c(u,v)+d_v(z), c(u,x)+d_x(z), c(u,w)+d_w(z)] = \
+min_v[2+5, 1+3, 5+3] = 4
+$$</li>
+</ul>
+<p><strong>Maintains</strong></p>
+<ul>
+<li><span><span class="MathJax_Preview">D_x=[D_x(y):y\in N]</span><script type="math/tex">D_x=[D_x(y):y\in N]</script></span> - Node x maintains its own distance vector</li>
+<li><span><span class="MathJax_Preview">D_v=[D_v(y):y\in N]</span><script type="math/tex">D_v=[D_v(y):y\in N]</script></span> - Node x also maintains distance vectors for each neighbor v</li>
+</ul>
+<p><em>DV is big as nodes in the network</em></p>
+<p><strong>Overview</strong></p>
+<ul>
+<li>Send DV to Neighbors. </li>
+<li>Update DV using B-F Equation</li>
+<li>Repeat</li>
+</ul>
+<p><img alt="" src="../pics/bellman.png" /></p>
+<hr />
+<h2 id="packet-scheduling">Packet scheduling</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FCFS</strong></td>
+<td>FIFO, packets trasnmitted in order of arrival to output port</td>
+</tr>
+<tr>
+<td><strong>Priority</strong></td>
+<td>Send packets from highest priority queue that has buffered packets <br> <img alt="" src="../pics/packet_scheduling_priority.png" /></td>
+</tr>
+<tr>
+<td><strong>Round robin</strong></td>
+<td>Sends one comple packet from each class in turn <br> <img alt="" src="../pics/packet_scheduling_rr.png" /></td>
+</tr>
+<tr>
+<td><strong>Weighted Fair Queuing(WFQ)</strong></td>
+<td>each class gets weighted amount of service in each cycle <br> <span><span class="MathJax_Preview">\frac{W_i}{\sum_j{W_j}}</span><script type="math/tex">\frac{W_i}{\sum_j{W_j}}</script></span> <br> <img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/packet_scheduling_wfq.png" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rtt">RTT</h2>
+<p>$$
+RTT = 2*D_{prop}
+$$
+<img alt="" src="../pics/rtt.png" /></p>
+<h3 id="estimate-rtt">Estimate RTT</h3>
+<p>$$
+\text{EstimatedRTT}_n=(1-\alpha)<em>\text{EstimatedRTT}_{n-1}+\alpha</em>\text{SampleRTT}_n
+$$
+Recommended value for <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> is 0.125</p>
+<h3 id="variability-of-the-rtt">Variability of the RTT</h3>
+<p>$$
+\text{DevRTT}<em n-1="n-1">n=(1-\beta)* \text{DevRTT}</em> + \beta * |\text{SampleRTT}<em n-1="n-1">n - \text{EstimatedRTT}</em>|
+$$
+Recommended value for <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> is 0.25</p>
+<h3 id="timeout">Timeout</h3>
+<div>
+<div class="MathJax_Preview">
+\text{TimeoutInterval}_n=\text{EstimatedRTT}_n+4*\text{DevRTT}_n
+</div>
+<script type="math/tex; mode=display">
+\text{TimeoutInterval}_n=\text{EstimatedRTT}_n+4*\text{DevRTT}_n
+</script>
+</div>
+<p><strong>Example</strong></p>
+<blockquote>
+<p>Suppose that TCP's current estimated values for the round trip time (<em>estimatedRTT</em>) and deviation in the  RTT (<em>DevRTT</em>) are 340 msec and 28 msec, respectively (see Section 3.5.3 for a discussion of these variables). Suppose that the next three measured values of the RTT are 200 msec, 220 msec, and 300 msec respectively. Compute TCP's new value of <em>DevRTT, estimatedRTT,</em> and the TCP timeout value after each of these three measured RTT values is obtained. Use the values of α = 0.125, and β = 0.25. Round your answers to two decimal places after leading zeros.</p>
+</blockquote>
+<p>Given:
+$$
+\text{EstimatedRTT}_0 = 340msec
+$$</p>
+<div>
+<div class="MathJax_Preview">
+\text{DevRTT}_0 = 28msec
+</div>
+<script type="math/tex; mode=display">
+\text{DevRTT}_0 = 28msec
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{SampleRTT}_1 = 200msec \\
+</div>
+<script type="math/tex; mode=display">
+\text{SampleRTT}_1 = 200msec \\
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{SampleRTT}_2 = 220msec \\
+</div>
+<script type="math/tex; mode=display">
+\text{SampleRTT}_2 = 220msec \\
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{SampleRTT}_3 = 300msec \\
+</div>
+<script type="math/tex; mode=display">
+\text{SampleRTT}_3 = 300msec \\
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\alpha=0.125 \\ 
+</div>
+<script type="math/tex; mode=display">
+\alpha=0.125 \\ 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\beta=0.25
+$$
+- What is the estimated RTT after the first RTT?
+$$
+\text{EstimatedRTT}_1=(1-0.125)*340+0.125*200 = 322.5
+$$
+- What is the RTT Deviation for the first RTT?
+$$
+\text{DevRTT}_1=(1-0.25)* 28 + 0.25*|340 - 200| = 56
+$$
+- What is the TCP timeout for the first RTT?
+$$
+\text{TimeoutInterval}_1=\text{EstimatedRTT}_1+4*\text{DevRTT}_1 = 322.5+4*  56 = 546.5
+$$
+- What is the estimatedRTT after the second RTT?
+$$
+\text{EstimatedRTT}_2=(1-0.125)*322.5+0.125*220 = 309.69
+$$
+-  What is the RTT Deviation for the the second RTT?
+$$
+\text{DevRTT}_2=(1-0.25)* \text{DevRTT}_{1} + \beta * |\text{SampleRTT}_2 - \text{EstimatedRTT}_{1}|
+</div>
+<script type="math/tex; mode=display">
+\beta=0.25
+$$
+- What is the estimated RTT after the first RTT?
+$$
+\text{EstimatedRTT}_1=(1-0.125)*340+0.125*200 = 322.5
+$$
+- What is the RTT Deviation for the first RTT?
+$$
+\text{DevRTT}_1=(1-0.25)* 28 + 0.25*|340 - 200| = 56
+$$
+- What is the TCP timeout for the first RTT?
+$$
+\text{TimeoutInterval}_1=\text{EstimatedRTT}_1+4*\text{DevRTT}_1 = 322.5+4*  56 = 546.5
+$$
+- What is the estimatedRTT after the second RTT?
+$$
+\text{EstimatedRTT}_2=(1-0.125)*322.5+0.125*220 = 309.69
+$$
+-  What is the RTT Deviation for the the second RTT?
+$$
+\text{DevRTT}_2=(1-0.25)* \text{DevRTT}_{1} + \beta * |\text{SampleRTT}_2 - \text{EstimatedRTT}_{1}|
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{DevRTT}_2=(1-0.25)* 56 + 0.25 * |220 -322.5| = 67.63
+$$
+- What is the TCP timeout for the second RTT?
+$$
+\text{TimeoutInterval}_2=\text{EstimatedRTT}_2+4*\text{DevRTT}_2 = 309.69+4*67.63 = 580.21
+$$
+- What is the estimatedRTT after the third RTT?
+$$
+\text{EstimatedRTT}_3=(1-\alpha)*\text{EstimatedRTT}_{3-1}+\alpha*\text{SampleRTT}_3
+</div>
+<script type="math/tex; mode=display">
+\text{DevRTT}_2=(1-0.25)* 56 + 0.25 * |220 -322.5| = 67.63
+$$
+- What is the TCP timeout for the second RTT?
+$$
+\text{TimeoutInterval}_2=\text{EstimatedRTT}_2+4*\text{DevRTT}_2 = 309.69+4*67.63 = 580.21
+$$
+- What is the estimatedRTT after the third RTT?
+$$
+\text{EstimatedRTT}_3=(1-\alpha)*\text{EstimatedRTT}_{3-1}+\alpha*\text{SampleRTT}_3
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{EstimatedRTT}_3=(1-0.125)*309.69+0.125*300 = 308.48
+$$
+- What is the RTT Deviation for the the third RTT?
+$$
+\text{DevRTT}_3=(1-\beta)* \text{DevRTT}_{3-1} + \beta * |\text{SampleRTT}_3 - \text{EstimatedRTT}_{3-1}|
+</div>
+<script type="math/tex; mode=display">
+\text{EstimatedRTT}_3=(1-0.125)*309.69+0.125*300 = 308.48
+$$
+- What is the RTT Deviation for the the third RTT?
+$$
+\text{DevRTT}_3=(1-\beta)* \text{DevRTT}_{3-1} + \beta * |\text{SampleRTT}_3 - \text{EstimatedRTT}_{3-1}|
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\text{DevRTT}_3=(1-0.25)* 67.63 + 0.25 * |300 - 309.69| = 53.14
+$$
+- What is the TCP timeout for the third RTT?
+$$
+\text{TimeoutInterval}_3=\text{EstimatedRTT}_3+4*\text{DevRTT}_3 =  308.48 + 4*53.14 = 521.04
+</div>
+<script type="math/tex; mode=display">
+\text{DevRTT}_3=(1-0.25)* 67.63 + 0.25 * |300 - 309.69| = 53.14
+$$
+- What is the TCP timeout for the third RTT?
+$$
+\text{TimeoutInterval}_3=\text{EstimatedRTT}_3+4*\text{DevRTT}_3 =  308.48 + 4*53.14 = 521.04
+</script>
+</div>
+<h2 id="traceroute">Traceroute</h2>
+<ul>
+<li>Each hop represented  by a different line</li>
+<li>TTL how long a packet can live before it discarded. </li>
+<li><code>* * *</code> means that the router at that hop doesn't respond to the packet. </li>
+<li>First column the number of hop.</li>
+<li>Second column destination address.   </li>
+<li>Traceroute will actually send three packets of data, and measure the time taken for each - this is shown in the 3 columns after the destination</li>
+</ul>
+<h3 id="ebdk">eb.dk</h3>
+<div class="highlight"><pre><span></span><code>(base) arm@arm-DELL:~$ traceroute www.eb.dk
+traceroute to www.eb.dk (91.214.22.65), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.43.30)  156.456 ms  156.360 ms  156.414 ms
+ 2  * * *
+ 3  10.117.2.172 (10.117.2.172)  158.470 ms  158.430 ms  158.389 ms
+ 4  10.219.160.20 (10.219.160.20)  158.348 ms * *
+ 5  195-215-224-90-static.dk.customer.tdc.net (195.215.224.90)  301.828 ms  301.788 ms  301.747 ms
+ 6  ae1-0.alb2nqp8.dk.ip.tdc.net (83.88.19.119)  301.709 ms  655.345 ms  655.230 ms
+ 7  ae-6.edge2.Copenhagen2.Level3.net (4.68.72.193)  655.235 ms  654.950 ms  654.968 ms
+ 8  213.242.108.194 (213.242.108.194)  654.853 ms  654.814 ms  654.772 ms
+ 9  et-3-3-0-0.taas11cr1dk.gc-net.eu (77.243.32.202)  654.732 ms  654.691 ms  654.724 ms
+10  212-98-126-214.hoer1cr1dk.gc-net.eu (212.98.126.214)  129.530 ms  129.451 ms  129.414 ms
+11  * * *
+12  * * *
+13  * * *
+...
+</code></pre></div>
+<h3 id="princetonedu">princeton.edu</h3>
+<div class="highlight"><pre><span></span><code>(base) arm@arm-DELL:~$ traceroute www.princeton.edu
+traceroute to www.princeton.edu (104.18.5.101), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.43.206)  7.518 ms  7.757 ms  7.844 ms
+ 2  * * *
+ 3  10.117.2.172 (10.117.2.172)  155.456 ms  155.414 ms  155.363 ms
+ 4  10.219.160.20 (10.219.160.20)  155.313 ms  155.263 ms  155.213 ms
+ 5  irb-610.alb2tdm13nqe2.dk.ip.tdc.net (195.215.224.90)  155.173 ms  155.150 ms  155.091 ms
+ 6  ae0-0.alb2nqp8.dk.ip.tdc.net (83.88.19.117)  155.069 ms  18.168 ms  22.646 ms
+ 7  peer-as13335.alb2nqp8.dk.ip.tdc.net (128.76.59.91)  942.923 ms  943.039 ms  943.030 ms
+ 8  104.18.5.101 (104.18.5.101)  942.894 ms  942.884 ms  942.875 ms
+(base) arm@arm-DELL:~$ 
+</code></pre></div>
+<h2 id="utilization-fraction-of-time-sender-busy-sending">Utilization - fraction of time sender busy sending</h2>
+<ul>
+<li>In relation to the performance of RTT
+$$
+U_{sender}=\frac{D_{trans}}{RTT+D_{Trans}}
+$$</li>
+<li>Example: 
+$$
+D_{trans}=8mircosecs \
+RTT = 30 ms \
+U_{sender} = \frac{0.008}{30+0.008} = 0.00027
+$$</li>
+</ul>
+<h2 id="4g-wireless-tunneling">4G wireless tunneling</h2>
+<p><img alt="" src="../pics/4G_wireless_tunneling.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../security/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Security
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Security - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-security" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Security
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-security" class="md-nav__link">
+    Types of security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chiper" class="md-nav__link">
+    Chiper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-signatures" class="md-nav__link">
+    Digital Signatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certification-authorities" class="md-nav__link">
+    Certification Authorities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewall-vs-ids-to-do" class="md-nav__link">
+    Firewall vs IDS (To-Do)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretty-good-privacy-pgp" class="md-nav__link">
+    Pretty Good Privacy ( PGP )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symmetric-key-vs-public-private-key-asymmetric-encryption" class="md-nav__link">
+    Symmetric key vs Public private key (asymmetric) encryption
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetric key vs Public private key (asymmetric) encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3dessymmetric" class="md-nav__link">
+    3DES(Symmetric)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsapublic-private" class="md-nav__link">
+    RSA(Public-private)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-security" class="md-nav__link">
+    Types of security
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chiper" class="md-nav__link">
+    Chiper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-signatures" class="md-nav__link">
+    Digital Signatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certification-authorities" class="md-nav__link">
+    Certification Authorities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewall-vs-ids-to-do" class="md-nav__link">
+    Firewall vs IDS (To-Do)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pretty-good-privacy-pgp" class="md-nav__link">
+    Pretty Good Privacy ( PGP )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symmetric-key-vs-public-private-key-asymmetric-encryption" class="md-nav__link">
+    Symmetric key vs Public private key (asymmetric) encryption
+  </a>
+  
+    <nav class="md-nav" aria-label="Symmetric key vs Public private key (asymmetric) encryption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3dessymmetric" class="md-nav__link">
+    3DES(Symmetric)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsapublic-private" class="md-nav__link">
+    RSA(Public-private)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="network-security">Network security</h1>
+<h2 id="types-of-security">Types of security</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Message Integrity</strong></td>
+<td>Ensure message not altered (in transit, or afterwards) without detection</td>
+</tr>
+<tr>
+<td><strong>Confidentiality</strong></td>
+<td>Only sender, intended receiver should “understand” message contents. sender encrypts message. receiver decrypts message</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>Sender, receiver want to confirm identity of each other</td>
+</tr>
+<tr>
+<td><strong>Access and availability</strong></td>
+<td>Services must be accessible and available to users</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chiper">Chiper</h2>
+<p>A cipher is a method for encrypting data </p>
+<h2 id="digital-signatures">Digital Signatures</h2>
+<ul>
+<li>To indicate the owner of the document, or to signify one's agreement with a documents content</li>
+<li>Must be verifiable and nonforgeable.</li>
+</ul>
+<p><img alt="" src="../pics/sending_digitally_signed_message.png" /></p>
+<p><img alt="" src="../pics/verifying_digitally_signed_message.png" /></p>
+<ul>
+<li></li>
+<li>Example: RSA</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=2vKQ3DwHi4w&amp;list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am&amp;index=69">https://www.youtube.com/watch?v=2vKQ3DwHi4w&amp;list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am&amp;index=69</a></p>
+<h2 id="certification-authorities">Certification Authorities</h2>
+<ul>
+<li><strong>Challenge</strong> with digital signatures is how to verify  that a receiver have the actual public key of the enitity with whom you want to communicate. For example, when Alice wants to communicate with Bob using public key cryptography, she needs to verify that the public key that is supposed to be Bob’s is indeed Bob’s.</li>
+<li>Binding a public key to a particular entity is typically done by a Certification Authority(CA), whose job is to validate identities and issue certificates:</li>
+<li>A CA verifies that an entity is who it says it is</li>
+<li>Once the CA verifies the identity of the entity, the CA creates a certificate that binds the public key of the entity to the identity.  The certificate contains the public key and globally unique identifying information about the owner of the public key (for example, a human name or an IP address). The certificate is digitally signed by the CA.</li>
+</ul>
+<p><img alt="" src="../pics/ca.png" /></p>
+<p><a href="https://www.geeksforgeeks.org/digital-signatures-certificates/">https://www.geeksforgeeks.org/digital-signatures-certificates/</a></p>
+<h2 id="firewall-vs-ids-to-do">Firewall vs IDS (To-Do)</h2>
+<table>
+<thead>
+<tr>
+<th align="left">PARAMETER</th>
+<th align="left">FIREWALL</th>
+<th align="left">IDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Abbreviation for</td>
+<td align="left">-</td>
+<td align="left">Intrusion Detection System</td>
+</tr>
+<tr>
+<td align="left">Philosophy</td>
+<td align="left">Firewall is a network security device that filters incoming and outgoing network traffic based on predetermined rules</td>
+<td align="left">An intrusion detection system (IDS) is a device or software application that monitors a traffic for malicious activity or policy violations and sends alert on detection.</td>
+</tr>
+<tr>
+<td align="left">Principle of working</td>
+<td align="left">Filters traffic based on IP address and port numbers</td>
+<td align="left">Detects real time traffic and looks for traffic patterns or signatures of attack and them generates alerts</td>
+</tr>
+<tr>
+<td align="left">Configuration mode</td>
+<td align="left">Layer 3 mode or transparent mode</td>
+<td align="left">Inline or as end host (via span) for monitoring and detection</td>
+</tr>
+<tr>
+<td align="left">Placement</td>
+<td align="left">Inline at the Perimeter of Network</td>
+<td align="left">Non-Inline through port span (or via tap)</td>
+</tr>
+<tr>
+<td align="left">Traffic patterns</td>
+<td align="left">Not analyzed</td>
+<td align="left">Analyzed</td>
+</tr>
+<tr>
+<td align="left">Placement wrt each other</td>
+<td align="left">Should be 1<sup>st</sup> Line of defense</td>
+<td align="left">Should be placed after firewall</td>
+</tr>
+<tr>
+<td align="left">Action on unauthorized traffic detection</td>
+<td align="left">Block the traffic</td>
+<td align="left">Alerts/alarms on detection of anomaly</td>
+</tr>
+<tr>
+<td align="left">Related terminologies</td>
+<td align="left">&gt; Stateful packet filtering &gt; permits and blocks traffic by port/protocol rules</td>
+<td align="left">&gt; Anomaly based detection &gt; Signature detection &gt; Zero day attacks &gt; Monitoring &gt; Alarm</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://ipwithease.com/firewall-vs-ips-vs-ids/">Firewall vs IDS</a></p>
+<h2 id="pretty-good-privacy-pgp">Pretty Good Privacy ( PGP )</h2>
+<ul>
+<li>
+<p>PGP is an encryption program that provides cryptographic privacy and authentication for data communication. PGP is used for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications. </p>
+</li>
+<li>
+<p>Depending on the version, the PGP software uses MD5 or SHA for calculating the message digest; CAST, triple-DES, or IDEA for symmetric key encryption; and RSA for the public key encryption.</p>
+</li>
+<li>
+<p>Providing also a mechanism for public key certification</p>
+</li>
+</ul>
+<p><img alt="" src="../pics/pgp.png" /></p>
+<p><a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a></p>
+<h2 id="symmetric-key-vs-public-private-key-asymmetric-encryption">Symmetric key vs Public private key (asymmetric) encryption</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Symmetric Key Encryption</strong></th>
+<th align="left"><strong>Asymmetric Key Encryption</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">It only requires a single key for both encryption and decryption.</td>
+<td align="left">It requires two key one to encrypt and the other one to decrypt.</td>
+</tr>
+<tr>
+<td align="left">The size of cipher text is same or smaller than the original plain text.</td>
+<td align="left">The size of cipher text is same or larger than the original plain text.</td>
+</tr>
+<tr>
+<td align="left">The encryption process is very fast.</td>
+<td align="left">The encryption process is slow.</td>
+</tr>
+<tr>
+<td align="left">It is used when a large amount of data is required to transfer.</td>
+<td align="left">It is used to transfer small amount of data.</td>
+</tr>
+<tr>
+<td align="left">It only provides confidentiality.</td>
+<td align="left">It provides confidentiality, authenticity and non-repudiation.</td>
+</tr>
+<tr>
+<td align="left">Examples: 3DES, AES, DES and RC4</td>
+<td align="left">Examples: Diffie-Hellman, ECC, El Gamal, DSA and RSA</td>
+</tr>
+<tr>
+<td align="left">In symmetric key encryption, resource utilization is low as compared to asymmetric key encryption.</td>
+<td align="left">In asymmetric key encryption, resource utilization is high.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.geeksforgeeks.org/difference-between-symmetric-and-asymmetric-key-encryption/">Symmetric vs asymetric</a></p>
+<h3 id="3dessymmetric">3DES(Symmetric)</h3>
+<p>Triple Data Encryption Algorithm (TDEA or Triple DEA), is a symmetric-key block cipher, which applies the DES cipher algorithm three times to each data block.</p>
+<h3 id="rsapublic-private">RSA(Public-private)</h3>
+<p><img alt="" src="../pics/rsa.png" /></p>
+<p><img alt="" src="../pics/rsa_creating_public_private_key.png" /></p>
+<p><img alt="" src="../pics/rsa_encryption_decryption.png" /></p>
+<p><img alt="" src="../pics/rsa_example.png" /></p>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/rsa_in_practise.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../wireless/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Wireless
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../practice/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Practice
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

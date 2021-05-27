@@ -1,0 +1,633 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview of layers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview of layers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Overview of layers
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-overview-of-network-layers" class="md-nav__link">
+    The overview of network layers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport" class="md-nav__link">
+    Transport
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internet" class="md-nav__link">
+    Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-overview-of-network-layers" class="md-nav__link">
+    The overview of network layers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport" class="md-nav__link">
+    Transport
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#internet" class="md-nav__link">
+    Internet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="about">About</h1>
+<p>Notes from 62577 Data Communication Spring 21 course at DTU.</p>
+<h2 id="the-overview-of-network-layers">The overview of network layers</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Layer</strong> <br/> services</th>
+<th>Data unit</th>
+<th>Delivery</th>
+<th>Identify by</th>
+<th>Protocols</th>
+<th>Diverse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application</strong></td>
+<td>Message</td>
+<td>-</td>
+<td>-</td>
+<td>HTTP ; SMTP ; IMAP ; POP3 ;  BiTtorrent ; DNS ; DASH ; DHCP</td>
+<td>TLD ; NS ; RR ; DORA ; CDN ; OTT</td>
+</tr>
+<tr>
+<td><strong>Transport</strong> <br> - Split a message to multiple packets <br> - Puts together again at receiver</td>
+<td>Segment</td>
+<td>Process<br>to <br>Process</td>
+<td>Port #</td>
+<td>TCP ; UDP</td>
+<td>RDP; RDT ;  RTT; GNB ; AIMD; MMS</td>
+</tr>
+<tr>
+<td><strong>Internet</strong> <br> - Packaging <br> - Addressing <br> - Routing the data</td>
+<td>Datagram</td>
+<td>Host<br/>to<br/>Host</td>
+<td>IP address <br> (Logical)</td>
+<td>IPv4 ; IPv6 ;  Openflow ; RIP ; OSPF ; BGP ; iBGP ; eBGP ; ICMP; SNMP</td>
+<td>CIDR; NAT; SDN ; LS ; DV ; AS; ISP; IXP; Subnet</td>
+</tr>
+<tr>
+<td><strong>Link</strong> <br/>- Farming <br/> - Link access <br/> - Reliable delivery<br/> - Error detection and correction</td>
+<td>Frame</td>
+<td>Adjacent<br/> nodes</td>
+<td>MAC address <br> (Physical)</td>
+<td>ARP ; PPP ; Ethernet ; 802.11; CDMA</td>
+<td>EDC;  CRC; NIC;  CSMA/CD; VLAN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="application">Application</h2>
+<ul>
+<li><strong>DASH</strong> - Dynamic Adaptive Stream over HTTP</li>
+<li><strong>DHCP</strong> - Dynamic Host Configuration Protocol </li>
+<li><strong>DNS</strong> - Domain Name system</li>
+<li><strong>HTTP</strong> - Hypertext Transfer Protocol</li>
+<li><strong>IMAP</strong> - Internet Message Access Protocol</li>
+<li><strong>POP3</strong> - Post Office Protocol version 3</li>
+<li><strong>SMTP</strong> -  Simple Mail Transfer Protocol</li>
+</ul>
+<p><strong>Diverse</strong>  </p>
+<ul>
+<li><strong>TLD DNS server</strong> - Top-level domain DNS server</li>
+<li><strong>NS</strong> - Name Server</li>
+<li><strong>RR</strong> - resource record</li>
+<li><strong>DORA</strong> - Discover, Offer, Request, Acknowledgment</li>
+<li><strong>CDN</strong> - Content distribution networks</li>
+<li><strong>OTT</strong> - Over the top</li>
+</ul>
+<h2 id="transport">Transport</h2>
+<ul>
+<li><strong>TCP</strong> - Transmission Control Protocol</li>
+<li><strong>UDP</strong> - User Datagram Protocol</li>
+</ul>
+<p><strong>Diverse</strong> </p>
+<ul>
+<li><strong>RDP</strong> - Reliable Data Protocol</li>
+<li><strong>RDT</strong> - Reliable Data Transfer Protocol</li>
+<li><strong>RTT</strong> - Round trip time</li>
+<li><strong>GBN</strong> - Go-Back-N</li>
+<li><strong>AIMD</strong> - Additive-increase, multiplicative-decrease congestion control</li>
+<li><strong>MMS</strong> - Maximum segment size</li>
+</ul>
+<h2 id="internet">Internet</h2>
+<ul>
+<li><strong>ICMP</strong> - The Internet Control Message Protocol </li>
+<li><strong>IPv4</strong> -  Internet Protocol version 4</li>
+<li><strong>RIP</strong> - Routing Information Protocol</li>
+<li><strong>SNMP</strong>  - The simple network management protocol </li>
+<li><strong>OSPF</strong> - Open shortest path first</li>
+<li><strong>BGP</strong> - Border Gateway Protocol</li>
+<li><strong>iBGP</strong> - Interior Border Gateway Protocol</li>
+<li><strong>eBGP</strong> - Exterior Border Gateway Protocol</li>
+<li><strong>ECN</strong> - Explicit Congestion Notification </li>
+<li><strong>Openflow</strong></li>
+</ul>
+<p><strong>Diverse</strong> </p>
+<ul>
+<li><strong>CIDR</strong> - Classless InterDomain Routering</li>
+<li><strong>AS</strong> - autonomous system </li>
+<li><strong>NAT</strong> - Networking address translation</li>
+<li><strong>SDN</strong> - Software defined networking</li>
+<li><strong>LS</strong> - Link state routing algorithm </li>
+<li><strong>DV</strong> - The distance-Vector routing algorithm</li>
+<li><strong>ISP</strong> - Internet service provider</li>
+<li><strong>IXP</strong> - Internet exchange point</li>
+</ul>
+<h2 id="link">Link</h2>
+<ul>
+<li><strong>ARP</strong> - Address resolution protocol</li>
+<li><strong>PPP</strong> - Point-to-point protocol</li>
+<li><strong>MAC</strong> - Medium Access Control protocol</li>
+<li><strong>CDMA</strong> - Code division multiple access</li>
+</ul>
+<p><strong>Diverse</strong> </p>
+<ul>
+<li>
+<p><strong>EDC</strong> - Error detection and correction bits</p>
+</li>
+<li>
+<p><strong>CRC</strong> - Cyclic Redundancy Check</p>
+</li>
+<li>
+<p><strong>NIC</strong> - network interface card</p>
+</li>
+<li><strong>CSMA/CD</strong> - Carrier sense multiple access with collision detection</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        <a href="introduction/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

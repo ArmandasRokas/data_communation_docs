@@ -1,0 +1,770 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Wireless - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wireless" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wireless
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wireless
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Wireless
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    Modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cdma" class="md-nav__link">
+    CDMA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    WiFi
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ieee-80211-standards" class="md-nav__link">
+    IEEE 802.11 standards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-networks" class="md-nav__link">
+    Mobile Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3g" class="md-nav__link">
+    3G
+  </a>
+  
+    <nav class="md-nav" aria-label="3G">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lte" class="md-nav__link">
+    LTE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-ip" class="md-nav__link">
+    Mobile IP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-cellular-networks" class="md-nav__link">
+    Mobile Cellular networks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    Modes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cdma" class="md-nav__link">
+    CDMA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    WiFi
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ieee-80211-standards" class="md-nav__link">
+    IEEE 802.11 standards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-networks" class="md-nav__link">
+    Mobile Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3g" class="md-nav__link">
+    3G
+  </a>
+  
+    <nav class="md-nav" aria-label="3G">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lte" class="md-nav__link">
+    LTE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-ip" class="md-nav__link">
+    Mobile IP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-cellular-networks" class="md-nav__link">
+    Mobile Cellular networks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="wireless">Wireless</h1>
+<h2 id="modes">Modes</h2>
+<table>
+<thead>
+<tr>
+<th>Infrastructure</th>
+<th>Ad-hoc network</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hosts associated with a base station</td>
+<td>No such infrastructure</td>
+</tr>
+<tr>
+<td>Host can only communicate with base, not with each other</td>
+<td>Hosts themselves must provide for services such<br/>as routing, address assignment, DNS-like name translation,</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Single hop</th>
+<th>Multiple hops</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Infrastructure</strong> <br> (e.g., APs)</td>
+<td>Hosts connects to base station(WiFi, cellular, WiMAX) which connects to larger Internet</td>
+<td>Host may have to relay through several wireless nodes to connect to larger Internet: <em>mesh net</em></td>
+</tr>
+<tr>
+<td><strong>No infrastructure</strong></td>
+<td>No base station, no connection to larger Internet(Bluetooth, ad hoc nets)</td>
+<td>No base station, no connection to larger Internet. May have to relay to reach other a given wireless node MANET, VANET</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cdma">CDMA</h2>
+<ul>
+<li>Code division multiple access</li>
+<li>Channel partitioning protocol</li>
+</ul>
+<p><img alt="" src="../pics/cdma.png" /></p>
+<h2 id="wifi">WiFi</h2>
+<ul>
+<li>IEEE 802.11 wireless LAN</li>
+</ul>
+<p><img alt="" src="../pics/802_11.png" /></p>
+<h3 id="ieee-80211-standards">IEEE 802.11 standards</h3>
+<ul>
+<li>All 802.11 standards share some <strong>common strcuture</strong>:<ul>
+<li>All use the same medium access protocol, CSMA/CA</li>
+<li>The same frame structure for their link-layer frames</li>
+<li>The ability to reduce their transmission rate in order to reach out over greater distances</li>
+<li>All backwards compatible</li>
+</ul>
+</li>
+<li>Differences in physical layer</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Frequency Range</th>
+<th>Data rate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>802.11b</td>
+<td>2.4 GHz</td>
+<td>up to 11 Mps</td>
+<td>Unlicensed frequency band, may compete for frequency spectrum with 2.4 GHz phones and microwave ovens.</td>
+</tr>
+<tr>
+<td>802.11a</td>
+<td>5 GHz</td>
+<td>up to 54 Mbps</td>
+<td>Have a shorter transmission distance for a given power level and suffer more from multipath propagation</td>
+</tr>
+<tr>
+<td>802.11g</td>
+<td>2.4 GHz</td>
+<td>up to 54 Mbps</td>
+<td>Again 2.4 GHz</td>
+</tr>
+<tr>
+<td>802.11n</td>
+<td>2.5 GHz and 5 GHz</td>
+<td>up to 450 Mbps</td>
+<td>uses multiple input multiple-output (MIMO) antennas i.e., two or more antennas on the sending side and two or more antennas on the receiving side that are transmitting/receiving different signals</td>
+</tr>
+<tr>
+<td>802.11ac</td>
+<td>5 GHz</td>
+<td>up to 1300 Mbps</td>
+<td>MIMO. Stations also may transmit to multiple stations simultaneously, and use “smart” antennas to adaptively beamform to target transmissions in the direction of a receiver. This decreases interference and increases the distance reached at a given data rate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mobile-networks">Mobile Networks</h2>
+<ul>
+<li>Natural strategy is to extend cellular networks so that they support not only voice telephony but wireless Internet access as well. Ideally, this Internet access would be at a reasonably high speed and would provide for seamless mobility, allowing users to <strong>maintain their TCP sessions while traveling</strong>.</li>
+</ul>
+<h2 id="3g">3G</h2>
+<ul>
+<li>Goal: leave the existing core GSM cellular voice network untouched, adding additional cellular data functionality in parallel to the existing cellular voice network.</li>
+</ul>
+<p><img alt="" src="../pics/3g.png" /></p>
+<table>
+<thead>
+<tr>
+<th>SGSN</th>
+<th>GGSN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>interacts with the cellular voice network’s MSC for that area</td>
+<td>acts as a gateway</td>
+</tr>
+<tr>
+<td>Providing user authorization and handoff</td>
+<td>connecting multiple SGSNs into the larger Internet.</td>
+</tr>
+<tr>
+<td>maintaining location (cell) information about active mobile nodes</td>
+<td>To the outside world, the GGSN looks like any other gateway route</td>
+</tr>
+<tr>
+<td><strong>performing datagram forwarding</strong> between mobile nodes in the radio access network and a GGSN</td>
+<td>the mobility of the 3G nodes within the GGSN’s network is hidden from the outside world behind the GGSN.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <strong>RNC</strong> connects to both the circuit-switched cellular voice network via an MSC, and to the packet-switched Internet via an SGSN. Thus, while 3G cellular voice and cellular data services use different core networks, they share a common first/last-hop radio access network</li>
+</ul>
+<h3 id="lte">LTE</h3>
+<ul>
+<li>As know as 4G LTE (Long-Term Evolution)</li>
+<li>Two important innovations over 3G system<ul>
+<li>All-IP core network - both voice and data are carried in IP datagrams to/from the wireless device</li>
+<li>Enhanced radio access network - uses a <strong>combination of frequency division multiplexing and time division multiplexing</strong> on the downstream channel, known as orthogonal frequency division multiplexing (OFDM) </li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../pics/lte.png" /></p>
+<h2 id="mobile-ip">Mobile IP</h2>
+<p>The mobile IP standard consists of three main pieces:</p>
+<ul>
+<li><strong>Agent discovery</strong> </li>
+<li><strong>Registration with the home agent</strong></li>
+<li><strong>Indirect routing of datagrams</strong></li>
+</ul>
+<p><img alt="" src="../pics/mobile_ip.png" /></p>
+<ul>
+<li>Figure 7.29 Agent advertisement and mobile IP registration</li>
+</ul>
+<h2 id="mobile-cellular-networks">Mobile Cellular networks</h2>
+<ul>
+<li>Like mobile IP, GSM adopts an indirect routing approach, first routing the correspondent’s call to the mobile user’s home network and from there to the visited network</li>
+</ul>
+<p><img alt="" src="../pics/mobile_cellural.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../link/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Link layer
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../security/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Security
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

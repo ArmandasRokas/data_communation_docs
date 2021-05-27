@@ -1,0 +1,500 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Interactive exercises - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interactive exercises
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-1-introduction" class="md-nav__link">
+    Chapter 1: Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-2-application-layer" class="md-nav__link">
+    Chapter 2: Application Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-3-transport-layer" class="md-nav__link">
+    Chapter 3: Transport Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-4-network-layer-data-plane" class="md-nav__link">
+    Chapter 4: Network Layer: Data Plane
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-5-network-layer-control-plane" class="md-nav__link">
+    Chapter 5: Network Layer: Control Plane
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-6-link-layer" class="md-nav__link">
+    Chapter 6: Link Layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-7-wireless-and-mobile-networks" class="md-nav__link">
+    Chapter 7: Wireless and Mobile Networks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Interactive exercises</h1>
+                
+                <h5 id="chapter-1-introduction">Chapter 1: Introduction</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/circuit_switching.php">Circuit Switching</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/ps_versus_cs.php">Quantitative Comparison of Packet Switching and Circuit Switching</a> (similar to Chapter 1, P8, P9)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/caravan.php">Car - Caravan Analogy</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/one-hop-delay.php">One-hop Transmission Delay</a> (similar to example on pg. 37)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/qdelay.php">Queuing Delay</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/end-end-delay.php">End-to-End Delay</a> (similar to Chapter 1, P10)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/end-end-throughput-simple.php">End-to-End Throughput</a> (similar to Chapter 1, P20, and Figure 1.20)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/layers.php">The IP Stack and Protocol Layering</a></del></li>
+</ul>
+<h5 id="chapter-2-application-layer">Chapter 2: Application Layer</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/dns.php">DNS - Basics</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/dns_query.php">DNS - Iterative vs Recursive Query</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/DNS_HTTP_delay.php">DNS and HTTP delays</a> (similar to Chapter 2, P7,P8)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/http-get.php">HTTP GET</a> (similar to Chapter 2, P4)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/http-response.php">HTTP RESPONSE</a> (similar to Chapter 2, P5)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/browser_caching.php">Browser Caching</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/smtp.php">Electronic Mail and SMTP</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/CS_vs_P2P_download.php">A comparison of client-server and P2P file distribution delays</a> (similar to Chapter 2, P22)</del></li>
+</ul>
+<h5 id="chapter-3-transport-layer">Chapter 3: Transport Layer</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/internet_checksum.php">Internet checksum</a> (similar to Chapter 3, P3 and P4)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/rdt22.php">Reliable data transfer: rdt22</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/rdt30.php">Reliable data transfer: rdt30</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/tcp_segloss.php">TCP sequence and ACK numbers, with segment loss</a> (similar to Chapter 3, P27)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/TCP_RTT.php">TCP RTT and timeout</a> (similar to Chapter 3, P31)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/tcp_evolution.php">TCP congestion window evolution</a> (similar to Chapter 3, P40)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/tcp_retrans.php">TCP retransmissions (reliable data transmission with ACK loss)</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/UDP_Mux_Demux.php">UDP Mux and Demux</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/TCP_Mux_Demux.php">TCP Mux and Demux</a></del></li>
+</ul>
+<h5 id="chapter-4-network-layer-data-plane">Chapter 4: Network Layer: Data Plane</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/nat.php">Network Address Translation</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/longestprefix.php">Longest Prefix Matching</a> (similar to Chapter 4, P9, P10)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/subnet_addressing.php">Subnet Addressing</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/ip_tunneling.php">IPv6 Tunneling and Encapsulation</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/scheduling.php">Packet Scheduling</a></del> </li>
+</ul>
+<h5 id="chapter-5-network-layer-control-plane">Chapter 5: Network Layer: Control Plane</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/dij.php">Dijkstra's Link State Algorithm</a> (similar to Chapter 5, P3)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/dij_advanced.php">Dijkstra's Link State Algorithm - Advanced</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/disVector.php">Bellman Ford Distance Vector algorithm</a> (similar to Chapter 5, P5)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/openflow.php">Openflow Flow Tables</a></del></li>
+</ul>
+<h5 id="chapter-6-link-layer">Chapter 6: Link Layer</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/link_layer_addressing.php">Link Layer (and network layer) addressing, forwarding</a> (similar to Chapter 6, P15)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/2d_parity.php">Error Detection and Correction: Two Dimensional Parity</a> (similar to Chapter 6, P1)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/CRC.php">Error Detection and Correction: Cyclic Redundancy Check</a> (similar to Chapter 6, P5, P6)</del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/aloha.php">Random Access Protocols: Aloha</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/collisions.php">Random Access Protocols: Collisions</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/learning_switch_basic.php">Learning Switches - Basic</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/learning_switch.php">Learning Switches - Advanced</a></del></li>
+</ul>
+<h5 id="chapter-7-wireless-and-mobile-networks">Chapter 7: Wireless and Mobile Networks</h5>
+<ul>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/cdma.php">CDMA - Basic</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/cdma_advanced.php">CDMA - Advanced</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/4g_tunneling.php">4G Wireless Tunneling</a></del></li>
+<li><del><a href="https://gaia.cs.umass.edu/kurose_ross/interactive/4g_handover.php">4G Wireless Handover</a></del></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

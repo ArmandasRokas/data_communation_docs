@@ -1,0 +1,992 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Link layer - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#link-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Link layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transport/" class="md-nav__link">
+        Transport layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Link layer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Link layer
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#function-of-link-layer" class="md-nav__link">
+    Function of link layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slotted-aloha-vs-pure-aloha-which-one-has-a-better-efficiency" class="md-nav__link">
+    Slotted Aloha vs pure Aloha. Which one has a better efficiency?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcast-channels-vs-point-to-point-communication-link" class="md-nav__link">
+    Broadcast channels vs Point-to-point communication link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parity-checking" class="md-nav__link">
+    Parity checking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crc" class="md-nav__link">
+    CRC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-detection-vs-error-correction" class="md-nav__link">
+    Error detection vs error correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nic" class="md-nav__link">
+    NIC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    ARP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    MAC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mac-protocols" class="md-nav__link">
+    3 MAC protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polling" class="md-nav__link">
+    Polling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-robin" class="md-nav__link">
+    Round robin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-address-vs-mac-address" class="md-nav__link">
+    IP address vs MAC address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethernet" class="md-nav__link">
+    Ethernet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-ethernet-reliable" class="md-nav__link">
+    Is Ethernet reliable?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router-vs-switches" class="md-nav__link">
+    Router vs Switches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pros-and-cons-of-routers-and-switches" class="md-nav__link">
+    Pros and cons of routers and switches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-tables-contents-of-switch-table" class="md-nav__link">
+    Switch tables (contents of switch table)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bus-topology-vs-star-topology" class="md-nav__link">
+    Bus topology vs star topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subnets-vs-vlans" class="md-nav__link">
+    Subnets vs VLANs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plug-and-play" class="md-nav__link">
+    Plug and play
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vlan-trunking" class="md-nav__link">
+    What is VLAN trunking?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#function-of-link-layer" class="md-nav__link">
+    Function of link layer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slotted-aloha-vs-pure-aloha-which-one-has-a-better-efficiency" class="md-nav__link">
+    Slotted Aloha vs pure Aloha. Which one has a better efficiency?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broadcast-channels-vs-point-to-point-communication-link" class="md-nav__link">
+    Broadcast channels vs Point-to-point communication link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parity-checking" class="md-nav__link">
+    Parity checking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crc" class="md-nav__link">
+    CRC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-detection-vs-error-correction" class="md-nav__link">
+    Error detection vs error correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nic" class="md-nav__link">
+    NIC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    ARP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    MAC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mac-protocols" class="md-nav__link">
+    3 MAC protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polling" class="md-nav__link">
+    Polling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-robin" class="md-nav__link">
+    Round robin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-address-vs-mac-address" class="md-nav__link">
+    IP address vs MAC address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethernet" class="md-nav__link">
+    Ethernet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-ethernet-reliable" class="md-nav__link">
+    Is Ethernet reliable?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#router-vs-switches" class="md-nav__link">
+    Router vs Switches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pros-and-cons-of-routers-and-switches" class="md-nav__link">
+    Pros and cons of routers and switches
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-tables-contents-of-switch-table" class="md-nav__link">
+    Switch tables (contents of switch table)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bus-topology-vs-star-topology" class="md-nav__link">
+    Bus topology vs star topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subnets-vs-vlans" class="md-nav__link">
+    Subnets vs VLANs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plug-and-play" class="md-nav__link">
+    Plug and play
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vlan-trunking" class="md-nav__link">
+    What is VLAN trunking?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="link-layer">Link layer</h1>
+<h2 id="function-of-link-layer">Function of link layer</h2>
+<ul>
+<li><strong>Move a datagram</strong> from one node to an adjacent node over a single communication link</li>
+<li><strong>Framing</strong>  - Almost all link-layer protocols encapsulate each network-layer datagram within a link-layer
+  frame before transmission over the link. A frame consists of a data field, in which the network-layer
+  datagram is inserted, and a number of header fields. The structure of the frame is specified by the
+  link-layer protocol.</li>
+<li><strong>Link access.</strong> A medium access control (MAC) protocol specifies the rules by which a frame is transmitted onto the link.</li>
+<li><strong>Reliable delivery.</strong> When a link-layer protocol provides reliable delivery service, it guarantees to
+  move each network-layer datagram across the link without error. A link-layer reliable delivery service is often used for links that are prone to high error rates, such as a wireless link, with the goal of correcting an error locally—on the link where the error occurs—rather than forcing an end-to-end retransmission of the data by a transport- or application-layer protocol. However, link-layer reliable delivery can be considered an unnecessary overhead for low bit-error links, including fiber, coax, and many twisted-pair copper links. For this reason, many wired link-layer protocols do not provide a reliable delivery service.</li>
+<li><strong>Error detection and correction</strong> - The link-layer hardware in a receiving node can incorrectly decide
+  that a bit in a frame is zero when it was transmitted as a one, and vice versa</li>
+</ul>
+<h2 id="slotted-aloha-vs-pure-aloha-which-one-has-a-better-efficiency">Slotted Aloha vs pure Aloha. Which one has a better efficiency?</h2>
+<h2 id="broadcast-channels-vs-point-to-point-communication-link">Broadcast channels vs Point-to-point communication link</h2>
+<ul>
+<li>Two fundamentally different types of link-layer channels</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Broadcast channels</th>
+<th>Point-to-point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect multiple hosts</td>
+<td>Two hosts</td>
+</tr>
+<tr>
+<td>Wireless LANs, satellite network</td>
+<td>Between two routers connected by long-distance link / Between a user's office computer and the nearby Ethernet switch</td>
+</tr>
+<tr>
+<td>Need for Medium Access protocol</td>
+<td>Point-to-point Protocol(PPP)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="parity-checking">Parity checking</h2>
+<ul>
+<li>Simplest form of error detection</li>
+</ul>
+<h2 id="crc">CRC</h2>
+<ul>
+<li>Cyclic Redundancy Check</li>
+<li>More powerful error-detection coding</li>
+</ul>
+<p><img alt="" src="../pics/crc_general.png" /></p>
+<p><img alt="" src="../pics/crc.png" /></p>
+<h2 id="error-detection-vs-error-correction">Error detection vs error correction</h2>
+<p>Error detection is determining whether the data was corrupted since it left the source; error correction goes beyond detection to determine exactly how the data was corrupted and restore it. Both error detection and error correction require some amount of redundant data to be sent with the actual data; correction requires more than detection.</p>
+<p><a href="https://www.quora.com/What-is-the-difference-between-error-correction-and-detection">Error detection vs error correction</a></p>
+<h2 id="nic">NIC</h2>
+<p>Network interface card</p>
+<h2 id="arp">ARP</h2>
+<ul>
+<li>Kind of helper protocol for Ethernet</li>
+<li>"Like DNS", but maps instead IP addresses to MACs</li>
+<li>The frame containing the ARP query is received by <strong>all the other adapters on the subnet</strong></li>
+<li>ARP Table stored on each host and router: </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>IP Address</th>
+<th>MAC Address</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.1</td>
+<td>F1-A3-C1-11-44-42</td>
+<td>360</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>..</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../pics/arp.png" /></p>
+<p><a href="http://cisco.num.edu.mn/CCNA_R&amp;S1/course/module5/5.2.1.2/5.2.1.2.html#:~:text=The%20ARP%20table%20is%20stored,address%20with%20a%20MAC%20address.">Animation of ARP</a></p>
+<h2 id="mac">MAC</h2>
+<ul>
+<li>Multiple access channel</li>
+</ul>
+<h2 id="3-mac-protocols">3 MAC protocols</h2>
+<ul>
+<li>"taking turn"</li>
+<li>random access</li>
+<li>channel partitioning</li>
+</ul>
+<h2 id="polling">Polling</h2>
+<ul>
+<li>Where centralized device pulls client devices to see if those client devices have ata that they want to send </li>
+<li>Protocol needed for client devices to join/leave network</li>
+<li>Alternative: token passing</li>
+</ul>
+<h2 id="round-robin">Round robin</h2>
+<h2 id="ip-address-vs-mac-address">IP address vs MAC address</h2>
+<table>
+<thead>
+<tr>
+<th>IP address</th>
+<th>MAC Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internet Protocol address</td>
+<td>A media access control <em>address</em></td>
+</tr>
+<tr>
+<td>32-bit</td>
+<td>48-bit</td>
+</tr>
+<tr>
+<td>Network-layer</td>
+<td>Link-Layer</td>
+</tr>
+<tr>
+<td>Hierarchal(not portable)</td>
+<td>Flat(portable)</td>
+</tr>
+<tr>
+<td>Street address</td>
+<td>SSN</td>
+</tr>
+<tr>
+<td>Used to route datagrams from one subnet to another</td>
+<td>To get a frame from one interface to another on the same network</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ethernet">Ethernet</h2>
+<p>Dominant link layer protocol</p>
+<ul>
+<li>Also includes 8 Bytes <strong>preamble</strong> in order to sycnhronize clocks<ul>
+<li>7 x 10101010</li>
+<li>10101011</li>
+</ul>
+</li>
+<li>Connectionless<ul>
+<li>No handshaking</li>
+</ul>
+</li>
+<li>Unreliable<ul>
+<li>No ACKs or NACKs</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/Ethernet_Frame.png" /></p>
+<ul>
+<li><strong>Type</strong> is The higher Layer protocol (e.g. IP). It's the glues that binds link layer and network layer.</li>
+</ul>
+<h2 id="is-ethernet-reliable">Is Ethernet reliable?</h2>
+<h2 id="router-vs-switches">Router vs Switches</h2>
+<table>
+<thead>
+<tr>
+<th>Routers</th>
+<th>Switches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allows for connection between network</td>
+<td>Creates networks</td>
+</tr>
+<tr>
+<td>Store-and-forward</td>
+<td>Store-and-forward</td>
+</tr>
+<tr>
+<td>Network layer</td>
+<td>Link Layer</td>
+</tr>
+<tr>
+<td>Routing tables</td>
+<td>Switch Table</td>
+</tr>
+<tr>
+<td>Routing algorithms</td>
+<td>Filtering, Learning Algorithms(flooding)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pros-and-cons-of-routers-and-switches">Pros and cons of routers and switches</h2>
+<h2 id="switch-tables-contents-of-switch-table">Switch tables (contents of switch table)</h2>
+<h2 id="bus-topology-vs-star-topology">Bus topology vs star topology</h2>
+<h2 id="subnets-vs-vlans">Subnets vs VLANs</h2>
+<ul>
+<li>Both deal with segmenting or partitioning a portion of the network</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Subnets</th>
+<th>VLANs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network layer</td>
+<td>Link layer</td>
+</tr>
+<tr>
+<td>An IP address can be logically split (a.k.a. subnetting) into two parts: a network/routing prefix and a host identifier. Network devices that belong to a subnet share a common network/routing <strong>prefix in their IP address.</strong></td>
+<td>Separating ports by VLAN groups separates their traffic in a similar fashion to connecting the devices to a separate, distinct switch of their own                                                                                                                                                                                                                                                                                                                                                                                                     ......................................................................................................</td>
+</tr>
+<tr>
+<td>To determine the subnets, detach each interface from its host or router, creating islands of isolated networks, with interfaces terminating the end points of the isolated networks. Each of these isolated networks is called a subnet.</td>
+<td></td>
+</tr>
+<tr>
+<td><img alt="" src="../pics/subnet.png" /></td>
+<td><img alt="" src="../pics/vlan.png" /></td>
+</tr>
+<tr>
+<td>The network prefix is determined by applying a bitwise AND operation between the IP address and <strong>subnet mask</strong> (typically 255.255.255.0). Using an example address of 192.168.5.130, the network prefix (subnet) is 192.168.5.0, while the host identifier is 0.0.0.130.</td>
+<td><strong>Traffic Isolation</strong>  <br><strong>Dynamic Membership</strong> <br> <strong>Forwarding</strong> done via routing <br> <strong>Span multiple switches</strong> via trunk port.  802.1 Q frame</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://blog.biamp.com/the-difference-between-vlans-and-subnets/">VLANs vs Subnets</a></p>
+<h2 id="plug-and-play">Plug and play</h2>
+<p>Something gets done automatically. E.g. it doesn't have to be configured by a system administrator. </p>
+<h2 id="what-is-vlan-trunking">What is VLAN trunking?</h2>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../network/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Network layer
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../wireless/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Wireless
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1168 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Transport layer - Networking</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Networking" class="md-header__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Networking" class="md-nav__button md-logo" aria-label="Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview of layers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../application/" class="md-nav__link">
+        Application layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Transport layer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Transport layer
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bit-error" class="md-nav__link">
+    Bit error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sockets" class="md-nav__link">
+    Sockets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    TCP
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp-handshake" class="md-nav__link">
+    TCP Handshake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-fast-retransmit" class="md-nav__link">
+    TCP Fast Retransmit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-flow-control" class="md-nav__link">
+    TCP Flow control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-congestion-control" class="md-nav__link">
+    TCP congestion control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    TCP vs UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexing-vs-demultiplexing" class="md-nav__link">
+    Multiplexing vs Demultiplexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checksum" class="md-nav__link">
+    CheckSum
+  </a>
+  
+    <nav class="md-nav" aria-label="CheckSum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-kind-of-errors-can-go-undetected" class="md-nav__link">
+    What kind of errors can go undetected?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliable-data-transfer" class="md-nav__link">
+    Reliable Data transfer
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliable Data transfer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-a-protocol-recover-from-errors" class="md-nav__link">
+    How can a protocol recover from errors?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-detect-duplicates" class="md-nav__link">
+    How can it detect duplicates?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-recover-from-lost-packets" class="md-nav__link">
+    How can it recover from lost packets?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-increase-the-link-utilization" class="md-nav__link">
+    How can it increase the link Utilization?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining" class="md-nav__link">
+    Pipelining
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-back-n-vs-selective-repeat" class="md-nav__link">
+    Go-back-N vs Selective repeat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cumulative-ack" class="md-nav__link">
+    Cumulative ACK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-oriented" class="md-nav__link">
+    Connection-oriented
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-control-vs-congestion-control" class="md-nav__link">
+    Flow control vs Congestion control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-assisted-vs-end-end-congestion-control" class="md-nav__link">
+    Network-assisted vs end-end congestion control
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        Network layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        Link layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless/" class="md-nav__link">
+        Wireless
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        Practice
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bit-error" class="md-nav__link">
+    Bit error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sockets" class="md-nav__link">
+    Sockets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    TCP
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp-handshake" class="md-nav__link">
+    TCP Handshake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-fast-retransmit" class="md-nav__link">
+    TCP Fast Retransmit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-flow-control" class="md-nav__link">
+    TCP Flow control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp-congestion-control" class="md-nav__link">
+    TCP congestion control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-vs-udp" class="md-nav__link">
+    TCP vs UDP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplexing-vs-demultiplexing" class="md-nav__link">
+    Multiplexing vs Demultiplexing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checksum" class="md-nav__link">
+    CheckSum
+  </a>
+  
+    <nav class="md-nav" aria-label="CheckSum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-kind-of-errors-can-go-undetected" class="md-nav__link">
+    What kind of errors can go undetected?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reliable-data-transfer" class="md-nav__link">
+    Reliable Data transfer
+  </a>
+  
+    <nav class="md-nav" aria-label="Reliable Data transfer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-a-protocol-recover-from-errors" class="md-nav__link">
+    How can a protocol recover from errors?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-detect-duplicates" class="md-nav__link">
+    How can it detect duplicates?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-recover-from-lost-packets" class="md-nav__link">
+    How can it recover from lost packets?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-it-increase-the-link-utilization" class="md-nav__link">
+    How can it increase the link Utilization?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining" class="md-nav__link">
+    Pipelining
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-back-n-vs-selective-repeat" class="md-nav__link">
+    Go-back-N vs Selective repeat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cumulative-ack" class="md-nav__link">
+    Cumulative ACK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-oriented" class="md-nav__link">
+    Connection-oriented
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-control-vs-congestion-control" class="md-nav__link">
+    Flow control vs Congestion control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-assisted-vs-end-end-congestion-control" class="md-nav__link">
+    Network-assisted vs end-end congestion control
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="transport-layer">Transport layer</h1>
+<h2 id="bit-error">Bit error</h2>
+<p>Send 1 and received 0, but all packet are still delivered</p>
+<h2 id="sockets">Sockets</h2>
+<ul>
+<li>Doors through which data passes from the network to the process and through which data passes from the process to the network. </li>
+<li>sockets are the only one API that sits between application layer and transport layer</li>
+<li><strong>TCP sockets</strong><ul>
+<li>when contacted by client, server TCP <strong>creates new socket</strong> for server process to communicate with that particular client for the duration of that TCP connection</li>
+<li>allows server to talk with multiple client</li>
+<li>source port numbers used to distinguish clients </li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp">TCP</h2>
+<ul>
+<li>
+<p>TCP (Transmission Control Protocol) is a Transport Layer host-to-host protocol for <strong>connection-oriented communication</strong> between two computers on an IP network. TCP uses virtual ports to create a virtual end-to-end connection that can reuse the physical connections between two computers. TCP encapsulates higher level protocol data such as HTTP and, SMTP (email). <a href="https://developer.mozilla.org/en-US/docs/Glossary/Transmission_Control_Protocol_(TCP)">TCP</a>  </p>
+</li>
+<li>
+<p>It is specifically designed as a model to offer highly reliable and end-to-end byte stream over an unreliable internetwork. <a href="https://www.guru99.com/tcp-vs-udp-understanding-the-difference.html">TCP </a> </p>
+</li>
+</ul>
+<h3 id="tcp-handshake">TCP Handshake</h3>
+<p>The TCP three-way handshake, also called the TCP-handshake, three message handshake, and/or SYN-SYN-ACK, is the method used by TCP to set up a TCP/IP connection over an IP-based network. The three messages transmitted by TCP to negotiate and start a TCP session are nicknamed SYN, SYN-ACK, ACK for SYNchronize, SYNchronize-ACKnowledgement, and ACKnowledge. The three message mechanism is designed for the two computers that want to pass information back and forth and can negotiate the parameters of the connection before transmitting data such as HTTP browser requests.  <a href="https://developer.mozilla.org/en-US/docs/Glossary/Transmission_Control_Protocol_(TCP)">TCP Handshake</a></p>
+<h3 id="tcp-fast-retransmit">TCP Fast Retransmit</h3>
+<ul>
+<li>If sender receives 3 ACKs for same data ("triple dublicate ACKs"), resend unACKed segment with smallest seq #</li>
+<li>likely that unACKed segment lost, so don't wait for timeout.</li>
+</ul>
+<p><img alt="" src="../pics/tcp_fast_retransmit.png" /></p>
+<h3 id="tcp-flow-control">TCP Flow control</h3>
+<ul>
+<li>Send will not overwhlem receiver</li>
+<li>TCP provides flow control by having the sender maintain a variable called the receive window , denoted <code>rwnd</code></li>
+</ul>
+<p><img alt="" src="../pics/rwnd.png" /></p>
+<h3 id="tcp-congestion-control">TCP congestion control</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>When</th>
+<th>How <code>cwnd</code> increases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Slow start</strong></td>
+<td>From start/Timeout occurred</td>
+<td>Increasing exponentially</td>
+</tr>
+<tr>
+<td><strong>Congestion avoidance</strong></td>
+<td><code>cwnd&gt;=sstresh</code>/Triple duplicate occurred and recovered from Fast recovery with ACK</td>
+<td>Increasing linearly</td>
+</tr>
+<tr>
+<td><strong>Fast recovery</strong></td>
+<td>Triple duplicate occurred</td>
+<td>Increasing linearly</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://stackoverflow.com/questions/30818925/tcp-congestion-control-fast-recovery-in-graph">Fast recovery in Stackoverflow</a></p>
+<p><img alt="" src="../pics/tcp_congestion_control.png" /></p>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/tcp_congestion_control_ex.png" /></p>
+<p><img alt="" src="../pics/TCP_congestion_control_FSM.png" /></p>
+<ul>
+<li>Slow start</li>
+</ul>
+<p><img alt="" src="../pics/slow_start.png" /></p>
+<ul>
+<li>Additive-increase, multiplicative-decrease (AIMD)</li>
+</ul>
+<p><img alt="" src="../pics/aimd.png" /></p>
+<ul>
+<li>TCP CUBIC</li>
+<li>
+<p>Delay-based congestion control.</p>
+<ul>
+<li>Note that currently measured throughput is never greater than <code>cwnd/RTTmin</code></li>
+<li>If  currently measured throughput is equal or a bit less than <code>cwnd/RTTmin</code> increase the sending rate</li>
+<li>If currently measured thourghput is much less that  <code>cwnd/RTTmin</code> decrease the sending rate <br />
+<img alt="" src="../pics/delay_based_cc.png" /></li>
+</ul>
+</li>
+<li>
+<p>Explicit congestion notification</p>
+</li>
+</ul>
+<p><code>cwnd</code> - congestion window</p>
+<p><code>ssthresh</code> - when congestion control hits the value, it start to increase linearly</p>
+<h2 id="udp">UDP</h2>
+<p>The User Datagram Protocol (UDP) is simplest Transport Layer communication protocol available of the TCP/IP protocol suite. It involves minimum amount of communication mechanism. UDP is said to be an unreliable transport protocol but it uses IP services which provides best effort delivery mechanism.</p>
+<p>In UDP, the receiver does not generate an acknowledgement of packet received and in turn, the sender does not wait for any acknowledgement of packet sent. This shortcoming makes this protocol unreliable as well as easier on processing. <a href="https://www.tutorialspoint.com/data_communication_computer_network/user_datagram_protocol.htm">UDP tutorialspoint</a></p>
+<ul>
+<li><strong>Connectionless</strong> </li>
+</ul>
+<h2 id="tcp-vs-udp">TCP vs UDP</h2>
+<table>
+<thead>
+<tr>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP is a connection-oriented protocol. Connection-orientation means that the communicating devices should establish a connection before transmitting data and should close the connection after transmitting the data.</td>
+<td>UDP is the Datagram oriented protocol. This is because there is no overhead for opening a connection, maintaining a connection, and terminating a connection. UDP is efficient for broadcast and multicast type of network transmission.</td>
+</tr>
+<tr>
+<td>TCP is reliable as it guarantees delivery of data to the destination router.</td>
+<td>The delivery of data to the destination cannot be guaranteed in UDP.</td>
+</tr>
+<tr>
+<td>TCP provides extensive error checking mechanisms. It is because it provides flow control and acknowledgment of data.</td>
+<td>UDP has only the basic error checking mechanism using checksums.</td>
+</tr>
+<tr>
+<td>Sequencing of data is a feature of Transmission Control Protocol (TCP). this means that packets arrive in-order at the receiver.</td>
+<td>There is no sequencing of data in UDP. If ordering is required, it has to be managed by the application layer.</td>
+</tr>
+<tr>
+<td>TCP is comparatively slower than UDP.</td>
+<td>UDP is faster, simpler and more efficient than TCP.</td>
+</tr>
+<tr>
+<td>Retransmission of lost packets is possible in TCP, but not in UDP.</td>
+<td>There is no retransmission of lost packets in User Datagram Protocol (UDP).</td>
+</tr>
+<tr>
+<td>TCP has a (20-80) bytes variable length header.</td>
+<td>UDP has a 8 bytes fixed length header.</td>
+</tr>
+<tr>
+<td>TCP is heavy-weight.</td>
+<td>UDP is lightweight.</td>
+</tr>
+<tr>
+<td>TCP doesn’t supports Broadcasting.</td>
+<td>UDP supports Broadcasting.</td>
+</tr>
+<tr>
+<td>TCP is used by HTTP, HTTPs, FTP, SMTP and Telnet.</td>
+<td>UDP is used by DNS, DHCP, TFTP, SNMP, RIP, and VoIP.</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.geeksforgeeks.org/differences-between-tcp-and-udp/#:~:text=UDP%20is%20faster%2C%20simpler%20and,User%20Datagram%20Protocol%20(UDP).&amp;text=UDP%20is%20used%20by%20DNS,SNMP%2C%20RIP%2C%20and%20VoIP.">TCP vs UDP</a></p>
+<h2 id="multiplexing-vs-demultiplexing">Multiplexing vs Demultiplexing</h2>
+<p><strong>Extending host-to-host delivery to process-to-process</strong> delivery is called transport-layer multiplexing and demultiplexing. 
+At the receiving end, the transport layer examines these fields to identidy the receiving socket and then directs the segments to the that socket. This job of delivering the data in a transport-layer segment to the correct socket is called <strong>demultiplexing</strong>. The job of gathering data chunks at he source host from different sockets, encapsulating each data chunk with header information(that will later be used in demultiplexing) to create segments, and passing the segments to the network layer is called <strong>multipplexing</strong>.  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Multiplexing</th>
+<th>Demultiplexing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Where</strong></td>
+<td>At sender</td>
+<td>At receiver</td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>Handle data from multiple sockets, add transport header</td>
+<td>Use header info to deliver received segments to correct sockets</td>
+</tr>
+<tr>
+<td><strong>UDP</strong></td>
+<td></td>
+<td>Using destination port number(only)</td>
+</tr>
+<tr>
+<td><strong>TCP</strong></td>
+<td></td>
+<td>Using 4-tuple: source and destination IP addresses, and port numbers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="checksum">CheckSum</h2>
+<p><strong>Checksum</strong> is the error detection method used by upper layer protocols.</p>
+<table>
+<thead>
+<tr>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entire UDP segment, except the checksum field itself, and the IP sender and receive address fields(violates layering)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-kind-of-errors-can-go-undetected">What kind of errors can go undetected?</h3>
+<p>If the corresponding bits are damaged of opposite sides. E.g. 1<sup>st</sup> bit of subunit 1 is damaged and 1<sup>st</sup> bit of subunit 2 is damaged</p>
+<h2 id="reliable-data-transfer">Reliable Data transfer</h2>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Feature/ Recover from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Send+receive</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>+ Bit errors</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>+ Sequence number(duplicates)</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>+ Without NAK</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>+ Packet lost</td>
+</tr>
+</tbody>
+</table>
+<p>Reliable data transfer protocols (RDT, RDP) are algorithmic measures to provide assurances of the reliable transfer of data across a network that may be subject to data loss and/or corruption. RDT involves sender-side and receiver-side sequences and variables to validate, acknowledge, and retransmit data when necessary.</p>
+<p>The goal of RDT protocols is to provide network and link layer service such that application and transport layer services can make guarantees about data delivery.</p>
+<p>Reliable Data Transfer Protocols must address the two primary concerns of <strong>data loss</strong> and <strong>data corruption</strong>. In network communications, these types of errors generally occur on the physical network hardware during buffering, propagation, and transmission actions.</p>
+<p>To address these concerns, senders and receivers need a way to communicate <em>indirectly</em> with respect to the receipt and validation of data being transmitted. In such cases where data has been lost or corrupted, RDT protocols dictate that data should be re-transmitted. At the most basic level, this introduces another concern of <strong>duplicate data</strong> into the mix.</p>
+<p>Data loss and corruption are the two primary concerns RDT seeks to address. The concern of duplicate data only arises through actions taken to address these first two concerns. As such, considering the issues of loss and corruption is a sensible place to begin considering the underlying function of RDT.</p>
+<p><a href="https://medium.com/@zackofwest/reliable-data-transfer-protocols-rdt-the-reliability-guarantee-that-keeps-the-internet-running-e555a4fb375d">RDT</a></p>
+<p>For connection-oriented service provided by TCP, it is necessary to have a reliable data transfer (RDT) protocol to ensure delivery of all packets and to enable the receiver to deliver the packets in order to its application layer.</p>
+<p>A simple alternating bit RDT protocol can be designed using some basic tools. This protocol is also known as a stop-and-wait protocol: after sending each packet the sender stops and waits for feedback from the receiver indicating that the packet has been received.</p>
+<p>Stop-and-wait RDT protocols have poor performance in a long-distance connection. At best, the sender can only transmit one packet per round-trip time. For a 1000 mile connection this amounts to approximately 1 packet (about 1500 bytes) every 20 ms. That results in a pathetic 75 KB per second rate.</p>
+<p>To improve transmission rates, a realistic RDT protocol must use pipelining. This allows the sender to have a large number of packets "in the pipeline". This phrase refers to packets that have been sent but whose receipt has not yet verified by the receiver.</p>
+<p><a href="https://www.d.umn.edu/~gshute/net/reliable-data-transfer.xhtml">Reliable data transfer</a></p>
+<h3 id="how-can-a-protocol-recover-from-errors">How can a protocol recover from errors?</h3>
+<ul>
+<li>We need some feedback from receiver. </li>
+<li>Acknowledgements: ACKs - I got a packet OK</li>
+<li>Negative acknowledgement NAKs: A Packet was corrupted.</li>
+<li>Retransmission, if NAK</li>
+</ul>
+<h3 id="how-can-it-detect-duplicates">How can it detect duplicates?</h3>
+<ul>
+<li>Checking sequence number</li>
+<li>0 or 1. Because there can only be one packet out at the time. </li>
+<li>If receiver get a duplicate just discard it. </li>
+</ul>
+<h3 id="how-can-it-recover-from-lost-packets">How can it recover from lost packets?</h3>
+<ul>
+<li>Have timer and if in given time, ACK isn't received send a packet again</li>
+</ul>
+<h3 id="how-can-it-increase-the-link-utilization">How can it increase the link Utilization?</h3>
+<ul>
+<li>Pipelined Protocol. Send out multiple packet in batch on the pipe before any ACK received yet. </li>
+<li>Go-back-N , says I have all the packets until N.  Transmits all the packets after N (the last received)</li>
+<li>Selective Repeat, I didn't received that packet that and that packet. That's transmits only unACKed packets.</li>
+</ul>
+<h2 id="pipelining">Pipelining</h2>
+<ul>
+<li>A pipeline sender can have transmitted multiple packets for which the sender has yet to recive an ACK from the receiver</li>
+<li>With a pipelined sender, there may be transmitted packets "in flight" - propagating through the channel - that the receiver has not yet received. </li>
+</ul>
+<p><img alt="" src="/home/arm/Projects/datacom_docs/docs/pics/pipelined.png" /></p>
+<h2 id="go-back-n-vs-selective-repeat">Go-back-N vs Selective repeat</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Go-Back-N Protocol</th>
+<th align="left">Selective Repeat Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">In Go-Back-N Protocol, if the sent frame are find suspected then all the frames are re-transmitted from the lost packet to the last packet transmitted.</td>
+<td align="left">In selective Repeat protocol, only those frames are re-transmitted which are found suspected.</td>
+</tr>
+<tr>
+<td align="left">Sender window size of Go-Back-N Protocol is N.</td>
+<td align="left">Sender window size of selective Repeat protocol is also N.</td>
+</tr>
+<tr>
+<td align="left">Receiver window size of Go-Back-N Protocol is 1.</td>
+<td align="left">Receiver window size of selective Repeat protocol is N.</td>
+</tr>
+<tr>
+<td align="left">Go-Back-N Protocol is less complex.</td>
+<td align="left">Selective Repeat protocol is more complex.</td>
+</tr>
+<tr>
+<td align="left">In Go-Back-N Protocol, neither sender nor at receiver need sorting.</td>
+<td align="left">In selective Repeat protocol, receiver side needs sorting to sort the frames.</td>
+</tr>
+<tr>
+<td align="left">In Go-Back-N Protocol, type of Acknowledgement is cumulative.</td>
+<td align="left">In selective Repeat protocol, type of Acknowledgement is individual.</td>
+</tr>
+<tr>
+<td align="left">In Go-Back-N Protocol, Out-of-Order packets are NOT Accepted (discarded) and the entire window is re-transmitted.</td>
+<td align="left">In selective Repeat protocol, Out-of-Order packets are Accepted.</td>
+</tr>
+<tr>
+<td align="left">In Go-Back-N Protocol, if Receives receives a corrupt packet, then also, the entire window is re-transmitted.</td>
+<td align="left">In selective Repeat protocol, if Receives receives a corrupt packet, it immediately sends a negative acknowledgement and hence only the selective packet is retransmitted.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cumulative-ack">Cumulative ACK</h2>
+<p>A cumulative ACK(n) acks all packets with sequence number up to and including n as being received</p>
+<h2 id="connection-oriented">Connection-oriented</h2>
+<p>Handshaking  </p>
+<h2 id="flow-control-vs-congestion-control">Flow control vs Congestion control</h2>
+<table>
+<thead>
+<tr>
+<th>Flow control</th>
+<th>Congestion control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed matching between <strong>single</strong> sender and <strong>single</strong> receiver</td>
+<td><strong>Multiple</strong> senders</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-assisted-vs-end-end-congestion-control">Network-assisted vs end-end congestion control</h2>
+<table>
+<thead>
+<tr>
+<th>Network-assisted</th>
+<th>End-end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A router marks a field in the datagram header at a congested router</td>
+<td>the network layer provides no explicit support to the transport layer for congestion-control purposes.</td>
+</tr>
+<tr>
+<td>A router sends an ICMP message to a host telling it to slow down its sending rate</td>
+<td>based only on observed network behavior (for example, packet loss and delay)</td>
+</tr>
+<tr>
+<td></td>
+<td>increasing round-trip segment delay as an indicator of increased network congestion</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../application/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Application layer
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../network/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Network layer
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
